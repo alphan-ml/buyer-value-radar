@@ -1,0 +1,135 @@
+{
+  "row_count": 1067371,
+  "date_min": "2009-12-01 07:45:00",
+  "date_max": "2011-12-09 12:50:00",
+  "unique_customers": 5942,
+  "rows_with_customer_id": 824364,
+  "rows_without_customer_id": 243007,
+  "pct_rows_without_customer_id": 22.767,
+  "cancellation_lines": 19494,
+  "pct_cancellation_lines": 1.826,
+  "non_cancellation_qty_le_0": 3457,
+  "non_cancellation_price_le_0": 6207,
+  "non_product_stockcode_rows": 5830,
+  "non_product_stockcode_counts": {
+    "POST": 2122,
+    "DOT": 1446,
+    "M": 1426,
+    "C2": 282,
+    "D": 177,
+    "S": 104,
+    "BANK CHARGES": 102,
+    "ADJUST": 67,
+    "AMAZONFEE": 43,
+    "PADS": 19,
+    "CRUK": 16,
+    "TEST001": 15,
+    "B": 6,
+    "ADJUST2": 3,
+    "TEST002": 2
+  },
+  "repeat_buyer_customers": 4398,
+  "pct_repeat_buyer_customers": 74.015,
+  "monthly_net_revenue_gbp_kept_lines": [
+    {
+      "month": "2009-12",
+      "net_revenue_gbp": 799847.11
+    },
+    {
+      "month": "2010-01",
+      "net_revenue_gbp": 624032.89
+    },
+    {
+      "month": "2010-02",
+      "net_revenue_gbp": 533091.43
+    },
+    {
+      "month": "2010-03",
+      "net_revenue_gbp": 765848.76
+    },
+    {
+      "month": "2010-04",
+      "net_revenue_gbp": 644174.79
+    },
+    {
+      "month": "2010-05",
+      "net_revenue_gbp": 615322.83
+    },
+    {
+      "month": "2010-06",
+      "net_revenue_gbp": 679786.61
+    },
+    {
+      "month": "2010-07",
+      "net_revenue_gbp": 619268.15
+    },
+    {
+      "month": "2010-08",
+      "net_revenue_gbp": 656776.34
+    },
+    {
+      "month": "2010-09",
+      "net_revenue_gbp": 853650.43
+    },
+    {
+      "month": "2010-10",
+      "net_revenue_gbp": 1084094.22
+    },
+    {
+      "month": "2010-11",
+      "net_revenue_gbp": 1422654.64
+    },
+    {
+      "month": "2010-12",
+      "net_revenue_gbp": 1126445.47
+    },
+    {
+      "month": "2011-01",
+      "net_revenue_gbp": 560000.26
+    },
+    {
+      "month": "2011-02",
+      "net_revenue_gbp": 498062.65
+    },
+    {
+      "month": "2011-03",
+      "net_revenue_gbp": 683267.08
+    },
+    {
+      "month": "2011-04",
+      "net_revenue_gbp": 493207.12
+    },
+    {
+      "month": "2011-05",
+      "net_revenue_gbp": 723333.51
+    },
+    {
+      "month": "2011-06",
+      "net_revenue_gbp": 691123.12
+    },
+    {
+      "month": "2011-07",
+      "net_revenue_gbp": 681300.11
+    },
+    {
+      "month": "2011-08",
+      "net_revenue_gbp": 704804.63
+    },
+    {
+      "month": "2011-09",
+      "net_revenue_gbp": 1019687.62
+    },
+    {
+      "month": "2011-10",
+      "net_revenue_gbp": 1070704.67
+    },
+    {
+      "month": "2011-11",
+      "net_revenue_gbp": 1461756.25
+    },
+    {
+      "month": "2011-12",
+      "net_revenue_gbp": 433686.01
+    }
+  ]
+}

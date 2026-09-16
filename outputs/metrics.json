@@ -1,0 +1,241 @@
+{
+  "holdout_customers": 1295,
+  "wape_6m": 0.8281469689231127,
+  "wape_12m": 0.6884771494085729,
+  "mape_6m_actual_gt0": 14043125027505.137,
+  "median_ape_6m_actual_gt0": 0.5433911280479935,
+  "mape_6m_n": 567,
+  "mape_12m_actual_gt0": 20800980807028.402,
+  "median_ape_12m_actual_gt0": 0.5383179059204907,
+  "mape_12m_n": 797,
+  "curve1_by_t": [
+    {
+      "t": 1,
+      "roc_auc": 0.8008572075777627,
+      "brier": 0.08119383737399496,
+      "n": 1295
+    },
+    {
+      "t": 2,
+      "roc_auc": 0.8105564763055143,
+      "brier": 0.10060804348554078,
+      "n": 1295
+    },
+    {
+      "t": 3,
+      "roc_auc": 0.7904429685595907,
+      "brier": 0.10041404099938216,
+      "n": 1295
+    },
+    {
+      "t": 4,
+      "roc_auc": 0.7795657856766988,
+      "brier": 0.11122231243021836,
+      "n": 1295
+    },
+    {
+      "t": 5,
+      "roc_auc": 0.7586849957374253,
+      "brier": 0.112611558090448,
+      "n": 1295
+    },
+    {
+      "t": 6,
+      "roc_auc": 0.7825412262156448,
+      "brier": 0.11370342873469469,
+      "n": 1295
+    },
+    {
+      "t": 7,
+      "roc_auc": 0.7738858447488586,
+      "brier": 0.1093071352756207,
+      "n": 1295
+    },
+    {
+      "t": 8,
+      "roc_auc": 0.784166902554667,
+      "brier": 0.10930280669229256,
+      "n": 1295
+    },
+    {
+      "t": 9,
+      "roc_auc": 0.8072961452756742,
+      "brier": 0.1033597653529012,
+      "n": 1295
+    },
+    {
+      "t": 10,
+      "roc_auc": 0.7829531051964512,
+      "brier": 0.1242070562499843,
+      "n": 1295
+    },
+    {
+      "t": 11,
+      "roc_auc": 0.7565338526686395,
+      "brier": 0.14159772892230318,
+      "n": 1295
+    },
+    {
+      "t": 12,
+      "roc_auc": 0.761381017087116,
+      "brier": 0.1458322441298097,
+      "n": 1295
+    }
+  ],
+  "curve2_wape_active_rows": 0.5142847257708445,
+  "decile_table_12m": [
+    {
+      "decile": 1,
+      "customers": 130,
+      "predicted": 7061.085571724761,
+      "actual": 17841.579999999998,
+      "wape": 0.6042342902520538
+    },
+    {
+      "decile": 2,
+      "customers": 129,
+      "predicted": 13302.284091953747,
+      "actual": 24782.37,
+      "wape": 0.46323599833455203
+    },
+    {
+      "decile": 3,
+      "customers": 130,
+      "predicted": 23785.737667581143,
+      "actual": 39706.34,
+      "wape": 0.4009586965814239
+    },
+    {
+      "decile": 4,
+      "customers": 129,
+      "predicted": 35283.584201450416,
+      "actual": 29881.23,
+      "wape": 0.18079423776900805
+    },
+    {
+      "decile": 5,
+      "customers": 130,
+      "predicted": 47504.28403603607,
+      "actual": 38300.34,
+      "wape": 0.24030972142900234
+    },
+    {
+      "decile": 6,
+      "customers": 129,
+      "predicted": 61408.834738139,
+      "actual": 60261.44,
+      "wape": 0.019040280785507204
+    },
+    {
+      "decile": 7,
+      "customers": 129,
+      "predicted": 85437.0973520447,
+      "actual": 105554.1,
+      "wape": 0.19058475841256098
+    },
+    {
+      "decile": 8,
+      "customers": 130,
+      "predicted": 141622.4819454969,
+      "actual": 148034.32,
+      "wape": 0.04331318612132045
+    },
+    {
+      "decile": 9,
+      "customers": 129,
+      "predicted": 250292.64258799868,
+      "actual": 251610.79,
+      "wape": 0.005238834995913052
+    },
+    {
+      "decile": 10,
+      "customers": 130,
+      "predicted": 828030.1265341815,
+      "actual": 838733.6900000001,
+      "wape": 0.01276157568657881
+    }
+  ],
+  "segment_country_group": [
+    {
+      "country_group": "Europe",
+      "customers": 88,
+      "predicted": 144582.14186122248,
+      "actual": 180991.72,
+      "wape": 0.20116709283042075
+    },
+    {
+      "country_group": "Rest of world",
+      "customers": 14,
+      "predicted": 19981.0553900837,
+      "actual": 13914.670000000002,
+      "wape": 0.4359704822380766
+    },
+    {
+      "country_group": "United Kingdom",
+      "customers": 1193,
+      "predicted": 1329164.9614753008,
+      "actual": 1359799.81,
+      "wape": 0.022528940142078135
+    }
+  ],
+  "segment_buyer_size_tercile": [
+    {
+      "buyer_size_tercile": "low",
+      "customers": 432,
+      "predicted": 65289.56768616097,
+      "actual": 84540.07,
+      "wape": 0.2277086157349886
+    },
+    {
+      "buyer_size_tercile": "mid",
+      "customers": 431,
+      "predicted": 193636.8100447776,
+      "actual": 192435.66,
+      "wape": 0.006241826721604536
+    },
+    {
+      "buyer_size_tercile": "high",
+      "customers": 432,
+      "predicted": 1234801.7809956684,
+      "actual": 1277730.47,
+      "wape": 0.033597609208091905
+    }
+  ],
+  "segment_first_purchase_quarter": [
+    {
+      "first_purchase_quarter": "2009Q4",
+      "customers": 320,
+      "predicted": 721698.279884544,
+      "actual": 746915.42,
+      "wape": 0.03376170773854966
+    },
+    {
+      "first_purchase_quarter": "2010Q1",
+      "customers": 351,
+      "predicted": 393265.56798135943,
+      "actual": 363023.94,
+      "wape": 0.08330477593670386
+    },
+    {
+      "first_purchase_quarter": "2010Q2",
+      "customers": 225,
+      "predicted": 137405.7551511505,
+      "actual": 156731.28,
+      "wape": 0.12330356039234486
+    },
+    {
+      "first_purchase_quarter": "2010Q3",
+      "customers": 183,
+      "predicted": 110236.88357241313,
+      "actual": 115422.68,
+      "wape": 0.04492874734486202
+    },
+    {
+      "first_purchase_quarter": "2010Q4",
+      "customers": 216,
+      "predicted": 131121.6721371399,
+      "actual": 172612.88,
+      "wape": 0.24037144773240626
+    }
+  ]
+}

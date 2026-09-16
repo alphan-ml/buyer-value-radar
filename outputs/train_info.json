@@ -1,0 +1,13 @@
+{
+  "curve1": {
+    "best_iteration": 123,
+    "fit_customers": 2717,
+    "early_stop_customers": 302
+  },
+  "curve2": {
+    "best_iteration": 156,
+    "fit_customers": 1707,
+    "early_stop_customers": 190,
+    "smearing_factor": 1.1541291764246462
+  }
+}

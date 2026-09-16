@@ -1,0 +1,8 @@
+{
+  "rows_in": 1067371,
+  "dropped_no_customer_id": 243007,
+  "dropped_bad_qty_or_price_noncancel": 6207,
+  "dropped_non_product_stockcode": 3726,
+  "rows_kept": 820567,
+  "kept_cancellation_lines": 17933
+}
