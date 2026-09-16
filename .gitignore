@@ -8,3 +8,5 @@ outputs/checkpoints/
 outputs/run.log
 .DS_Store
 *.egg-info/
+aws-lambda/package/
+aws-lambda/deploy.zip

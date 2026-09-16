@@ -55,3 +55,31 @@ Anaconda's existing `libomp.dylib` is used as the real library; nothing was inst
 - OPEN: see Open items above.
 - NEXT: README + this file committed; QA gate (Section 9) before `gh repo create`; Drive backup; report to Leon and wait for "go" before any public push.
 - TIME: 2026-09-13, ~15:30–16:00 ET.
+
+## Decisions (added)
+
+| ID | Decision | Rejected alternative |
+|---|---|---|
+| D7 | AWS (Lambda + API Gateway + S3) for BVR serving, per Leon's explicit instruction ("Use AWS for Buyer Value Radar") | GCP serving per BUILD INSTRUCTION v2 Section 6.3 (superseded); SageMaker endpoint (idle cost for a stateless two-model scorer that gets occasional traffic — Lambda scales to zero) |
+| D8 | Lambda scoring code (`score.py`) reconstructs LightGBM's categorical encoding manually (sorted-unique-value integer codes over the full training population, e.g. `country_group`: Europe=0, Rest of world=1, United Kingdom=2; `first_purchase_quarter`: 2009Q4=0..2010Q4=4) instead of shipping pandas | Bundling pandas to preserve `.astype("category")` at inference time — unnecessary risk and ~50MB+ extra deployment size once the encoding is verified byte-identical (see Task report below) |
+| D9 | Lambda deployment uses lightgbm 3.3.5 + scipy + numpy<2 (no scikit-learn), with a scikit-learn-wheel-derived `libgomp.so.1` bundled at `lib/libgomp.so.1` | lightgbm 4.7.0 (the version actually used to train) — pulls in `narwhals` and is otherwise fine, but 3.3.5 was chosen after confirming byte-identical predictions from the real trained model files, to keep dependency surface smaller; Lambda's Amazon Linux base image has no `libgomp.so.1` preinstalled, which is why lightgbm's `import` fails without the bundled copy |
+
+## Open items (updated)
+
+- ~~GCP serving (BUILD INSTRUCTION v2 Section 6.3)~~ — superseded by D7; AWS serving is live and verified (see Task report below).
+- `customer-lifecycle.html` "Score a Customer" UI block: still blocked on Leon's go-ahead before any file on giggitai.com changes (standing rule) — the API endpoint it would call now exists and is tested, so this is purely a front-end + explicit-approval step, not a backend blocker.
+- BG/NBD + Gamma-Gamma baseline not built (see D1). Unchanged.
+- Kaggle "Data Access and Use" clauses for `ieee-fraud-detection` / `instacart-market-basket-analysis`: unchanged, still needs Leon's own logged-in view.
+- Leon-authored commit within 7 days of push (by Sep 20, 2026): unchanged suggestion re: `country_group` definition.
+
+## Task reports (added)
+
+### Task: build and deploy the AWS scoring endpoint (Lambda + API Gateway + S3)
+
+- STATUS: done, live, tested end-to-end against the real trained models.
+- BUILT: `aws-lambda/package/score.py` (Lambda handler — loads both boosters from S3 into `/tmp` on cold start, reconstructs categorical encoding, runs the same `LTV_h = sum P(active_t) * E[spend_t]` combination as `bvr.combine.combine`); `aws-lambda/package/lib/libgomp.so.1` (OpenMP runtime, sourced from a scikit-learn manylinux2014 wheel, since Lambda's base image lacks it and lightgbm's compiled library dlopens it at import time).
+- INFRASTRUCTURE: S3 bucket `giggit-buyer-value-radar-models` (`models/` = model artifacts, `lambda-code/` = deployment zip); IAM role `bvr-lambda-execution-role` (AWSLambdaBasicExecutionRole + inline `s3:GetObject` on `models/*`); Lambda function `bvr-score-customer` (python3.11, 512MB, 30s timeout, ~166MB max memory used in practice); API Gateway HTTP API `bvr-score-api` — live at `https://guijt78nlb.execute-api.us-east-1.amazonaws.com` (`POST /score`, `GET /health`, CORS enabled for browser calls).
+- VERIFIED: manually re-derived the categorical code maps from `outputs/features_t0.parquet` (full population) and confirmed, in an isolated Python process, that manual integer-code encoding produces **byte-identical** (`max abs diff = 0.0`) `P(active_t)` and `E[spend_t]` predictions versus the official `bvr.assemble_rows()` / `predict_proba()` / `predict_spend()` pipeline, across the entire 1,295-customer holdout set. Confirmed lightgbm 3.3.5 loads the real 4.7.0-trained model files and reproduces identical predictions to full displayed precision. End-to-end tested via the live HTTPS endpoint for a real holdout customer (ID 12352): `ltv_6=179.59`, `ltv_12=426.92`, matching the reference computed on the training machine exactly. Tested error paths (missing fields, unknown category, `/health`, CORS preflight) — all return the expected 4xx/200 responses.
+- SPEC CHECK: no file on giggitai.com was touched — this is backend-only, per the standing rule that site changes need Leon's explicit go-ahead (see D5, updated Open items).
+- NEXT: front-end "Score a Customer" block on `customer-lifecycle.html`, gated on Leon's explicit approval before any deploy; local-preview sign-off required first per the build instruction's own STOP-before-deploy rule.
+- TIME: 2026-09-16, ~05:50–06:10 ET.
