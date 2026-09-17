@@ -5,7 +5,7 @@ Fable's v2 correction (Section 1.2) moved Buyer Value Radar off its own
 page: it becomes a "Score a Customer" block inside the existing
 customer-lifecycle.html, served from a GCP endpoint (Section 6.3). GCP
 is not set up yet (Gate 1), and no file on giggitai.com is touched without
-Leon's explicit go-ahead. This export step writes the data artifact only
+the owner's explicit go-ahead. This export step writes the data artifact only
 -- outputs/site_data.json -- so the site block can be wired up later
 without re-deriving any number. No site file is read or written here.
 """
