@@ -89,70 +89,80 @@
       "customers": 130,
       "predicted": 7061.085571724761,
       "actual": 17841.579999999998,
-      "wape": 0.6042342902520538
+      "wape": 1.172800057135207,
+      "aggregate_revenue_error": 0.6042342902520538
     },
     {
       "decile": 2,
       "customers": 129,
-      "predicted": 13302.284091953747,
-      "actual": 24782.37,
-      "wape": 0.46323599833455203
+      "predicted": 13302.284091953745,
+      "actual": 24782.370000000003,
+      "wape": 1.1288060277267706,
+      "aggregate_revenue_error": 0.4632359983345522
     },
     {
       "decile": 3,
       "customers": 130,
-      "predicted": 23785.737667581143,
+      "predicted": 23785.737667581147,
       "actual": 39706.34,
-      "wape": 0.4009586965814239
+      "wape": 1.1854253950940432,
+      "aggregate_revenue_error": 0.4009586965814238
     },
     {
       "decile": 4,
       "customers": 129,
       "predicted": 35283.584201450416,
-      "actual": 29881.23,
-      "wape": 0.18079423776900805
+      "actual": 29881.229999999996,
+      "wape": 1.1489615494868897,
+      "aggregate_revenue_error": 0.1807942377690082
     },
     {
       "decile": 5,
       "customers": 130,
       "predicted": 47504.28403603607,
       "actual": 38300.34,
-      "wape": 0.24030972142900234
+      "wape": 1.0480896016648718,
+      "aggregate_revenue_error": 0.24030972142900234
     },
     {
       "decile": 6,
       "customers": 129,
       "predicted": 61408.834738139,
-      "actual": 60261.44,
-      "wape": 0.019040280785507204
+      "actual": 60261.439999999995,
+      "wape": 0.9138267412156108,
+      "aggregate_revenue_error": 0.01904028078550733
     },
     {
       "decile": 7,
       "customers": 129,
       "predicted": 85437.0973520447,
       "actual": 105554.1,
-      "wape": 0.19058475841256098
+      "wape": 0.8483584828895168,
+      "aggregate_revenue_error": 0.19058475841256098
     },
     {
       "decile": 8,
       "customers": 130,
-      "predicted": 141622.4819454969,
+      "predicted": 141622.48194549687,
       "actual": 148034.32,
-      "wape": 0.04331318612132045
+      "wape": 0.8708464743054196,
+      "aggregate_revenue_error": 0.043313186121320645
     },
     {
       "decile": 9,
       "customers": 129,
-      "predicted": 250292.64258799868,
-      "actual": 251610.79,
-      "wape": 0.005238834995913052
+      "predicted": 250292.6425879987,
+      "actual": 251610.79000000004,
+      "wape": 0.6391002318526531,
+      "aggregate_revenue_error": 0.005238834995913052
     },
     {
       "decile": 10,
       "customers": 130,
-      "predicted": 828030.1265341815,
+      "predicted": 828030.1265341814,
       "actual": 838733.6900000001,
-      "wape": 0.01276157568657881
+      "wape": 0.555134004478833,
+      "aggregate_revenue_error": 0.012761575686578949
     }
   ],
   "segment_country_group": [
@@ -160,22 +170,25 @@
       "country_group": "Europe",
       "customers": 88,
       "predicted": 144582.14186122248,
-      "actual": 180991.72,
-      "wape": 0.20116709283042075
+      "actual": 180991.72000000003,
+      "wape": 0.6927777303132011,
+      "aggregate_revenue_error": 0.2011670928304209
     },
     {
       "country_group": "Rest of world",
       "customers": 14,
       "predicted": 19981.0553900837,
       "actual": 13914.670000000002,
-      "wape": 0.4359704822380766
+      "wape": 1.3952080149073869,
+      "aggregate_revenue_error": 0.4359704822380766
     },
     {
       "country_group": "United Kingdom",
       "customers": 1193,
       "predicted": 1329164.9614753008,
       "actual": 1359799.81,
-      "wape": 0.022528940142078135
+      "wape": 0.6790529788815406,
+      "aggregate_revenue_error": 0.022528940142078135
     }
   ],
   "segment_buyer_size_tercile": [
@@ -184,21 +197,24 @@
       "customers": 432,
       "predicted": 65289.56768616097,
       "actual": 84540.07,
-      "wape": 0.2277086157349886
+      "wape": 1.2006686626313958,
+      "aggregate_revenue_error": 0.2277086157349886
     },
     {
       "buyer_size_tercile": "mid",
       "customers": 431,
       "predicted": 193636.8100447776,
-      "actual": 192435.66,
-      "wape": 0.006241826721604536
+      "actual": 192435.65999999997,
+      "wape": 0.979040420737966,
+      "aggregate_revenue_error": 0.006241826721604688
     },
     {
       "buyer_size_tercile": "high",
       "customers": 432,
       "predicted": 1234801.7809956684,
       "actual": 1277730.47,
-      "wape": 0.033597609208091905
+      "wape": 0.6109841317993857,
+      "aggregate_revenue_error": 0.033597609208091905
     }
   ],
   "segment_first_purchase_quarter": [
@@ -206,36 +222,41 @@
       "first_purchase_quarter": "2009Q4",
       "customers": 320,
       "predicted": 721698.279884544,
-      "actual": 746915.42,
-      "wape": 0.03376170773854966
+      "actual": 746915.4199999999,
+      "wape": 0.5343024156832925,
+      "aggregate_revenue_error": 0.033761707738549515
     },
     {
       "first_purchase_quarter": "2010Q1",
       "customers": 351,
       "predicted": 393265.56798135943,
       "actual": 363023.94,
-      "wape": 0.08330477593670386
+      "wape": 0.810366481468224,
+      "aggregate_revenue_error": 0.08330477593670386
     },
     {
       "first_purchase_quarter": "2010Q2",
       "customers": 225,
       "predicted": 137405.7551511505,
-      "actual": 156731.28,
-      "wape": 0.12330356039234486
+      "actual": 156731.27999999997,
+      "wape": 0.771774271375837,
+      "aggregate_revenue_error": 0.1233035603923447
     },
     {
       "first_purchase_quarter": "2010Q3",
       "customers": 183,
-      "predicted": 110236.88357241313,
+      "predicted": 110236.88357241312,
       "actual": 115422.68,
-      "wape": 0.04492874734486202
+      "wape": 0.9808011755520768,
+      "aggregate_revenue_error": 0.044928747344862144
     },
     {
       "first_purchase_quarter": "2010Q4",
       "customers": 216,
       "predicted": 131121.6721371399,
       "actual": 172612.88,
-      "wape": 0.24037144773240626
+      "wape": 0.8318811057353404,
+      "aggregate_revenue_error": 0.24037144773240626
     }
   ]
 }
