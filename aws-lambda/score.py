@@ -15,8 +15,8 @@ import json
 import os
 
 import boto3
-import numpy as np
 import lightgbm as lgb
+import numpy as np
 
 S3_BUCKET = os.environ.get("MODEL_BUCKET", "giggit-buyer-value-radar-models")
 MODEL_PREFIX = os.environ.get("MODEL_PREFIX", "models")
