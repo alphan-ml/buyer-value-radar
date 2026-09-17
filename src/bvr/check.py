@@ -73,7 +73,7 @@ def check() -> dict:
     # lines included (they net against the original order), non-cancellation
     # lines with Quantity<=0 or Price<=0 excluded (Section 4 cleaning rule).
     # This check reports the raw monthly net revenue over all rows (pre any
-    # exclusion) so Leon can see the shape before cleaning is applied; the
+    # exclusion) so the owner can see the shape before cleaning is applied; the
     # cleaning-rule-applied version is recomputed identically in clean.py.
     kept_mask = is_cancellation | (df["Quantity"] > 0) & (df["Price"] > 0)
     df["_line_value"] = df["Quantity"] * df["Price"]
