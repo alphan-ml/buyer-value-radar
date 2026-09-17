@@ -41,13 +41,43 @@ def mape_pos_actual(pred: np.ndarray, actual: np.ndarray) -> tuple[float, float,
     return float(np.mean(vals)), float(np.median(vals)), int(mask.sum())
 
 
-def _seg_table(df: pd.DataFrame, col: str) -> list[dict]:
-    g = df.groupby(col, observed=True).agg(
-        customers=("ltv_12", "size"), predicted=("ltv_12", "sum"), actual=("actual_12", "sum")
-    )
-    g["wape"] = g.apply(
-        lambda r: wape(np.array([r["predicted"]]), np.array([r["actual"]])), axis=1
-    )
+def _seg_table(
+    df: pd.DataFrame, col: str, pred_col: str = "ltv_12", actual_col: str = "actual_12"
+) -> list[dict]:
+    """Per-group error table, one row per value of `col`.
+
+    Two error metrics are reported, and they can diverge sharply within a
+    group where some customers are over-predicted and others under-predicted:
+
+    - `wape`: customer-level WAPE -- sum(|predicted_i - actual_i|) over the
+      customers in the group, divided by sum(|actual_i|). This is what the
+      model actually gets right or wrong per customer; over- and
+      under-estimates do not cancel.
+    - `aggregate_revenue_error`: the net error if the group's totals were
+      used on their own -- |sum(predicted_i) - sum(actual_i)| / sum(actual_i).
+      Kept as a separate, clearly-named metric because it can look much
+      better than `wape` purely from cancellation, not accuracy.
+    """
+
+    def _group_metrics(g: pd.DataFrame) -> pd.Series:
+        pred = g[pred_col].to_numpy()
+        actual = g[actual_col].to_numpy()
+        pred_sum = float(pred.sum())
+        actual_sum = float(actual.sum())
+        return pd.Series(
+            {
+                "customers": len(g),
+                "predicted": pred_sum,
+                "actual": actual_sum,
+                "wape": wape(pred, actual),
+                "aggregate_revenue_error": wape(
+                    np.array([pred_sum]), np.array([actual_sum])
+                ),
+            }
+        )
+
+    g = df.groupby(col, observed=True)[[pred_col, actual_col]].apply(_group_metrics)
+    g["customers"] = g["customers"].astype(int)
     return g.reset_index().to_dict(orient="records")
 
 
@@ -91,17 +121,13 @@ def evaluate(
         for t in range(1, 13)
     ]
 
-    # Calibration by decile (12-month value).
+    # Calibration by decile (12-month value). Same two-metric shape as
+    # _seg_table: `wape` is customer-level (errors don't cancel within a
+    # decile), `aggregate_revenue_error` is the net error on the decile's
+    # totals.
     dec = merged.copy()
     dec["decile"] = pd.qcut(dec["ltv_12"].rank(method="first"), 10, labels=False) + 1
-    decile_table = (
-        dec.groupby("decile")
-        .agg(customers=("ltv_12", "size"), predicted=("ltv_12", "sum"), actual=("actual_12", "sum"))
-        .reset_index()
-    )
-    decile_table["wape"] = decile_table.apply(
-        lambda r: wape(np.array([r["predicted"]]), np.array([r["actual"]])), axis=1
-    )
+    decile_table = pd.DataFrame(_seg_table(dec, "decile"))
 
     # Curve 1 alone: ROC-AUC and Brier by t.
     c1 = holdout_rows.merge(p_active_pred, on=["Customer ID", "t"])
