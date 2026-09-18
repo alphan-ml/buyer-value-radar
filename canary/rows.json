@@ -1,0 +1,5409 @@
+{
+  "system": "buyer-value-radar",
+  "source": "Online Retail II holdout split (outputs/split_ids.json, seed 26), 30% holdout of 4,314 customers = 1,295",
+  "selection": "random.Random(35).sample(sorted(holdout_ids), 300)",
+  "cutoff_date": "2010-12-09T23:59:59",
+  "n": 300,
+  "rows": [
+    {
+      "customer_id": 12357,
+      "request": {
+        "recency_days": 23,
+        "frequency": 1,
+        "tenure_days": 23,
+        "monetary_total": 11229.99,
+        "monetary_mean_per_invoice": 11229.99,
+        "monetary_last_3m": 11229.99,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 23.646341,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 6207.67
+    },
+    {
+      "customer_id": 12358,
+      "request": {
+        "recency_days": 10,
+        "frequency": 3,
+        "tenure_days": 366,
+        "monetary_total": 2519.01,
+        "monetary_mean_per_invoice": 839.67,
+        "monetary_last_3m": 821.08,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 14.491228,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 928.06
+    },
+    {
+      "customer_id": 12376,
+      "request": {
+        "recency_days": 24,
+        "frequency": 2,
+        "tenure_days": 52,
+        "monetary_total": 383.15,
+        "monetary_mean_per_invoice": 191.575,
+        "monetary_last_3m": 383.15,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 21.545455,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12409,
+      "request": {
+        "recency_days": 55,
+        "frequency": 4,
+        "tenure_days": 200,
+        "monetary_total": 12033.54,
+        "monetary_mean_per_invoice": 2005.59,
+        "monetary_last_3m": 5231.06,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 47.367089,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 11056.93
+    },
+    {
+      "customer_id": 12416,
+      "request": {
+        "recency_days": 291,
+        "frequency": 1,
+        "tenure_days": 291,
+        "monetary_total": 202.56,
+        "monetary_mean_per_invoice": 202.56,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 12.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Rest of world",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12443,
+      "request": {
+        "recency_days": 367,
+        "frequency": 1,
+        "tenure_days": 367,
+        "monetary_total": 365.31,
+        "monetary_mean_per_invoice": 365.31,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 8.95,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12450,
+      "request": {
+        "recency_days": 34,
+        "frequency": 5,
+        "tenure_days": 109,
+        "monetary_total": 469.07,
+        "monetary_mean_per_invoice": 93.814,
+        "monetary_last_3m": 335.5,
+        "active_months_share": 0.6,
+        "mean_line_quantity": 9.59375,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 197.88
+    },
+    {
+      "customer_id": 12524,
+      "request": {
+        "recency_days": 23,
+        "frequency": 9,
+        "tenure_days": 304,
+        "monetary_total": 5813.64,
+        "monetary_mean_per_invoice": 581.364,
+        "monetary_last_3m": 2422.26,
+        "active_months_share": 0.545455,
+        "mean_line_quantity": 38.111111,
+        "share_invoices_ge_100_units": 0.4,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2473.38,
+      "actual_12m": 3945.72
+    },
+    {
+      "customer_id": 12542,
+      "request": {
+        "recency_days": 119,
+        "frequency": 4,
+        "tenure_days": 275,
+        "monetary_total": 423.38,
+        "monetary_mean_per_invoice": 105.845,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 11.422222,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12580,
+      "request": {
+        "recency_days": 211,
+        "frequency": 1,
+        "tenure_days": 211,
+        "monetary_total": 583.2,
+        "monetary_mean_per_invoice": 583.2,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 9.939394,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 379.7,
+      "actual_12m": 379.7
+    },
+    {
+      "customer_id": 12583,
+      "request": {
+        "recency_days": 8,
+        "frequency": 14,
+        "tenure_days": 368,
+        "monetary_total": 7383.42,
+        "monetary_mean_per_invoice": 527.387143,
+        "monetary_last_3m": 3695.87,
+        "active_months_share": 0.846154,
+        "mean_line_quantity": 19.190265,
+        "share_invoices_ge_100_units": 0.071429,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2024.53,
+      "actual_12m": 5827.48
+    },
+    {
+      "customer_id": 12589,
+      "request": {
+        "recency_days": 49,
+        "frequency": 4,
+        "tenure_days": 324,
+        "monetary_total": 2177.49,
+        "monetary_mean_per_invoice": 362.915,
+        "monetary_last_3m": 460.24,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 6.164706,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 574.68
+    },
+    {
+      "customer_id": 12609,
+      "request": {
+        "recency_days": 9,
+        "frequency": 6,
+        "tenure_days": 354,
+        "monetary_total": 2057.01,
+        "monetary_mean_per_invoice": 342.835,
+        "monetary_last_3m": 733.45,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 8.174312,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 674.73,
+      "actual_12m": 964.85
+    },
+    {
+      "customer_id": 12638,
+      "request": {
+        "recency_days": 274,
+        "frequency": 1,
+        "tenure_days": 274,
+        "monetary_total": 169.8,
+        "monetary_mean_per_invoice": 169.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 10.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 511.69
+    },
+    {
+      "customer_id": 12717,
+      "request": {
+        "recency_days": 225,
+        "frequency": 1,
+        "tenure_days": 225,
+        "monetary_total": 227.93,
+        "monetary_mean_per_invoice": 227.93,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 6.2,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 509.74,
+      "actual_12m": 830.98
+    },
+    {
+      "customer_id": 12767,
+      "request": {
+        "recency_days": 10,
+        "frequency": 1,
+        "tenure_days": 10,
+        "monetary_total": 949.82,
+        "monetary_mean_per_invoice": 949.82,
+        "monetary_last_3m": 949.82,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 13.906977,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Rest of world",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12788,
+      "request": {
+        "recency_days": 98,
+        "frequency": 4,
+        "tenure_days": 163,
+        "monetary_total": 384.9,
+        "monetary_mean_per_invoice": 96.225,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.428571,
+        "mean_line_quantity": 8.636364,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12803,
+      "request": {
+        "recency_days": 28,
+        "frequency": 1,
+        "tenure_days": 28,
+        "monetary_total": 1017.81,
+        "monetary_mean_per_invoice": 1017.81,
+        "monetary_last_3m": 1017.81,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 16.055556,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "Europe",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12825,
+      "request": {
+        "recency_days": 156,
+        "frequency": 2,
+        "tenure_days": 276,
+        "monetary_total": 518.63,
+        "monetary_mean_per_invoice": 259.315,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 5.791667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12829,
+      "request": {
+        "recency_days": 185,
+        "frequency": 1,
+        "tenure_days": 185,
+        "monetary_total": 92.3,
+        "monetary_mean_per_invoice": 92.3,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 21.75,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 253.05,
+      "actual_12m": 253.05
+    },
+    {
+      "customer_id": 12859,
+      "request": {
+        "recency_days": 93,
+        "frequency": 1,
+        "tenure_days": 93,
+        "monetary_total": 575.1,
+        "monetary_mean_per_invoice": 575.1,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 13.904762,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12907,
+      "request": {
+        "recency_days": 30,
+        "frequency": 3,
+        "tenure_days": 288,
+        "monetary_total": 440.36,
+        "monetary_mean_per_invoice": 146.786667,
+        "monetary_last_3m": 180.48,
+        "active_months_share": 0.272727,
+        "mean_line_quantity": 5.655172,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12913,
+      "request": {
+        "recency_days": 3,
+        "frequency": 9,
+        "tenure_days": 373,
+        "monetary_total": 4634.85,
+        "monetary_mean_per_invoice": 514.983333,
+        "monetary_last_3m": 2731.11,
+        "active_months_share": 0.538462,
+        "mean_line_quantity": 39.18,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 448.77,
+      "actual_12m": 2066.01
+    },
+    {
+      "customer_id": 12916,
+      "request": {
+        "recency_days": 77,
+        "frequency": 3,
+        "tenure_days": 319,
+        "monetary_total": 1647.87,
+        "monetary_mean_per_invoice": 549.29,
+        "monetary_last_3m": 492.25,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 8.506494,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2288.98,
+      "actual_12m": 2982.35
+    },
+    {
+      "customer_id": 12926,
+      "request": {
+        "recency_days": 46,
+        "frequency": 4,
+        "tenure_days": 360,
+        "monetary_total": 1548.08,
+        "monetary_mean_per_invoice": 387.02,
+        "monetary_last_3m": 935.68,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 2.798535,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 12933,
+      "request": {
+        "recency_days": 15,
+        "frequency": 4,
+        "tenure_days": 364,
+        "monetary_total": 1021.0,
+        "monetary_mean_per_invoice": 145.857143,
+        "monetary_last_3m": 906.01,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 2.103627,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 109.5,
+      "actual_12m": 606.28
+    },
+    {
+      "customer_id": 12963,
+      "request": {
+        "recency_days": 0,
+        "frequency": 6,
+        "tenure_days": 154,
+        "monetary_total": 2037.56,
+        "monetary_mean_per_invoice": 339.593333,
+        "monetary_last_3m": 1159.48,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 9.196581,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 1490.83
+    },
+    {
+      "customer_id": 12982,
+      "request": {
+        "recency_days": 23,
+        "frequency": 15,
+        "tenure_days": 241,
+        "monetary_total": 2184.92,
+        "monetary_mean_per_invoice": 145.661333,
+        "monetary_last_3m": 509.31,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 7.705556,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 377.2,
+      "actual_12m": 377.2
+    },
+    {
+      "customer_id": 12992,
+      "request": {
+        "recency_days": 360,
+        "frequency": 1,
+        "tenure_days": 360,
+        "monetary_total": 93.35,
+        "monetary_mean_per_invoice": 93.35,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 3.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13015,
+      "request": {
+        "recency_days": 63,
+        "frequency": 8,
+        "tenure_days": 238,
+        "monetary_total": 3119.44,
+        "monetary_mean_per_invoice": 346.604444,
+        "monetary_last_3m": 1268.8,
+        "active_months_share": 0.555556,
+        "mean_line_quantity": 10.087432,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 1763.04,
+      "actual_12m": 3346.28
+    },
+    {
+      "customer_id": 13030,
+      "request": {
+        "recency_days": 3,
+        "frequency": 1,
+        "tenure_days": 3,
+        "monetary_total": 855.48,
+        "monetary_mean_per_invoice": 855.48,
+        "monetary_last_3m": 855.48,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 3.4,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 371.74
+    },
+    {
+      "customer_id": 13056,
+      "request": {
+        "recency_days": 186,
+        "frequency": 1,
+        "tenure_days": 186,
+        "monetary_total": 209.48,
+        "monetary_mean_per_invoice": 209.48,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 8.315789,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13057,
+      "request": {
+        "recency_days": 165,
+        "frequency": 3,
+        "tenure_days": 266,
+        "monetary_total": 540.74,
+        "monetary_mean_per_invoice": 135.185,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 10.534884,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13070,
+      "request": {
+        "recency_days": 94,
+        "frequency": 4,
+        "tenure_days": 372,
+        "monetary_total": 515.1,
+        "monetary_mean_per_invoice": 128.775,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 9.923077,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 228.8,
+      "actual_12m": 228.8
+    },
+    {
+      "customer_id": 13071,
+      "request": {
+        "recency_days": 247,
+        "frequency": 1,
+        "tenure_days": 247,
+        "monetary_total": 129.22,
+        "monetary_mean_per_invoice": 129.22,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 2.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13083,
+      "request": {
+        "recency_days": 60,
+        "frequency": 1,
+        "tenure_days": 60,
+        "monetary_total": 91.68,
+        "monetary_mean_per_invoice": 91.68,
+        "monetary_last_3m": 91.68,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 30.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 303.75
+    },
+    {
+      "customer_id": 13096,
+      "request": {
+        "recency_days": 29,
+        "frequency": 1,
+        "tenure_days": 29,
+        "monetary_total": 419.7,
+        "monetary_mean_per_invoice": 419.7,
+        "monetary_last_3m": 419.7,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 6.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13115,
+      "request": {
+        "recency_days": 1,
+        "frequency": 10,
+        "tenure_days": 295,
+        "monetary_total": 3163.82,
+        "monetary_mean_per_invoice": 316.382,
+        "monetary_last_3m": 1401.42,
+        "active_months_share": 0.636364,
+        "mean_line_quantity": 11.775,
+        "share_invoices_ge_100_units": 0.1,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 859.05,
+      "actual_12m": 2210.63
+    },
+    {
+      "customer_id": 13136,
+      "request": {
+        "recency_days": 0,
+        "frequency": 9,
+        "tenure_days": 366,
+        "monetary_total": 3534.17,
+        "monetary_mean_per_invoice": 271.859231,
+        "monetary_last_3m": 1330.33,
+        "active_months_share": 0.538462,
+        "mean_line_quantity": 8.283654,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 572.81,
+      "actual_12m": 2565.48
+    },
+    {
+      "customer_id": 13139,
+      "request": {
+        "recency_days": 72,
+        "frequency": 1,
+        "tenure_days": 72,
+        "monetary_total": 3138.04,
+        "monetary_mean_per_invoice": 3138.04,
+        "monetary_last_3m": 3138.04,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 23.042105,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 1170.02,
+      "actual_12m": 5055.79
+    },
+    {
+      "customer_id": 13165,
+      "request": {
+        "recency_days": 48,
+        "frequency": 1,
+        "tenure_days": 48,
+        "monetary_total": 429.68,
+        "monetary_mean_per_invoice": 429.68,
+        "monetary_last_3m": 429.68,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 51.428571,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 354.64,
+      "actual_12m": 1021.48
+    },
+    {
+      "customer_id": 13181,
+      "request": {
+        "recency_days": 16,
+        "frequency": 1,
+        "tenure_days": 16,
+        "monetary_total": 359.69,
+        "monetary_mean_per_invoice": 359.69,
+        "monetary_last_3m": 359.69,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 9.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13187,
+      "request": {
+        "recency_days": 259,
+        "frequency": 1,
+        "tenure_days": 259,
+        "monetary_total": 93.29,
+        "monetary_mean_per_invoice": 23.3225,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 9.56,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 236.02,
+      "actual_12m": 236.02
+    },
+    {
+      "customer_id": 13211,
+      "request": {
+        "recency_days": 16,
+        "frequency": 6,
+        "tenure_days": 368,
+        "monetary_total": 1509.45,
+        "monetary_mean_per_invoice": 167.716667,
+        "monetary_last_3m": 642.8,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 6.607843,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 110.7,
+      "actual_12m": 1197.42
+    },
+    {
+      "customer_id": 13243,
+      "request": {
+        "recency_days": 84,
+        "frequency": 2,
+        "tenure_days": 266,
+        "monetary_total": 677.97,
+        "monetary_mean_per_invoice": 169.4925,
+        "monetary_last_3m": 385.31,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 2.135802,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 600.07,
+      "actual_12m": 600.07
+    },
+    {
+      "customer_id": 13253,
+      "request": {
+        "recency_days": 65,
+        "frequency": 2,
+        "tenure_days": 338,
+        "monetary_total": 1920.71,
+        "monetary_mean_per_invoice": 960.355,
+        "monetary_last_3m": 946.32,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 37.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 476.48,
+      "actual_12m": 1030.4
+    },
+    {
+      "customer_id": 13319,
+      "request": {
+        "recency_days": 0,
+        "frequency": 32,
+        "tenure_days": 368,
+        "monetary_total": 11772.88,
+        "monetary_mean_per_invoice": 261.619556,
+        "monetary_last_3m": 4553.61,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 9.001876,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 4187.57,
+      "actual_12m": 9933.21
+    },
+    {
+      "customer_id": 13337,
+      "request": {
+        "recency_days": 153,
+        "frequency": 2,
+        "tenure_days": 181,
+        "monetary_total": 1550.06,
+        "monetary_mean_per_invoice": 775.03,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.285714,
+        "mean_line_quantity": 10.741573,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13342,
+      "request": {
+        "recency_days": 217,
+        "frequency": 1,
+        "tenure_days": 217,
+        "monetary_total": -14.1,
+        "monetary_mean_per_invoice": -14.1,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": -2.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13367,
+      "request": {
+        "recency_days": 66,
+        "frequency": 1,
+        "tenure_days": 66,
+        "monetary_total": 460.2,
+        "monetary_mean_per_invoice": 460.2,
+        "monetary_last_3m": 460.2,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 13.263158,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13369,
+      "request": {
+        "recency_days": 0,
+        "frequency": 1,
+        "tenure_days": 0,
+        "monetary_total": 516.56,
+        "monetary_mean_per_invoice": 516.56,
+        "monetary_last_3m": 516.56,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 11.384615,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": -44.53,
+      "actual_12m": -44.53
+    },
+    {
+      "customer_id": 13408,
+      "request": {
+        "recency_days": 6,
+        "frequency": 46,
+        "tenure_days": 370,
+        "monetary_total": 24938.64,
+        "monetary_mean_per_invoice": 453.429818,
+        "monetary_last_3m": 7102.33,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 36.559896,
+        "share_invoices_ge_100_units": 0.327273,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 9881.13,
+      "actual_12m": 26350.55
+    },
+    {
+      "customer_id": 13417,
+      "request": {
+        "recency_days": 182,
+        "frequency": 4,
+        "tenure_days": 304,
+        "monetary_total": 953.06,
+        "monetary_mean_per_invoice": 190.612,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.363636,
+        "mean_line_quantity": 6.407407,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 236.0,
+      "actual_12m": 640.83
+    },
+    {
+      "customer_id": 13428,
+      "request": {
+        "recency_days": 149,
+        "frequency": 1,
+        "tenure_days": 149,
+        "monetary_total": 281.51,
+        "monetary_mean_per_invoice": 140.755,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 3.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 218.47
+    },
+    {
+      "customer_id": 13477,
+      "request": {
+        "recency_days": 90,
+        "frequency": 4,
+        "tenure_days": 318,
+        "monetary_total": 1379.59,
+        "monetary_mean_per_invoice": 275.918,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 13.594937,
+        "share_invoices_ge_100_units": 0.2,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 502.98,
+      "actual_12m": 1441.53
+    },
+    {
+      "customer_id": 13503,
+      "request": {
+        "recency_days": 114,
+        "frequency": 6,
+        "tenure_days": 296,
+        "monetary_total": 1536.09,
+        "monetary_mean_per_invoice": 192.01125,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.363636,
+        "mean_line_quantity": 4.447368,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 216.85
+    },
+    {
+      "customer_id": 13519,
+      "request": {
+        "recency_days": 77,
+        "frequency": 1,
+        "tenure_days": 77,
+        "monetary_total": 220.46,
+        "monetary_mean_per_invoice": 220.46,
+        "monetary_last_3m": 220.46,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 10.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 110.8
+    },
+    {
+      "customer_id": 13542,
+      "request": {
+        "recency_days": 11,
+        "frequency": 17,
+        "tenure_days": 364,
+        "monetary_total": 3970.77,
+        "monetary_mean_per_invoice": 220.598333,
+        "monetary_last_3m": 857.16,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 2.388235,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13577,
+      "request": {
+        "recency_days": 17,
+        "frequency": 7,
+        "tenure_days": 360,
+        "monetary_total": 1688.32,
+        "monetary_mean_per_invoice": 187.591111,
+        "monetary_last_3m": 862.21,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 9.666667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 356.75,
+      "actual_12m": 1658.3
+    },
+    {
+      "customer_id": 13582,
+      "request": {
+        "recency_days": 24,
+        "frequency": 2,
+        "tenure_days": 252,
+        "monetary_total": 241.68,
+        "monetary_mean_per_invoice": 120.84,
+        "monetary_last_3m": 164.18,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 9.636364,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13583,
+      "request": {
+        "recency_days": 314,
+        "frequency": 1,
+        "tenure_days": 314,
+        "monetary_total": 664.0,
+        "monetary_mean_per_invoice": 664.0,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.083333,
+        "mean_line_quantity": 8.833333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 781.03
+    },
+    {
+      "customer_id": 13597,
+      "request": {
+        "recency_days": 23,
+        "frequency": 3,
+        "tenure_days": 37,
+        "monetary_total": 377.21,
+        "monetary_mean_per_invoice": 125.736667,
+        "monetary_last_3m": 377.21,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 12.277778,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13648,
+      "request": {
+        "recency_days": 35,
+        "frequency": 10,
+        "tenure_days": 373,
+        "monetary_total": 1681.12,
+        "monetary_mean_per_invoice": 152.829091,
+        "monetary_last_3m": 307.35,
+        "active_months_share": 0.538462,
+        "mean_line_quantity": 8.36036,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13661,
+      "request": {
+        "recency_days": 238,
+        "frequency": 1,
+        "tenure_days": 238,
+        "monetary_total": 325.24,
+        "monetary_mean_per_invoice": 325.24,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 6.941176,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13665,
+      "request": {
+        "recency_days": 21,
+        "frequency": 3,
+        "tenure_days": 139,
+        "monetary_total": 1711.66,
+        "monetary_mean_per_invoice": 570.553333,
+        "monetary_last_3m": 1078.85,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 15.584906,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13677,
+      "request": {
+        "recency_days": 39,
+        "frequency": 2,
+        "tenure_days": 155,
+        "monetary_total": 556.19,
+        "monetary_mean_per_invoice": 278.095,
+        "monetary_last_3m": 282.23,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 2.037383,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13679,
+      "request": {
+        "recency_days": 128,
+        "frequency": 3,
+        "tenure_days": 370,
+        "monetary_total": 281.26,
+        "monetary_mean_per_invoice": 93.753333,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 2.04,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13683,
+      "request": {
+        "recency_days": 92,
+        "frequency": 1,
+        "tenure_days": 92,
+        "monetary_total": 258.6,
+        "monetary_mean_per_invoice": 258.6,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 18.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13695,
+      "request": {
+        "recency_days": 212,
+        "frequency": 1,
+        "tenure_days": 212,
+        "monetary_total": 266.6,
+        "monetary_mean_per_invoice": 266.6,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 31.333333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 625.92,
+      "actual_12m": 2504.13
+    },
+    {
+      "customer_id": 13724,
+      "request": {
+        "recency_days": 272,
+        "frequency": 1,
+        "tenure_days": 272,
+        "monetary_total": 213.01,
+        "monetary_mean_per_invoice": 213.01,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 3.095238,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13727,
+      "request": {
+        "recency_days": 246,
+        "frequency": 4,
+        "tenure_days": 365,
+        "monetary_total": 733.82,
+        "monetary_mean_per_invoice": 104.831429,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 3.153846,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 333.48
+    },
+    {
+      "customer_id": 13745,
+      "request": {
+        "recency_days": 176,
+        "frequency": 2,
+        "tenure_days": 181,
+        "monetary_total": 469.73,
+        "monetary_mean_per_invoice": 234.865,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 19.242424,
+        "share_invoices_ge_100_units": 0.5,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 291.54
+    },
+    {
+      "customer_id": 13754,
+      "request": {
+        "recency_days": 72,
+        "frequency": 1,
+        "tenure_days": 72,
+        "monetary_total": 164.45,
+        "monetary_mean_per_invoice": 164.45,
+        "monetary_last_3m": 164.45,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 11.222222,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 156.0,
+      "actual_12m": 282.6
+    },
+    {
+      "customer_id": 13757,
+      "request": {
+        "recency_days": 309,
+        "frequency": 1,
+        "tenure_days": 309,
+        "monetary_total": 195.55,
+        "monetary_mean_per_invoice": 195.55,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 6.75,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13782,
+      "request": {
+        "recency_days": 88,
+        "frequency": 7,
+        "tenure_days": 368,
+        "monetary_total": 873.77,
+        "monetary_mean_per_invoice": 109.22125,
+        "monetary_last_3m": 145.75,
+        "active_months_share": 0.538462,
+        "mean_line_quantity": 2.130769,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 361.3,
+      "actual_12m": 912.0
+    },
+    {
+      "customer_id": 13820,
+      "request": {
+        "recency_days": 53,
+        "frequency": 3,
+        "tenure_days": 315,
+        "monetary_total": 640.4,
+        "monetary_mean_per_invoice": 128.08,
+        "monetary_last_3m": 266.23,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 3.053763,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13854,
+      "request": {
+        "recency_days": 0,
+        "frequency": 15,
+        "tenure_days": 335,
+        "monetary_total": 4442.59,
+        "monetary_mean_per_invoice": 261.328824,
+        "monetary_last_3m": 2527.57,
+        "active_months_share": 0.833333,
+        "mean_line_quantity": 19.460526,
+        "share_invoices_ge_100_units": 0.058824,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 4765.64,
+      "actual_12m": 7715.62
+    },
+    {
+      "customer_id": 13870,
+      "request": {
+        "recency_days": 15,
+        "frequency": 7,
+        "tenure_days": 304,
+        "monetary_total": 2938.59,
+        "monetary_mean_per_invoice": 367.32375,
+        "monetary_last_3m": 1100.41,
+        "active_months_share": 0.545455,
+        "mean_line_quantity": 16.716535,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 544.03,
+      "actual_12m": 2751.25
+    },
+    {
+      "customer_id": 13890,
+      "request": {
+        "recency_days": 9,
+        "frequency": 8,
+        "tenure_days": 368,
+        "monetary_total": 997.87,
+        "monetary_mean_per_invoice": 124.73375,
+        "monetary_last_3m": 313.28,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 7.811594,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 185.25,
+      "actual_12m": 1860.86
+    },
+    {
+      "customer_id": 13901,
+      "request": {
+        "recency_days": 9,
+        "frequency": 12,
+        "tenure_days": 338,
+        "monetary_total": 2732.14,
+        "monetary_mean_per_invoice": 182.142667,
+        "monetary_last_3m": 283.66,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 9.390533,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 648.3,
+      "actual_12m": 2867.2
+    },
+    {
+      "customer_id": 13922,
+      "request": {
+        "recency_days": 52,
+        "frequency": 4,
+        "tenure_days": 102,
+        "monetary_total": 654.4,
+        "monetary_mean_per_invoice": 163.6,
+        "monetary_last_3m": 231.2,
+        "active_months_share": 0.6,
+        "mean_line_quantity": 14.44,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 172.25,
+      "actual_12m": 172.25
+    },
+    {
+      "customer_id": 13952,
+      "request": {
+        "recency_days": 9,
+        "frequency": 11,
+        "tenure_days": 358,
+        "monetary_total": 9544.8,
+        "monetary_mean_per_invoice": 681.771429,
+        "monetary_last_3m": 2212.62,
+        "active_months_share": 0.692308,
+        "mean_line_quantity": 16.410909,
+        "share_invoices_ge_100_units": 0.071429,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 3246.09,
+      "actual_12m": 3246.09
+    },
+    {
+      "customer_id": 13962,
+      "request": {
+        "recency_days": 70,
+        "frequency": 1,
+        "tenure_days": 70,
+        "monetary_total": 193.25,
+        "monetary_mean_per_invoice": 193.25,
+        "monetary_last_3m": 193.25,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 6.083333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 117.6,
+      "actual_12m": 169.55
+    },
+    {
+      "customer_id": 13964,
+      "request": {
+        "recency_days": 22,
+        "frequency": 3,
+        "tenure_days": 65,
+        "monetary_total": 421.9,
+        "monetary_mean_per_invoice": 140.633333,
+        "monetary_last_3m": 421.9,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 9.04,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 13969,
+      "request": {
+        "recency_days": 0,
+        "frequency": 18,
+        "tenure_days": 259,
+        "monetary_total": 4543.67,
+        "monetary_mean_per_invoice": 227.1835,
+        "monetary_last_3m": 2359.21,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 4.74359,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 1680.87,
+      "actual_12m": 8669.1
+    },
+    {
+      "customer_id": 13980,
+      "request": {
+        "recency_days": 72,
+        "frequency": 8,
+        "tenure_days": 291,
+        "monetary_total": 552.98,
+        "monetary_mean_per_invoice": 69.1225,
+        "monetary_last_3m": 284.46,
+        "active_months_share": 0.363636,
+        "mean_line_quantity": 5.155172,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 200.14
+    },
+    {
+      "customer_id": 14022,
+      "request": {
+        "recency_days": 121,
+        "frequency": 1,
+        "tenure_days": 121,
+        "monetary_total": 352.15,
+        "monetary_mean_per_invoice": 352.15,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 10.210526,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 440.0,
+      "actual_12m": 440.0
+    },
+    {
+      "customer_id": 14031,
+      "request": {
+        "recency_days": 0,
+        "frequency": 24,
+        "tenure_days": 371,
+        "monetary_total": 25289.45,
+        "monetary_mean_per_invoice": 722.555714,
+        "monetary_last_3m": 9669.9,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 16.095486,
+        "share_invoices_ge_100_units": 0.314286,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 4834.49,
+      "actual_12m": 12800.79
+    },
+    {
+      "customer_id": 14058,
+      "request": {
+        "recency_days": 97,
+        "frequency": 2,
+        "tenure_days": 165,
+        "monetary_total": 469.19,
+        "monetary_mean_per_invoice": 234.595,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.285714,
+        "mean_line_quantity": 8.791667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14085,
+      "request": {
+        "recency_days": 3,
+        "frequency": 14,
+        "tenure_days": 366,
+        "monetary_total": 5949.48,
+        "monetary_mean_per_invoice": 396.632,
+        "monetary_last_3m": 2230.58,
+        "active_months_share": 0.692308,
+        "mean_line_quantity": 5.540541,
+        "share_invoices_ge_100_units": 0.066667,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2491.61,
+      "actual_12m": 4127.74
+    },
+    {
+      "customer_id": 14088,
+      "request": {
+        "recency_days": 22,
+        "frequency": 3,
+        "tenure_days": 56,
+        "monetary_total": 13316.14,
+        "monetary_mean_per_invoice": 3329.035,
+        "monetary_last_3m": 13316.14,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 27.531915,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 15354.84,
+      "actual_12m": 50415.49
+    },
+    {
+      "customer_id": 14106,
+      "request": {
+        "recency_days": 372,
+        "frequency": 1,
+        "tenure_days": 372,
+        "monetary_total": 214.8,
+        "monetary_mean_per_invoice": 214.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 24.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14118,
+      "request": {
+        "recency_days": 63,
+        "frequency": 1,
+        "tenure_days": 63,
+        "monetary_total": 458.45,
+        "monetary_mean_per_invoice": 458.45,
+        "monetary_last_3m": 458.45,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 6.466667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14146,
+      "request": {
+        "recency_days": 18,
+        "frequency": 5,
+        "tenure_days": 330,
+        "monetary_total": 5259.3,
+        "monetary_mean_per_invoice": 751.328571,
+        "monetary_last_3m": 3825.69,
+        "active_months_share": 0.416667,
+        "mean_line_quantity": 13.589431,
+        "share_invoices_ge_100_units": 0.142857,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 662.3,
+      "actual_12m": 2949.57
+    },
+    {
+      "customer_id": 14170,
+      "request": {
+        "recency_days": 10,
+        "frequency": 3,
+        "tenure_days": 30,
+        "monetary_total": 597.33,
+        "monetary_mean_per_invoice": 199.11,
+        "monetary_last_3m": 597.33,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 1.757576,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14195,
+      "request": {
+        "recency_days": 70,
+        "frequency": 6,
+        "tenure_days": 269,
+        "monetary_total": 1438.7,
+        "monetary_mean_per_invoice": 205.528571,
+        "monetary_last_3m": 361.85,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 91.538462,
+        "share_invoices_ge_100_units": 0.428571,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 962.7,
+      "actual_12m": 962.7
+    },
+    {
+      "customer_id": 14243,
+      "request": {
+        "recency_days": 0,
+        "frequency": 10,
+        "tenure_days": 111,
+        "monetary_total": 5042.78,
+        "monetary_mean_per_invoice": 504.278,
+        "monetary_last_3m": 2482.38,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 10.404959,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 1284.77,
+      "actual_12m": 2322.58
+    },
+    {
+      "customer_id": 14248,
+      "request": {
+        "recency_days": 94,
+        "frequency": 2,
+        "tenure_days": 150,
+        "monetary_total": 730.37,
+        "monetary_mean_per_invoice": 365.185,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 15.128205,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 302.58,
+      "actual_12m": 302.58
+    },
+    {
+      "customer_id": 14272,
+      "request": {
+        "recency_days": 197,
+        "frequency": 2,
+        "tenure_days": 217,
+        "monetary_total": 482.85,
+        "monetary_mean_per_invoice": 241.425,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 16.064516,
+        "share_invoices_ge_100_units": 0.5,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 132.09,
+      "actual_12m": 437.96
+    },
+    {
+      "customer_id": 14282,
+      "request": {
+        "recency_days": 2,
+        "frequency": 12,
+        "tenure_days": 297,
+        "monetary_total": 4686.32,
+        "monetary_mean_per_invoice": 390.526667,
+        "monetary_last_3m": 2061.92,
+        "active_months_share": 0.636364,
+        "mean_line_quantity": 27.732143,
+        "share_invoices_ge_100_units": 0.583333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 1238.18,
+      "actual_12m": 3158.34
+    },
+    {
+      "customer_id": 14284,
+      "request": {
+        "recency_days": 288,
+        "frequency": 1,
+        "tenure_days": 288,
+        "monetary_total": 704.4,
+        "monetary_mean_per_invoice": 704.4,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 9.971429,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 578.45
+    },
+    {
+      "customer_id": 14286,
+      "request": {
+        "recency_days": 34,
+        "frequency": 6,
+        "tenure_days": 370,
+        "monetary_total": 3800.89,
+        "monetary_mean_per_invoice": 542.984286,
+        "monetary_last_3m": 1222.99,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 19.506667,
+        "share_invoices_ge_100_units": 0.142857,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2050.08,
+      "actual_12m": 4595.81
+    },
+    {
+      "customer_id": 14296,
+      "request": {
+        "recency_days": 48,
+        "frequency": 3,
+        "tenure_days": 209,
+        "monetary_total": 448.45,
+        "monetary_mean_per_invoice": 149.483333,
+        "monetary_last_3m": 280.2,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 11.178571,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14343,
+      "request": {
+        "recency_days": 56,
+        "frequency": 4,
+        "tenure_days": 325,
+        "monetary_total": 1088.91,
+        "monetary_mean_per_invoice": 272.2275,
+        "monetary_last_3m": 220.38,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 2.651261,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14361,
+      "request": {
+        "recency_days": 213,
+        "frequency": 1,
+        "tenure_days": 213,
+        "monetary_total": 214.71,
+        "monetary_mean_per_invoice": 214.71,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 17.928571,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14370,
+      "request": {
+        "recency_days": 85,
+        "frequency": 8,
+        "tenure_days": 311,
+        "monetary_total": 1092.13,
+        "monetary_mean_per_invoice": 121.347778,
+        "monetary_last_3m": 122.4,
+        "active_months_share": 0.545455,
+        "mean_line_quantity": 5.244898,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14398,
+      "request": {
+        "recency_days": 36,
+        "frequency": 2,
+        "tenure_days": 162,
+        "monetary_total": 707.79,
+        "monetary_mean_per_invoice": 353.895,
+        "monetary_last_3m": 261.3,
+        "active_months_share": 0.285714,
+        "mean_line_quantity": 5.037736,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14403,
+      "request": {
+        "recency_days": 218,
+        "frequency": 4,
+        "tenure_days": 274,
+        "monetary_total": 396.45,
+        "monetary_mean_per_invoice": 99.1125,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 30.428571,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 926.51,
+      "actual_12m": 1426.31
+    },
+    {
+      "customer_id": 14441,
+      "request": {
+        "recency_days": 0,
+        "frequency": 9,
+        "tenure_days": 325,
+        "monetary_total": 2864.85,
+        "monetary_mean_per_invoice": 318.316667,
+        "monetary_last_3m": 974.23,
+        "active_months_share": 0.583333,
+        "mean_line_quantity": 7.650943,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 269.24,
+      "actual_12m": 1553.64
+    },
+    {
+      "customer_id": 14455,
+      "request": {
+        "recency_days": 67,
+        "frequency": 5,
+        "tenure_days": 130,
+        "monetary_total": 597.61,
+        "monetary_mean_per_invoice": 119.522,
+        "monetary_last_3m": 252.15,
+        "active_months_share": 0.6,
+        "mean_line_quantity": 8.432099,
+        "share_invoices_ge_100_units": 0.2,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14474,
+      "request": {
+        "recency_days": 214,
+        "frequency": 1,
+        "tenure_days": 214,
+        "monetary_total": 730.42,
+        "monetary_mean_per_invoice": 730.42,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 3.038835,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 537.71
+    },
+    {
+      "customer_id": 14569,
+      "request": {
+        "recency_days": 87,
+        "frequency": 3,
+        "tenure_days": 238,
+        "monetary_total": 371.59,
+        "monetary_mean_per_invoice": 123.863333,
+        "monetary_last_3m": 133.54,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 7.782609,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 227.39
+    },
+    {
+      "customer_id": 14577,
+      "request": {
+        "recency_days": 29,
+        "frequency": 3,
+        "tenure_days": 363,
+        "monetary_total": 514.54,
+        "monetary_mean_per_invoice": 171.513333,
+        "monetary_last_3m": 190.8,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 3.548387,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 468.01,
+      "actual_12m": 859.71
+    },
+    {
+      "customer_id": 14596,
+      "request": {
+        "recency_days": 261,
+        "frequency": 1,
+        "tenure_days": 261,
+        "monetary_total": 229.47,
+        "monetary_mean_per_invoice": 229.47,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 1.385965,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14619,
+      "request": {
+        "recency_days": 176,
+        "frequency": 1,
+        "tenure_days": 176,
+        "monetary_total": 896.8,
+        "monetary_mean_per_invoice": 896.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 11.05,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 379.51,
+      "actual_12m": 379.51
+    },
+    {
+      "customer_id": 14621,
+      "request": {
+        "recency_days": 141,
+        "frequency": 9,
+        "tenure_days": 373,
+        "monetary_total": 1112.51,
+        "monetary_mean_per_invoice": 111.251,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 8.142857,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 636.31,
+      "actual_12m": 1765.76
+    },
+    {
+      "customer_id": 14630,
+      "request": {
+        "recency_days": 119,
+        "frequency": 1,
+        "tenure_days": 119,
+        "monetary_total": 338.65,
+        "monetary_mean_per_invoice": 338.65,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 5.285714,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14699,
+      "request": {
+        "recency_days": 70,
+        "frequency": 3,
+        "tenure_days": 160,
+        "monetary_total": 593.47,
+        "monetary_mean_per_invoice": 197.823333,
+        "monetary_last_3m": 175.93,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 9.690476,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 109.13,
+      "actual_12m": 109.13
+    },
+    {
+      "customer_id": 14714,
+      "request": {
+        "recency_days": 35,
+        "frequency": 4,
+        "tenure_days": 322,
+        "monetary_total": 736.21,
+        "monetary_mean_per_invoice": 122.701667,
+        "monetary_last_3m": 278.33,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 4.636364,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 160.19
+    },
+    {
+      "customer_id": 14742,
+      "request": {
+        "recency_days": 70,
+        "frequency": 1,
+        "tenure_days": 70,
+        "monetary_total": 579.85,
+        "monetary_mean_per_invoice": 579.85,
+        "monetary_last_3m": 579.85,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 11.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14784,
+      "request": {
+        "recency_days": 24,
+        "frequency": 1,
+        "tenure_days": 24,
+        "monetary_total": 159.94,
+        "monetary_mean_per_invoice": 159.94,
+        "monetary_last_3m": 159.94,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 10.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 114.68,
+      "actual_12m": 289.99
+    },
+    {
+      "customer_id": 14807,
+      "request": {
+        "recency_days": 25,
+        "frequency": 2,
+        "tenure_days": 284,
+        "monetary_total": 519.29,
+        "monetary_mean_per_invoice": 259.645,
+        "monetary_last_3m": 169.65,
+        "active_months_share": 0.181818,
+        "mean_line_quantity": 6.175,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14812,
+      "request": {
+        "recency_days": 233,
+        "frequency": 1,
+        "tenure_days": 233,
+        "monetary_total": 185.8,
+        "monetary_mean_per_invoice": 185.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 3.675676,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14846,
+      "request": {
+        "recency_days": 58,
+        "frequency": 2,
+        "tenure_days": 62,
+        "monetary_total": 406.8,
+        "monetary_mean_per_invoice": 203.4,
+        "monetary_last_3m": 406.8,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 13.923077,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14873,
+      "request": {
+        "recency_days": 268,
+        "frequency": 1,
+        "tenure_days": 268,
+        "monetary_total": 334.45,
+        "monetary_mean_per_invoice": 334.45,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 6.809524,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 519.68,
+      "actual_12m": 519.68
+    },
+    {
+      "customer_id": 14884,
+      "request": {
+        "recency_days": 304,
+        "frequency": 1,
+        "tenure_days": 304,
+        "monetary_total": 120.6,
+        "monetary_mean_per_invoice": 120.6,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 9.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14924,
+      "request": {
+        "recency_days": 245,
+        "frequency": 2,
+        "tenure_days": 274,
+        "monetary_total": 620.96,
+        "monetary_mean_per_invoice": 310.48,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 11.809524,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 310.05,
+      "actual_12m": 310.05
+    },
+    {
+      "customer_id": 14949,
+      "request": {
+        "recency_days": 94,
+        "frequency": 6,
+        "tenure_days": 356,
+        "monetary_total": 498.55,
+        "monetary_mean_per_invoice": 83.091667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 8.1,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 14963,
+      "request": {
+        "recency_days": 14,
+        "frequency": 6,
+        "tenure_days": 160,
+        "monetary_total": 1670.83,
+        "monetary_mean_per_invoice": 208.85375,
+        "monetary_last_3m": 1481.17,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 3.83165,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 294.2,
+      "actual_12m": 1487.8
+    },
+    {
+      "customer_id": 14975,
+      "request": {
+        "recency_days": 56,
+        "frequency": 1,
+        "tenure_days": 56,
+        "monetary_total": 192.45,
+        "monetary_mean_per_invoice": 192.45,
+        "monetary_last_3m": 192.45,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 8.466667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 279.94
+    },
+    {
+      "customer_id": 14984,
+      "request": {
+        "recency_days": 23,
+        "frequency": 3,
+        "tenure_days": 332,
+        "monetary_total": 1058.14,
+        "monetary_mean_per_invoice": 264.535,
+        "monetary_last_3m": 548.64,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 19.333333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 213.27
+    },
+    {
+      "customer_id": 15044,
+      "request": {
+        "recency_days": 14,
+        "frequency": 14,
+        "tenure_days": 358,
+        "monetary_total": 8204.41,
+        "monetary_mean_per_invoice": 431.811053,
+        "monetary_last_3m": 2980.7,
+        "active_months_share": 0.692308,
+        "mean_line_quantity": 5.316129,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 4444.43,
+      "actual_12m": 7629.38
+    },
+    {
+      "customer_id": 15056,
+      "request": {
+        "recency_days": 155,
+        "frequency": 1,
+        "tenure_days": 155,
+        "monetary_total": 133.45,
+        "monetary_mean_per_invoice": 133.45,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 11.571429,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15065,
+      "request": {
+        "recency_days": 45,
+        "frequency": 1,
+        "tenure_days": 45,
+        "monetary_total": 168.73,
+        "monetary_mean_per_invoice": 168.73,
+        "monetary_last_3m": 168.73,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 5.727273,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 1384.25,
+      "actual_12m": 3135.98
+    },
+    {
+      "customer_id": 15101,
+      "request": {
+        "recency_days": 70,
+        "frequency": 8,
+        "tenure_days": 225,
+        "monetary_total": 993.46,
+        "monetary_mean_per_invoice": 124.1825,
+        "monetary_last_3m": -139.8,
+        "active_months_share": 0.444444,
+        "mean_line_quantity": 7.563636,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 94.78,
+      "actual_12m": 310.03
+    },
+    {
+      "customer_id": 15133,
+      "request": {
+        "recency_days": 17,
+        "frequency": 2,
+        "tenure_days": 155,
+        "monetary_total": 824.48,
+        "monetary_mean_per_invoice": 412.24,
+        "monetary_last_3m": 305.7,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 14.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 657.9,
+      "actual_12m": 982.42
+    },
+    {
+      "customer_id": 15137,
+      "request": {
+        "recency_days": 155,
+        "frequency": 4,
+        "tenure_days": 366,
+        "monetary_total": 747.55,
+        "monetary_mean_per_invoice": 149.51,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 12.675,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15151,
+      "request": {
+        "recency_days": 58,
+        "frequency": 2,
+        "tenure_days": 144,
+        "monetary_total": 2085.61,
+        "monetary_mean_per_invoice": 1042.805,
+        "monetary_last_3m": 1116.26,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 13.947368,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15174,
+      "request": {
+        "recency_days": 45,
+        "frequency": 1,
+        "tenure_days": 45,
+        "monetary_total": 345.71,
+        "monetary_mean_per_invoice": 345.71,
+        "monetary_last_3m": 345.71,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 10.304348,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 135.75,
+      "actual_12m": 135.75
+    },
+    {
+      "customer_id": 15177,
+      "request": {
+        "recency_days": 60,
+        "frequency": 1,
+        "tenure_days": 60,
+        "monetary_total": 948.93,
+        "monetary_mean_per_invoice": 948.93,
+        "monetary_last_3m": 948.93,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 18.653846,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15184,
+      "request": {
+        "recency_days": 22,
+        "frequency": 2,
+        "tenure_days": 358,
+        "monetary_total": 283.19,
+        "monetary_mean_per_invoice": 141.595,
+        "monetary_last_3m": 160.0,
+        "active_months_share": 0.153846,
+        "mean_line_quantity": 11.954545,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 235.23,
+      "actual_12m": 406.76
+    },
+    {
+      "customer_id": 15208,
+      "request": {
+        "recency_days": 58,
+        "frequency": 1,
+        "tenure_days": 58,
+        "monetary_total": 100.4,
+        "monetary_mean_per_invoice": 100.4,
+        "monetary_last_3m": 100.4,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 6.666667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 65.4,
+      "actual_12m": 867.62
+    },
+    {
+      "customer_id": 15251,
+      "request": {
+        "recency_days": 49,
+        "frequency": 14,
+        "tenure_days": 314,
+        "monetary_total": 9791.81,
+        "monetary_mean_per_invoice": 652.787333,
+        "monetary_last_3m": 940.04,
+        "active_months_share": 0.75,
+        "mean_line_quantity": 47.725806,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 4045.77,
+      "actual_12m": 10327.11
+    },
+    {
+      "customer_id": 15255,
+      "request": {
+        "recency_days": 31,
+        "frequency": 8,
+        "tenure_days": 371,
+        "monetary_total": 2779.92,
+        "monetary_mean_per_invoice": 277.992,
+        "monetary_last_3m": 1399.73,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 11.767123,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 890.85
+    },
+    {
+      "customer_id": 15296,
+      "request": {
+        "recency_days": 48,
+        "frequency": 7,
+        "tenure_days": 322,
+        "monetary_total": 6613.62,
+        "monetary_mean_per_invoice": 661.362,
+        "monetary_last_3m": 1158.91,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 10.608069,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2077.59,
+      "actual_12m": 3610.31
+    },
+    {
+      "customer_id": 15347,
+      "request": {
+        "recency_days": 1,
+        "frequency": 5,
+        "tenure_days": 72,
+        "monetary_total": 1333.9,
+        "monetary_mean_per_invoice": 222.316667,
+        "monetary_last_3m": 1333.9,
+        "active_months_share": 0.75,
+        "mean_line_quantity": 15.488372,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15358,
+      "request": {
+        "recency_days": 0,
+        "frequency": 22,
+        "tenure_days": 367,
+        "monetary_total": 9227.1,
+        "monetary_mean_per_invoice": 329.539286,
+        "monetary_last_3m": 4673.15,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 13.873418,
+        "share_invoices_ge_100_units": 0.142857,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 3636.92,
+      "actual_12m": 7610.25
+    },
+    {
+      "customer_id": 15379,
+      "request": {
+        "recency_days": 35,
+        "frequency": 1,
+        "tenure_days": 35,
+        "monetary_total": 1174.55,
+        "monetary_mean_per_invoice": 1174.55,
+        "monetary_last_3m": 1174.55,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 10.072464,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 3501.09,
+      "actual_12m": 3631.89
+    },
+    {
+      "customer_id": 15418,
+      "request": {
+        "recency_days": 60,
+        "frequency": 2,
+        "tenure_days": 221,
+        "monetary_total": 452.32,
+        "monetary_mean_per_invoice": 226.16,
+        "monetary_last_3m": 245.83,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 3.855072,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15469,
+      "request": {
+        "recency_days": 62,
+        "frequency": 2,
+        "tenure_days": 73,
+        "monetary_total": 329.9,
+        "monetary_mean_per_invoice": 164.95,
+        "monetary_last_3m": 329.9,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 6.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 504.5
+    },
+    {
+      "customer_id": 15474,
+      "request": {
+        "recency_days": 230,
+        "frequency": 1,
+        "tenure_days": 230,
+        "monetary_total": 163.1,
+        "monetary_mean_per_invoice": 163.1,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 2.8,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15493,
+      "request": {
+        "recency_days": 24,
+        "frequency": 4,
+        "tenure_days": 289,
+        "monetary_total": 2304.69,
+        "monetary_mean_per_invoice": 576.1725,
+        "monetary_last_3m": 1097.79,
+        "active_months_share": 0.363636,
+        "mean_line_quantity": 1.985795,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 938.5,
+      "actual_12m": 1967.25
+    },
+    {
+      "customer_id": 15499,
+      "request": {
+        "recency_days": 358,
+        "frequency": 1,
+        "tenure_days": 358,
+        "monetary_total": 161.6,
+        "monetary_mean_per_invoice": 161.6,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 1.428571,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15513,
+      "request": {
+        "recency_days": 0,
+        "frequency": 16,
+        "tenure_days": 330,
+        "monetary_total": 14066.08,
+        "monetary_mean_per_invoice": 669.813333,
+        "monetary_last_3m": 7820.64,
+        "active_months_share": 0.833333,
+        "mean_line_quantity": 19.727273,
+        "share_invoices_ge_100_units": 0.238095,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 4603.32,
+      "actual_12m": 13206.58
+    },
+    {
+      "customer_id": 15525,
+      "request": {
+        "recency_days": 8,
+        "frequency": 2,
+        "tenure_days": 17,
+        "monetary_total": 783.71,
+        "monetary_mean_per_invoice": 391.855,
+        "monetary_last_3m": 783.71,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 2.811594,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 494.59
+    },
+    {
+      "customer_id": 15573,
+      "request": {
+        "recency_days": 253,
+        "frequency": 3,
+        "tenure_days": 364,
+        "monetary_total": 599.73,
+        "monetary_mean_per_invoice": 199.91,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 3.594828,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 599.5
+    },
+    {
+      "customer_id": 15574,
+      "request": {
+        "recency_days": 7,
+        "frequency": 4,
+        "tenure_days": 99,
+        "monetary_total": 1150.1,
+        "monetary_mean_per_invoice": 287.525,
+        "monetary_last_3m": 997.13,
+        "active_months_share": 0.75,
+        "mean_line_quantity": 2.067278,
+        "share_invoices_ge_100_units": 0.25,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 214.5,
+      "actual_12m": 326.6
+    },
+    {
+      "customer_id": 15607,
+      "request": {
+        "recency_days": 178,
+        "frequency": 10,
+        "tenure_days": 335,
+        "monetary_total": 1511.61,
+        "monetary_mean_per_invoice": 137.419091,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.416667,
+        "mean_line_quantity": 12.376238,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 104.76,
+      "actual_12m": 104.76
+    },
+    {
+      "customer_id": 15611,
+      "request": {
+        "recency_days": 9,
+        "frequency": 15,
+        "tenure_days": 318,
+        "monetary_total": 1289.98,
+        "monetary_mean_per_invoice": 75.881176,
+        "monetary_last_3m": 186.95,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 4.072727,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 416.2,
+      "actual_12m": 1547.39
+    },
+    {
+      "customer_id": 15627,
+      "request": {
+        "recency_days": 92,
+        "frequency": 2,
+        "tenure_days": 157,
+        "monetary_total": 566.9,
+        "monetary_mean_per_invoice": 283.45,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 14.333333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15650,
+      "request": {
+        "recency_days": 150,
+        "frequency": 3,
+        "tenure_days": 263,
+        "monetary_total": 539.03,
+        "monetary_mean_per_invoice": 179.676667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 5.594595,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15658,
+      "request": {
+        "recency_days": 7,
+        "frequency": 6,
+        "tenure_days": 371,
+        "monetary_total": 1617.64,
+        "monetary_mean_per_invoice": 269.606667,
+        "monetary_last_3m": 992.5,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 5.488889,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 652.7,
+      "actual_12m": 652.7
+    },
+    {
+      "customer_id": 15660,
+      "request": {
+        "recency_days": 0,
+        "frequency": 7,
+        "tenure_days": 307,
+        "monetary_total": 1421.43,
+        "monetary_mean_per_invoice": 203.061429,
+        "monetary_last_3m": 853.93,
+        "active_months_share": 0.636364,
+        "mean_line_quantity": 11.765432,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 484.62,
+      "actual_12m": 1342.71
+    },
+    {
+      "customer_id": 15678,
+      "request": {
+        "recency_days": 30,
+        "frequency": 2,
+        "tenure_days": 157,
+        "monetary_total": 1541.19,
+        "monetary_mean_per_invoice": 770.595,
+        "monetary_last_3m": 809.71,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 10.388235,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 352.7
+    },
+    {
+      "customer_id": 15680,
+      "request": {
+        "recency_days": 1,
+        "frequency": 10,
+        "tenure_days": 372,
+        "monetary_total": 3609.69,
+        "monetary_mean_per_invoice": 360.969,
+        "monetary_last_3m": 1640.94,
+        "active_months_share": 0.615385,
+        "mean_line_quantity": 11.104545,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 854.79
+    },
+    {
+      "customer_id": 15685,
+      "request": {
+        "recency_days": 85,
+        "frequency": 1,
+        "tenure_days": 85,
+        "monetary_total": 55.98,
+        "monetary_mean_per_invoice": 55.98,
+        "monetary_last_3m": 55.98,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 2.117647,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15719,
+      "request": {
+        "recency_days": 16,
+        "frequency": 24,
+        "tenure_days": 373,
+        "monetary_total": 5090.4,
+        "monetary_mean_per_invoice": 203.616,
+        "monetary_last_3m": 1122.5,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 3.071262,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2429.32,
+      "actual_12m": 5042.31
+    },
+    {
+      "customer_id": 15726,
+      "request": {
+        "recency_days": 25,
+        "frequency": 1,
+        "tenure_days": 25,
+        "monetary_total": 321.91,
+        "monetary_mean_per_invoice": 321.91,
+        "monetary_last_3m": 321.91,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 5.347826,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15735,
+      "request": {
+        "recency_days": 56,
+        "frequency": 1,
+        "tenure_days": 56,
+        "monetary_total": 327.68,
+        "monetary_mean_per_invoice": 327.68,
+        "monetary_last_3m": 327.68,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 10.842105,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15736,
+      "request": {
+        "recency_days": 65,
+        "frequency": 2,
+        "tenure_days": 70,
+        "monetary_total": 1717.27,
+        "monetary_mean_per_invoice": 572.423333,
+        "monetary_last_3m": 1717.27,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 11.877358,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15766,
+      "request": {
+        "recency_days": 79,
+        "frequency": 3,
+        "tenure_days": 317,
+        "monetary_total": 484.6,
+        "monetary_mean_per_invoice": 161.533333,
+        "monetary_last_3m": -31.4,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 9.411765,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 315.06
+    },
+    {
+      "customer_id": 15795,
+      "request": {
+        "recency_days": 65,
+        "frequency": 6,
+        "tenure_days": 325,
+        "monetary_total": 1369.86,
+        "monetary_mean_per_invoice": 195.694286,
+        "monetary_last_3m": 383.48,
+        "active_months_share": 0.416667,
+        "mean_line_quantity": 9.325843,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 610.01
+    },
+    {
+      "customer_id": 15807,
+      "request": {
+        "recency_days": 43,
+        "frequency": 3,
+        "tenure_days": 301,
+        "monetary_total": 903.67,
+        "monetary_mean_per_invoice": 301.223333,
+        "monetary_last_3m": 511.68,
+        "active_months_share": 0.272727,
+        "mean_line_quantity": 26.853659,
+        "share_invoices_ge_100_units": 0.333333,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 903.9
+    },
+    {
+      "customer_id": 15810,
+      "request": {
+        "recency_days": 21,
+        "frequency": 6,
+        "tenure_days": 352,
+        "monetary_total": 1579.37,
+        "monetary_mean_per_invoice": 263.228333,
+        "monetary_last_3m": 448.04,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 9.54321,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 854.12,
+      "actual_12m": 1145.43
+    },
+    {
+      "customer_id": 15823,
+      "request": {
+        "recency_days": 323,
+        "frequency": 4,
+        "tenure_days": 366,
+        "monetary_total": 3859.62,
+        "monetary_mean_per_invoice": 964.905,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.153846,
+        "mean_line_quantity": 11.267516,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": -811.86,
+      "actual_12m": -811.86
+    },
+    {
+      "customer_id": 15848,
+      "request": {
+        "recency_days": 256,
+        "frequency": 1,
+        "tenure_days": 256,
+        "monetary_total": 139.94,
+        "monetary_mean_per_invoice": 139.94,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 1.314286,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15874,
+      "request": {
+        "recency_days": 22,
+        "frequency": 12,
+        "tenure_days": 336,
+        "monetary_total": 6804.33,
+        "monetary_mean_per_invoice": 425.270625,
+        "monetary_last_3m": 2537.37,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 10.935622,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2136.2,
+      "actual_12m": 4330.67
+    },
+    {
+      "customer_id": 15879,
+      "request": {
+        "recency_days": 39,
+        "frequency": 4,
+        "tenure_days": 357,
+        "monetary_total": 1157.3,
+        "monetary_mean_per_invoice": 289.325,
+        "monetary_last_3m": 424.28,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 3.513661,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15880,
+      "request": {
+        "recency_days": 4,
+        "frequency": 1,
+        "tenure_days": 4,
+        "monetary_total": 626.56,
+        "monetary_mean_per_invoice": 313.28,
+        "monetary_last_3m": 626.56,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 1.764151,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15885,
+      "request": {
+        "recency_days": 18,
+        "frequency": 14,
+        "tenure_days": 322,
+        "monetary_total": 1358.22,
+        "monetary_mean_per_invoice": 79.895294,
+        "monetary_last_3m": 347.34,
+        "active_months_share": 0.75,
+        "mean_line_quantity": 4.673077,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 349.35
+    },
+    {
+      "customer_id": 15910,
+      "request": {
+        "recency_days": 35,
+        "frequency": 7,
+        "tenure_days": 322,
+        "monetary_total": 1449.62,
+        "monetary_mean_per_invoice": 207.088571,
+        "monetary_last_3m": 422.48,
+        "active_months_share": 0.583333,
+        "mean_line_quantity": 3.202216,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 550.61,
+      "actual_12m": 1232.18
+    },
+    {
+      "customer_id": 15921,
+      "request": {
+        "recency_days": 31,
+        "frequency": 3,
+        "tenure_days": 275,
+        "monetary_total": 456.43,
+        "monetary_mean_per_invoice": 152.143333,
+        "monetary_last_3m": 356.25,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 3.107143,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 336.03
+    },
+    {
+      "customer_id": 15935,
+      "request": {
+        "recency_days": 366,
+        "frequency": 1,
+        "tenure_days": 366,
+        "monetary_total": -308.82,
+        "monetary_mean_per_invoice": -308.82,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": -13.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 108.04,
+      "actual_12m": 108.04
+    },
+    {
+      "customer_id": 15959,
+      "request": {
+        "recency_days": 317,
+        "frequency": 1,
+        "tenure_days": 317,
+        "monetary_total": 579.49,
+        "monetary_mean_per_invoice": 193.163333,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.083333,
+        "mean_line_quantity": 3.615385,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15965,
+      "request": {
+        "recency_days": 2,
+        "frequency": 9,
+        "tenure_days": 371,
+        "monetary_total": 2309.89,
+        "monetary_mean_per_invoice": 209.99,
+        "monetary_last_3m": 1215.12,
+        "active_months_share": 0.615385,
+        "mean_line_quantity": 3.973485,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 689.45
+    },
+    {
+      "customer_id": 15980,
+      "request": {
+        "recency_days": 99,
+        "frequency": 4,
+        "tenure_days": 191,
+        "monetary_total": 4147.42,
+        "monetary_mean_per_invoice": 691.236667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.428571,
+        "mean_line_quantity": 42.973684,
+        "share_invoices_ge_100_units": 0.5,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 760.18,
+      "actual_12m": 2398.86
+    },
+    {
+      "customer_id": 15982,
+      "request": {
+        "recency_days": 240,
+        "frequency": 1,
+        "tenure_days": 240,
+        "monetary_total": 324.51,
+        "monetary_mean_per_invoice": 324.51,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 2.911111,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 15998,
+      "request": {
+        "recency_days": 28,
+        "frequency": 12,
+        "tenure_days": 373,
+        "monetary_total": 5136.22,
+        "monetary_mean_per_invoice": 342.414667,
+        "monetary_last_3m": 1444.19,
+        "active_months_share": 0.769231,
+        "mean_line_quantity": 3.538954,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 1782.22,
+      "actual_12m": 3084.17
+    },
+    {
+      "customer_id": 16057,
+      "request": {
+        "recency_days": 66,
+        "frequency": 7,
+        "tenure_days": 364,
+        "monetary_total": 1061.85,
+        "monetary_mean_per_invoice": 151.692857,
+        "monetary_last_3m": -17.85,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 4.572519,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 974.24,
+      "actual_12m": 2140.22
+    },
+    {
+      "customer_id": 16060,
+      "request": {
+        "recency_days": 35,
+        "frequency": 3,
+        "tenure_days": 129,
+        "monetary_total": 541.95,
+        "monetary_mean_per_invoice": 180.65,
+        "monetary_last_3m": 196.35,
+        "active_months_share": 0.6,
+        "mean_line_quantity": 10.125,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16069,
+      "request": {
+        "recency_days": 52,
+        "frequency": 1,
+        "tenure_days": 52,
+        "monetary_total": 457.7,
+        "monetary_mean_per_invoice": 457.7,
+        "monetary_last_3m": 457.7,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 5.52,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16071,
+      "request": {
+        "recency_days": 162,
+        "frequency": 3,
+        "tenure_days": 290,
+        "monetary_total": 750.56,
+        "monetary_mean_per_invoice": 250.186667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.272727,
+        "mean_line_quantity": 9.942308,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 326.24
+    },
+    {
+      "customer_id": 16078,
+      "request": {
+        "recency_days": 304,
+        "frequency": 1,
+        "tenure_days": 304,
+        "monetary_total": 283.79,
+        "monetary_mean_per_invoice": 283.79,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 4.842105,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 79.2,
+      "actual_12m": 79.2
+    },
+    {
+      "customer_id": 16108,
+      "request": {
+        "recency_days": 65,
+        "frequency": 6,
+        "tenure_days": 266,
+        "monetary_total": 1355.83,
+        "monetary_mean_per_invoice": 225.971667,
+        "monetary_last_3m": 507.63,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 9.010638,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 816.1
+    },
+    {
+      "customer_id": 16119,
+      "request": {
+        "recency_days": 29,
+        "frequency": 6,
+        "tenure_days": 358,
+        "monetary_total": 1297.45,
+        "monetary_mean_per_invoice": 216.241667,
+        "monetary_last_3m": 418.31,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 15.026316,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 423.36
+    },
+    {
+      "customer_id": 16127,
+      "request": {
+        "recency_days": 361,
+        "frequency": 1,
+        "tenure_days": 361,
+        "monetary_total": 145.06,
+        "monetary_mean_per_invoice": 145.06,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 1.942857,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 656.25
+    },
+    {
+      "customer_id": 16131,
+      "request": {
+        "recency_days": 10,
+        "frequency": 7,
+        "tenure_days": 372,
+        "monetary_total": 6359.73,
+        "monetary_mean_per_invoice": 706.636667,
+        "monetary_last_3m": 1950.94,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 20.07483,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 1664.52,
+      "actual_12m": 3506.54
+    },
+    {
+      "customer_id": 16133,
+      "request": {
+        "recency_days": 11,
+        "frequency": 28,
+        "tenure_days": 253,
+        "monetary_total": 7923.22,
+        "monetary_mean_per_invoice": 247.600625,
+        "monetary_last_3m": 4898.06,
+        "active_months_share": 0.9,
+        "mean_line_quantity": 21.534247,
+        "share_invoices_ge_100_units": 0.34375,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 6727.47,
+      "actual_12m": 14305.66
+    },
+    {
+      "customer_id": 16177,
+      "request": {
+        "recency_days": 69,
+        "frequency": 10,
+        "tenure_days": 282,
+        "monetary_total": 1809.66,
+        "monetary_mean_per_invoice": 164.514545,
+        "monetary_last_3m": 247.95,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 8.017699,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 331.95
+    },
+    {
+      "customer_id": 16203,
+      "request": {
+        "recency_days": 7,
+        "frequency": 3,
+        "tenure_days": 139,
+        "monetary_total": 692.34,
+        "monetary_mean_per_invoice": 230.78,
+        "monetary_last_3m": 410.21,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 7.830189,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 143.85,
+      "actual_12m": 418.45
+    },
+    {
+      "customer_id": 16212,
+      "request": {
+        "recency_days": 253,
+        "frequency": 2,
+        "tenure_days": 305,
+        "monetary_total": 603.37,
+        "monetary_mean_per_invoice": 301.685,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.181818,
+        "mean_line_quantity": 8.837838,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 489.0,
+      "actual_12m": 681.19
+    },
+    {
+      "customer_id": 16219,
+      "request": {
+        "recency_days": 135,
+        "frequency": 1,
+        "tenure_days": 135,
+        "monetary_total": 40.8,
+        "monetary_mean_per_invoice": 40.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 48.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16239,
+      "request": {
+        "recency_days": 17,
+        "frequency": 4,
+        "tenure_days": 98,
+        "monetary_total": 1078.0,
+        "monetary_mean_per_invoice": 269.5,
+        "monetary_last_3m": 815.4,
+        "active_months_share": 0.75,
+        "mean_line_quantity": 29.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 347.9,
+      "actual_12m": 372.9
+    },
+    {
+      "customer_id": 16274,
+      "request": {
+        "recency_days": 8,
+        "frequency": 1,
+        "tenure_days": 8,
+        "monetary_total": 675.5,
+        "monetary_mean_per_invoice": 675.5,
+        "monetary_last_3m": 675.5,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 2.353846,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16276,
+      "request": {
+        "recency_days": 114,
+        "frequency": 2,
+        "tenure_days": 242,
+        "monetary_total": 1818.79,
+        "monetary_mean_per_invoice": 909.395,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 52.35,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 810.6
+    },
+    {
+      "customer_id": 16317,
+      "request": {
+        "recency_days": 185,
+        "frequency": 3,
+        "tenure_days": 219,
+        "monetary_total": 838.11,
+        "monetary_mean_per_invoice": 279.37,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 7.040816,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 570.76,
+      "actual_12m": 1341.65
+    },
+    {
+      "customer_id": 16326,
+      "request": {
+        "recency_days": 18,
+        "frequency": 10,
+        "tenure_days": 315,
+        "monetary_total": 1621.03,
+        "monetary_mean_per_invoice": 162.103,
+        "monetary_last_3m": 241.1,
+        "active_months_share": 0.583333,
+        "mean_line_quantity": 2.342857,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 535.68,
+      "actual_12m": 3085.96
+    },
+    {
+      "customer_id": 16340,
+      "request": {
+        "recency_days": 74,
+        "frequency": 2,
+        "tenure_days": 186,
+        "monetary_total": 976.99,
+        "monetary_mean_per_invoice": 488.495,
+        "monetary_last_3m": 603.46,
+        "active_months_share": 0.285714,
+        "mean_line_quantity": 3.767857,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 549.07
+    },
+    {
+      "customer_id": 16345,
+      "request": {
+        "recency_days": 118,
+        "frequency": 1,
+        "tenure_days": 118,
+        "monetary_total": 623.33,
+        "monetary_mean_per_invoice": 623.33,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 4.534247,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 575.41
+    },
+    {
+      "customer_id": 16375,
+      "request": {
+        "recency_days": 105,
+        "frequency": 1,
+        "tenure_days": 105,
+        "monetary_total": 104.0,
+        "monetary_mean_per_invoice": 52.0,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 5.692308,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16465,
+      "request": {
+        "recency_days": 48,
+        "frequency": 3,
+        "tenure_days": 79,
+        "monetary_total": 726.34,
+        "monetary_mean_per_invoice": 242.113333,
+        "monetary_last_3m": 726.34,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 10.244898,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16468,
+      "request": {
+        "recency_days": 105,
+        "frequency": 2,
+        "tenure_days": 116,
+        "monetary_total": 712.62,
+        "monetary_mean_per_invoice": 356.31,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 7.906977,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 74.9
+    },
+    {
+      "customer_id": 16481,
+      "request": {
+        "recency_days": 294,
+        "frequency": 3,
+        "tenure_days": 317,
+        "monetary_total": 430.93,
+        "monetary_mean_per_invoice": 143.643333,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 9.789474,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16486,
+      "request": {
+        "recency_days": 172,
+        "frequency": 1,
+        "tenure_days": 172,
+        "monetary_total": 134.36,
+        "monetary_mean_per_invoice": 134.36,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 3.428571,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16508,
+      "request": {
+        "recency_days": 265,
+        "frequency": 1,
+        "tenure_days": 265,
+        "monetary_total": 248.8,
+        "monetary_mean_per_invoice": 248.8,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 2.355556,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16519,
+      "request": {
+        "recency_days": 0,
+        "frequency": 3,
+        "tenure_days": 283,
+        "monetary_total": 444.88,
+        "monetary_mean_per_invoice": 148.293333,
+        "monetary_last_3m": 207.4,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 4.294118,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 109.28
+    },
+    {
+      "customer_id": 16550,
+      "request": {
+        "recency_days": 3,
+        "frequency": 14,
+        "tenure_days": 372,
+        "monetary_total": 7442.78,
+        "monetary_mean_per_invoice": 338.308182,
+        "monetary_last_3m": 2335.62,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 6.993631,
+        "share_invoices_ge_100_units": 0.045455,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 865.45,
+      "actual_12m": 1720.64
+    },
+    {
+      "customer_id": 16568,
+      "request": {
+        "recency_days": 62,
+        "frequency": 2,
+        "tenure_days": 276,
+        "monetary_total": 1020.9,
+        "monetary_mean_per_invoice": 510.45,
+        "monetary_last_3m": 543.6,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 73.2,
+        "share_invoices_ge_100_units": 0.5,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16574,
+      "request": {
+        "recency_days": 58,
+        "frequency": 2,
+        "tenure_days": 293,
+        "monetary_total": 850.34,
+        "monetary_mean_per_invoice": 425.17,
+        "monetary_last_3m": 259.43,
+        "active_months_share": 0.181818,
+        "mean_line_quantity": 10.103448,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 451.44
+    },
+    {
+      "customer_id": 16583,
+      "request": {
+        "recency_days": 8,
+        "frequency": 2,
+        "tenure_days": 308,
+        "monetary_total": 531.4,
+        "monetary_mean_per_invoice": 265.7,
+        "monetary_last_3m": 466.9,
+        "active_months_share": 0.181818,
+        "mean_line_quantity": 8.25,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16615,
+      "request": {
+        "recency_days": 203,
+        "frequency": 2,
+        "tenure_days": 261,
+        "monetary_total": 264.5,
+        "monetary_mean_per_invoice": 132.25,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 10.35,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16620,
+      "request": {
+        "recency_days": 24,
+        "frequency": 4,
+        "tenure_days": 373,
+        "monetary_total": 1579.97,
+        "monetary_mean_per_invoice": 394.9925,
+        "monetary_last_3m": 268.5,
+        "active_months_share": 0.307692,
+        "mean_line_quantity": 12.447059,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 95.76,
+      "actual_12m": 178.96
+    },
+    {
+      "customer_id": 16623,
+      "request": {
+        "recency_days": 36,
+        "frequency": 4,
+        "tenure_days": 227,
+        "monetary_total": 873.04,
+        "monetary_mean_per_invoice": 218.26,
+        "monetary_last_3m": 310.25,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 8.553191,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 129.45,
+      "actual_12m": 129.45
+    },
+    {
+      "customer_id": 16628,
+      "request": {
+        "recency_days": 42,
+        "frequency": 2,
+        "tenure_days": 276,
+        "monetary_total": 130.05,
+        "monetary_mean_per_invoice": 65.025,
+        "monetary_last_3m": 52.05,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 6.875,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 712.91,
+      "actual_12m": 2183.04
+    },
+    {
+      "customer_id": 16642,
+      "request": {
+        "recency_days": 23,
+        "frequency": 2,
+        "tenure_days": 50,
+        "monetary_total": 371.63,
+        "monetary_mean_per_invoice": 185.815,
+        "monetary_last_3m": 371.63,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 12.090909,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 299.23,
+      "actual_12m": 679.83
+    },
+    {
+      "customer_id": 16643,
+      "request": {
+        "recency_days": 52,
+        "frequency": 2,
+        "tenure_days": 57,
+        "monetary_total": 428.05,
+        "monetary_mean_per_invoice": 214.025,
+        "monetary_last_3m": 428.05,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 9.064516,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 487.51,
+      "actual_12m": 487.51
+    },
+    {
+      "customer_id": 16645,
+      "request": {
+        "recency_days": 370,
+        "frequency": 1,
+        "tenure_days": 370,
+        "monetary_total": 160.39,
+        "monetary_mean_per_invoice": 160.39,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 8.357143,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16700,
+      "request": {
+        "recency_days": 1,
+        "frequency": 12,
+        "tenure_days": 372,
+        "monetary_total": 4381.0,
+        "monetary_mean_per_invoice": 292.066667,
+        "monetary_last_3m": 1518.42,
+        "active_months_share": 0.846154,
+        "mean_line_quantity": 13.004219,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2595.99,
+      "actual_12m": 4703.06
+    },
+    {
+      "customer_id": 16731,
+      "request": {
+        "recency_days": 283,
+        "frequency": 1,
+        "tenure_days": 283,
+        "monetary_total": 174.05,
+        "monetary_mean_per_invoice": 174.05,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 2.953488,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16737,
+      "request": {
+        "recency_days": 212,
+        "frequency": 1,
+        "tenure_days": 212,
+        "monetary_total": 417.6,
+        "monetary_mean_per_invoice": 417.6,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 288.0,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 417.6
+    },
+    {
+      "customer_id": 16782,
+      "request": {
+        "recency_days": 0,
+        "frequency": 28,
+        "tenure_days": 365,
+        "monetary_total": 8472.46,
+        "monetary_mean_per_invoice": 256.741212,
+        "monetary_last_3m": 4929.76,
+        "active_months_share": 0.923077,
+        "mean_line_quantity": 2.080958,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 956.7,
+      "actual_12m": 1876.5
+    },
+    {
+      "customer_id": 16802,
+      "request": {
+        "recency_days": 314,
+        "frequency": 2,
+        "tenure_days": 365,
+        "monetary_total": 582.61,
+        "monetary_mean_per_invoice": 291.305,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.153846,
+        "mean_line_quantity": 6.962264,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16823,
+      "request": {
+        "recency_days": 22,
+        "frequency": 7,
+        "tenure_days": 372,
+        "monetary_total": 1894.76,
+        "monetary_mean_per_invoice": 270.68,
+        "monetary_last_3m": 958.68,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 7.471014,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 358.38,
+      "actual_12m": 358.38
+    },
+    {
+      "customer_id": 16846,
+      "request": {
+        "recency_days": 212,
+        "frequency": 2,
+        "tenure_days": 274,
+        "monetary_total": 628.09,
+        "monetary_mean_per_invoice": 314.045,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.2,
+        "mean_line_quantity": 10.611111,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 214.32
+    },
+    {
+      "customer_id": 16898,
+      "request": {
+        "recency_days": 0,
+        "frequency": 4,
+        "tenure_days": 211,
+        "monetary_total": 494.94,
+        "monetary_mean_per_invoice": 123.735,
+        "monetary_last_3m": 302.3,
+        "active_months_share": 0.375,
+        "mean_line_quantity": 2.533333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 392.73
+    },
+    {
+      "customer_id": 16915,
+      "request": {
+        "recency_days": 21,
+        "frequency": 5,
+        "tenure_days": 204,
+        "monetary_total": 921.5,
+        "monetary_mean_per_invoice": 184.3,
+        "monetary_last_3m": 390.45,
+        "active_months_share": 0.625,
+        "mean_line_quantity": 3.411765,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 166.79,
+      "actual_12m": 621.68
+    },
+    {
+      "customer_id": 16937,
+      "request": {
+        "recency_days": 134,
+        "frequency": 1,
+        "tenure_days": 134,
+        "monetary_total": 202.1,
+        "monetary_mean_per_invoice": 202.1,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 2.470588,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 16945,
+      "request": {
+        "recency_days": 28,
+        "frequency": 11,
+        "tenure_days": 365,
+        "monetary_total": 4185.16,
+        "monetary_mean_per_invoice": 261.5725,
+        "monetary_last_3m": 1368.03,
+        "active_months_share": 0.692308,
+        "mean_line_quantity": 13.876652,
+        "share_invoices_ge_100_units": 0.25,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 1773.68,
+      "actual_12m": 4345.5
+    },
+    {
+      "customer_id": 16960,
+      "request": {
+        "recency_days": 25,
+        "frequency": 5,
+        "tenure_days": 282,
+        "monetary_total": 1514.93,
+        "monetary_mean_per_invoice": 252.488333,
+        "monetary_last_3m": 759.1,
+        "active_months_share": 0.3,
+        "mean_line_quantity": 3.243243,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 199.58,
+      "actual_12m": 505.1
+    },
+    {
+      "customer_id": 16984,
+      "request": {
+        "recency_days": 34,
+        "frequency": 9,
+        "tenure_days": 277,
+        "monetary_total": 6218.25,
+        "monetary_mean_per_invoice": 478.326923,
+        "monetary_last_3m": 1147.14,
+        "active_months_share": 0.7,
+        "mean_line_quantity": 3.906757,
+        "share_invoices_ge_100_units": 0.076923,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 4392.42
+    },
+    {
+      "customer_id": 16985,
+      "request": {
+        "recency_days": 11,
+        "frequency": 12,
+        "tenure_days": 364,
+        "monetary_total": 5084.14,
+        "monetary_mean_per_invoice": 338.942667,
+        "monetary_last_3m": 380.29,
+        "active_months_share": 0.615385,
+        "mean_line_quantity": 10.063492,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 2912.86,
+      "actual_12m": 5461.62
+    },
+    {
+      "customer_id": 17003,
+      "request": {
+        "recency_days": 37,
+        "frequency": 3,
+        "tenure_days": 213,
+        "monetary_total": 830.16,
+        "monetary_mean_per_invoice": 207.54,
+        "monetary_last_3m": 685.8,
+        "active_months_share": 0.375,
+        "mean_line_quantity": 4.419643,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17009,
+      "request": {
+        "recency_days": 186,
+        "frequency": 1,
+        "tenure_days": 186,
+        "monetary_total": 242.06,
+        "monetary_mean_per_invoice": 242.06,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 30.545455,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17066,
+      "request": {
+        "recency_days": 361,
+        "frequency": 1,
+        "tenure_days": 361,
+        "monetary_total": 228.34,
+        "monetary_mean_per_invoice": 228.34,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 5.166667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17087,
+      "request": {
+        "recency_days": 372,
+        "frequency": 1,
+        "tenure_days": 372,
+        "monetary_total": 221.53,
+        "monetary_mean_per_invoice": 221.53,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 9.416667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17094,
+      "request": {
+        "recency_days": 58,
+        "frequency": 1,
+        "tenure_days": 58,
+        "monetary_total": 100.2,
+        "monetary_mean_per_invoice": 100.2,
+        "monetary_last_3m": 100.2,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 15.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 270.2,
+      "actual_12m": 270.2
+    },
+    {
+      "customer_id": 17096,
+      "request": {
+        "recency_days": 15,
+        "frequency": 10,
+        "tenure_days": 190,
+        "monetary_total": 2698.15,
+        "monetary_mean_per_invoice": 269.815,
+        "monetary_last_3m": 908.6,
+        "active_months_share": 0.714286,
+        "mean_line_quantity": 7.086705,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 133.49,
+      "actual_12m": 992.68
+    },
+    {
+      "customer_id": 17110,
+      "request": {
+        "recency_days": 155,
+        "frequency": 2,
+        "tenure_days": 245,
+        "monetary_total": 347.4,
+        "monetary_mean_per_invoice": 173.7,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 2.358974,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 163.3
+    },
+    {
+      "customer_id": 17111,
+      "request": {
+        "recency_days": 60,
+        "frequency": 1,
+        "tenure_days": 60,
+        "monetary_total": 227.97,
+        "monetary_mean_per_invoice": 227.97,
+        "monetary_last_3m": 227.97,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 15.736842,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 248.61
+    },
+    {
+      "customer_id": 17142,
+      "request": {
+        "recency_days": 39,
+        "frequency": 3,
+        "tenure_days": 319,
+        "monetary_total": 704.75,
+        "monetary_mean_per_invoice": 234.916667,
+        "monetary_last_3m": 258.2,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 3.226667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 579.0,
+      "actual_12m": 579.0
+    },
+    {
+      "customer_id": 17213,
+      "request": {
+        "recency_days": 1,
+        "frequency": 10,
+        "tenure_days": 366,
+        "monetary_total": 2650.75,
+        "monetary_mean_per_invoice": 265.075,
+        "monetary_last_3m": 620.73,
+        "active_months_share": 0.461538,
+        "mean_line_quantity": 7.261745,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 583.9,
+      "actual_12m": 2428.18
+    },
+    {
+      "customer_id": 17283,
+      "request": {
+        "recency_days": 13,
+        "frequency": 1,
+        "tenure_days": 13,
+        "monetary_total": 188.46,
+        "monetary_mean_per_invoice": 188.46,
+        "monetary_last_3m": 188.46,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 11.933333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17287,
+      "request": {
+        "recency_days": 2,
+        "frequency": 14,
+        "tenure_days": 371,
+        "monetary_total": 3254.3,
+        "monetary_mean_per_invoice": 180.794444,
+        "monetary_last_3m": 1545.78,
+        "active_months_share": 0.692308,
+        "mean_line_quantity": 4.167089,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 277.64,
+      "actual_12m": 841.41
+    },
+    {
+      "customer_id": 17289,
+      "request": {
+        "recency_days": 11,
+        "frequency": 7,
+        "tenure_days": 276,
+        "monetary_total": 1133.73,
+        "monetary_mean_per_invoice": 161.961429,
+        "monetary_last_3m": 478.31,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 4.372781,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 936.16
+    },
+    {
+      "customer_id": 17294,
+      "request": {
+        "recency_days": 304,
+        "frequency": 1,
+        "tenure_days": 304,
+        "monetary_total": 467.79,
+        "monetary_mean_per_invoice": 233.895,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.090909,
+        "mean_line_quantity": 17.470588,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17305,
+      "request": {
+        "recency_days": 283,
+        "frequency": 1,
+        "tenure_days": 283,
+        "monetary_total": 2135.46,
+        "monetary_mean_per_invoice": 2135.46,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 111.777778,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17342,
+      "request": {
+        "recency_days": 9,
+        "frequency": 7,
+        "tenure_days": 304,
+        "monetary_total": 1155.84,
+        "monetary_mean_per_invoice": 165.12,
+        "monetary_last_3m": 269.8,
+        "active_months_share": 0.363636,
+        "mean_line_quantity": 12.475,
+        "share_invoices_ge_100_units": 0.142857,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17365,
+      "request": {
+        "recency_days": 21,
+        "frequency": 7,
+        "tenure_days": 311,
+        "monetary_total": 3404.27,
+        "monetary_mean_per_invoice": 425.53375,
+        "monetary_last_3m": 1543.53,
+        "active_months_share": 0.545455,
+        "mean_line_quantity": 9.837838,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 1897.19,
+      "actual_12m": 4796.52
+    },
+    {
+      "customer_id": 17388,
+      "request": {
+        "recency_days": 55,
+        "frequency": 7,
+        "tenure_days": 364,
+        "monetary_total": 1432.01,
+        "monetary_mean_per_invoice": 204.572857,
+        "monetary_last_3m": 482.02,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 35.690476,
+        "share_invoices_ge_100_units": 0.428571,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 763.2,
+      "actual_12m": 1259.56
+    },
+    {
+      "customer_id": 17408,
+      "request": {
+        "recency_days": 135,
+        "frequency": 2,
+        "tenure_days": 149,
+        "monetary_total": 132.24,
+        "monetary_mean_per_invoice": 44.08,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.166667,
+        "mean_line_quantity": 12.571429,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 32.65
+    },
+    {
+      "customer_id": 17456,
+      "request": {
+        "recency_days": 0,
+        "frequency": 2,
+        "tenure_days": 91,
+        "monetary_total": 1225.42,
+        "monetary_mean_per_invoice": 612.71,
+        "monetary_last_3m": 499.72,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 9.480519,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17467,
+      "request": {
+        "recency_days": 30,
+        "frequency": 1,
+        "tenure_days": 30,
+        "monetary_total": 102.6,
+        "monetary_mean_per_invoice": 102.6,
+        "monetary_last_3m": 102.6,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 5.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17468,
+      "request": {
+        "recency_days": 10,
+        "frequency": 1,
+        "tenure_days": 10,
+        "monetary_total": 57.8,
+        "monetary_mean_per_invoice": 57.8,
+        "monetary_last_3m": 57.8,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 22.666667,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 137.0
+    },
+    {
+      "customer_id": 17480,
+      "request": {
+        "recency_days": 79,
+        "frequency": 1,
+        "tenure_days": 79,
+        "monetary_total": 390.21,
+        "monetary_mean_per_invoice": 390.21,
+        "monetary_last_3m": 390.21,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 10.2,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q3"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 506.51
+    },
+    {
+      "customer_id": 17487,
+      "request": {
+        "recency_days": 363,
+        "frequency": 1,
+        "tenure_days": 363,
+        "monetary_total": 160.55,
+        "monetary_mean_per_invoice": 160.55,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 4.625,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17547,
+      "request": {
+        "recency_days": 7,
+        "frequency": 4,
+        "tenure_days": 300,
+        "monetary_total": 680.55,
+        "monetary_mean_per_invoice": 170.1375,
+        "monetary_last_3m": 299.7,
+        "active_months_share": 0.272727,
+        "mean_line_quantity": 5.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17553,
+      "request": {
+        "recency_days": 107,
+        "frequency": 3,
+        "tenure_days": 245,
+        "monetary_total": 2270.0,
+        "monetary_mean_per_invoice": 756.666667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 310.0,
+        "share_invoices_ge_100_units": 1.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 1487.6
+    },
+    {
+      "customer_id": 17586,
+      "request": {
+        "recency_days": 254,
+        "frequency": 1,
+        "tenure_days": 254,
+        "monetary_total": 167.4,
+        "monetary_mean_per_invoice": 167.4,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.1,
+        "mean_line_quantity": 8.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17608,
+      "request": {
+        "recency_days": 84,
+        "frequency": 2,
+        "tenure_days": 242,
+        "monetary_total": 305.11,
+        "monetary_mean_per_invoice": 152.555,
+        "monetary_last_3m": 140.19,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 2.790909,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 193.42
+    },
+    {
+      "customer_id": 17610,
+      "request": {
+        "recency_days": 175,
+        "frequency": 6,
+        "tenure_days": 368,
+        "monetary_total": 1427.84,
+        "monetary_mean_per_invoice": 178.48,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.384615,
+        "mean_line_quantity": 5.127907,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17617,
+      "request": {
+        "recency_days": 193,
+        "frequency": 2,
+        "tenure_days": 205,
+        "monetary_total": 237.28,
+        "monetary_mean_per_invoice": 118.64,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.125,
+        "mean_line_quantity": 10.761905,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17622,
+      "request": {
+        "recency_days": 231,
+        "frequency": 3,
+        "tenure_days": 233,
+        "monetary_total": 1125.17,
+        "monetary_mean_per_invoice": 375.056667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.111111,
+        "mean_line_quantity": 9.410256,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17635,
+      "request": {
+        "recency_days": 59,
+        "frequency": 4,
+        "tenure_days": 225,
+        "monetary_total": 1256.83,
+        "monetary_mean_per_invoice": 314.2075,
+        "monetary_last_3m": 413.5,
+        "active_months_share": 0.444444,
+        "mean_line_quantity": 10.173333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17641,
+      "request": {
+        "recency_days": 373,
+        "frequency": 1,
+        "tenure_days": 373,
+        "monetary_total": -6.95,
+        "monetary_mean_per_invoice": -6.95,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": -1.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17655,
+      "request": {
+        "recency_days": 1,
+        "frequency": 3,
+        "tenure_days": 51,
+        "monetary_total": 1689.64,
+        "monetary_mean_per_invoice": 563.213333,
+        "monetary_last_3m": 1689.64,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 18.421053,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 859.4,
+      "actual_12m": 1895.64
+    },
+    {
+      "customer_id": 17669,
+      "request": {
+        "recency_days": 97,
+        "frequency": 3,
+        "tenure_days": 252,
+        "monetary_total": 2735.63,
+        "monetary_mean_per_invoice": 911.876667,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 20.907895,
+        "share_invoices_ge_100_units": 0.666667,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 1611.0,
+      "actual_12m": 3406.72
+    },
+    {
+      "customer_id": 17690,
+      "request": {
+        "recency_days": 1,
+        "frequency": 7,
+        "tenure_days": 309,
+        "monetary_total": 3138.35,
+        "monetary_mean_per_invoice": 392.29375,
+        "monetary_last_3m": 2372.98,
+        "active_months_share": 0.454545,
+        "mean_line_quantity": 10.586207,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2615.73,
+      "actual_12m": 4300.25
+    },
+    {
+      "customer_id": 17691,
+      "request": {
+        "recency_days": 3,
+        "frequency": 4,
+        "tenure_days": 181,
+        "monetary_total": 621.95,
+        "monetary_mean_per_invoice": 155.4875,
+        "monetary_last_3m": 459.5,
+        "active_months_share": 0.428571,
+        "mean_line_quantity": 6.627907,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 147.9,
+      "actual_12m": 147.9
+    },
+    {
+      "customer_id": 17699,
+      "request": {
+        "recency_days": 111,
+        "frequency": 2,
+        "tenure_days": 196,
+        "monetary_total": 442.0,
+        "monetary_mean_per_invoice": 221.0,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.25,
+        "mean_line_quantity": 10.947368,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17738,
+      "request": {
+        "recency_days": 30,
+        "frequency": 7,
+        "tenure_days": 265,
+        "monetary_total": 2282.01,
+        "monetary_mean_per_invoice": 228.201,
+        "monetary_last_3m": 756.64,
+        "active_months_share": 0.6,
+        "mean_line_quantity": 12.992537,
+        "share_invoices_ge_100_units": 0.1,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 779.92,
+      "actual_12m": 1863.35
+    },
+    {
+      "customer_id": 17746,
+      "request": {
+        "recency_days": 106,
+        "frequency": 4,
+        "tenure_days": 245,
+        "monetary_total": 774.63,
+        "monetary_mean_per_invoice": 154.926,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.444444,
+        "mean_line_quantity": 19.78125,
+        "share_invoices_ge_100_units": 0.2,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 98.8,
+      "actual_12m": 98.8
+    },
+    {
+      "customer_id": 17784,
+      "request": {
+        "recency_days": 185,
+        "frequency": 1,
+        "tenure_days": 185,
+        "monetary_total": 112.86,
+        "monetary_mean_per_invoice": 112.86,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 3.130435,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17818,
+      "request": {
+        "recency_days": 372,
+        "frequency": 1,
+        "tenure_days": 372,
+        "monetary_total": 130.18,
+        "monetary_mean_per_invoice": 130.18,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.076923,
+        "mean_line_quantity": 1.956522,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17850,
+      "request": {
+        "recency_days": 7,
+        "frequency": 26,
+        "tenure_days": 369,
+        "monetary_total": 55805.71,
+        "monetary_mean_per_invoice": 353.200696,
+        "monetary_last_3m": 20534.03,
+        "active_months_share": 0.846154,
+        "mean_line_quantity": 8.049075,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": -102.58,
+      "actual_12m": -102.58
+    },
+    {
+      "customer_id": 17852,
+      "request": {
+        "recency_days": 23,
+        "frequency": 3,
+        "tenure_days": 366,
+        "monetary_total": 548.87,
+        "monetary_mean_per_invoice": 182.956667,
+        "monetary_last_3m": 168.51,
+        "active_months_share": 0.153846,
+        "mean_line_quantity": 3.755814,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 114.34
+    },
+    {
+      "customer_id": 17860,
+      "request": {
+        "recency_days": 3,
+        "frequency": 3,
+        "tenure_days": 363,
+        "monetary_total": 1015.54,
+        "monetary_mean_per_invoice": 253.885,
+        "monetary_last_3m": 758.85,
+        "active_months_share": 0.230769,
+        "mean_line_quantity": 3.521552,
+        "share_invoices_ge_100_units": 0.25,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17872,
+      "request": {
+        "recency_days": 16,
+        "frequency": 1,
+        "tenure_days": 16,
+        "monetary_total": 235.87,
+        "monetary_mean_per_invoice": 235.87,
+        "monetary_last_3m": 235.87,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 11.733333,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17923,
+      "request": {
+        "recency_days": 162,
+        "frequency": 2,
+        "tenure_days": 179,
+        "monetary_total": 289.5,
+        "monetary_mean_per_invoice": 144.75,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.142857,
+        "mean_line_quantity": 45.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 207.5,
+      "actual_12m": 207.5
+    },
+    {
+      "customer_id": 17924,
+      "request": {
+        "recency_days": 7,
+        "frequency": 3,
+        "tenure_days": 49,
+        "monetary_total": 806.7,
+        "monetary_mean_per_invoice": 268.9,
+        "monetary_last_3m": 806.7,
+        "active_months_share": 0.666667,
+        "mean_line_quantity": 15.8,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 200.75,
+      "actual_12m": 2638.58
+    },
+    {
+      "customer_id": 17982,
+      "request": {
+        "recency_days": 315,
+        "frequency": 1,
+        "tenure_days": 315,
+        "monetary_total": 138.18,
+        "monetary_mean_per_invoice": 138.18,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.083333,
+        "mean_line_quantity": 9.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 17992,
+      "request": {
+        "recency_days": 24,
+        "frequency": 1,
+        "tenure_days": 24,
+        "monetary_total": 254.13,
+        "monetary_mean_per_invoice": 254.13,
+        "monetary_last_3m": 254.13,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 2.471698,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18025,
+      "request": {
+        "recency_days": 14,
+        "frequency": 5,
+        "tenure_days": 254,
+        "monetary_total": 1177.72,
+        "monetary_mean_per_invoice": 196.286667,
+        "monetary_last_3m": 684.88,
+        "active_months_share": 0.4,
+        "mean_line_quantity": 9.401786,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18043,
+      "request": {
+        "recency_days": 1,
+        "frequency": 1,
+        "tenure_days": 1,
+        "monetary_total": 632.92,
+        "monetary_mean_per_invoice": 632.92,
+        "monetary_last_3m": 632.92,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 2.606061,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 135.35,
+      "actual_12m": 243.05
+    },
+    {
+      "customer_id": 18054,
+      "request": {
+        "recency_days": 27,
+        "frequency": 1,
+        "tenure_days": 27,
+        "monetary_total": 176.5,
+        "monetary_mean_per_invoice": 176.5,
+        "monetary_last_3m": 176.5,
+        "active_months_share": 0.5,
+        "mean_line_quantity": 8.727273,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18070,
+      "request": {
+        "recency_days": 304,
+        "frequency": 2,
+        "tenure_days": 366,
+        "monetary_total": 307.75,
+        "monetary_mean_per_invoice": 153.875,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.153846,
+        "mean_line_quantity": 8.5,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2009Q4"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18095,
+      "request": {
+        "recency_days": 62,
+        "frequency": 3,
+        "tenure_days": 234,
+        "monetary_total": 1723.04,
+        "monetary_mean_per_invoice": 574.346667,
+        "monetary_last_3m": 295.68,
+        "active_months_share": 0.333333,
+        "mean_line_quantity": 44.592593,
+        "share_invoices_ge_100_units": 0.666667,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 580.05,
+      "actual_12m": 580.05
+    },
+    {
+      "customer_id": 18111,
+      "request": {
+        "recency_days": 218,
+        "frequency": 2,
+        "tenure_days": 224,
+        "monetary_total": 398.9,
+        "monetary_mean_per_invoice": 199.45,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.222222,
+        "mean_line_quantity": 7.6,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q2"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18115,
+      "request": {
+        "recency_days": 332,
+        "frequency": 1,
+        "tenure_days": 332,
+        "monetary_total": 9.7,
+        "monetary_mean_per_invoice": 9.7,
+        "monetary_last_3m": 0.0,
+        "active_months_share": 0.083333,
+        "mean_line_quantity": 1.0,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 0.0,
+      "actual_12m": 0.0
+    },
+    {
+      "customer_id": 18118,
+      "request": {
+        "recency_days": 4,
+        "frequency": 4,
+        "tenure_days": 16,
+        "monetary_total": 1550.16,
+        "monetary_mean_per_invoice": 310.032,
+        "monetary_last_3m": 1550.16,
+        "active_months_share": 1.0,
+        "mean_line_quantity": 1.834975,
+        "share_invoices_ge_100_units": 0.0,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q4"
+      },
+      "actual_6m": 2993.18,
+      "actual_12m": 5117.51
+    },
+    {
+      "customer_id": 18226,
+      "request": {
+        "recency_days": 13,
+        "frequency": 23,
+        "tenure_days": 279,
+        "monetary_total": 6557.48,
+        "monetary_mean_per_invoice": 273.228333,
+        "monetary_last_3m": 2019.82,
+        "active_months_share": 0.7,
+        "mean_line_quantity": 14.671141,
+        "share_invoices_ge_100_units": 0.041667,
+        "country_group": "United Kingdom",
+        "first_purchase_quarter": "2010Q1"
+      },
+      "actual_6m": 2596.09,
+      "actual_12m": 5192.1
+    }
+  ]
+}
