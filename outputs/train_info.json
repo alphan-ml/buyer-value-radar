@@ -9,5 +9,25 @@
     "fit_customers": 1707,
     "early_stop_customers": 190,
     "smearing_factor": 1.1541291764246462
+  },
+  "curve2_tweedie": {
+    "variance_power": 1.2,
+    "variance_power_candidates": {
+      "1.2": {
+        "best_iteration": 191,
+        "es_wape": 0.5359371484484204
+      },
+      "1.5": {
+        "best_iteration": 221,
+        "es_wape": 0.5434844137596042
+      },
+      "1.8": {
+        "best_iteration": 154,
+        "es_wape": 0.5568451171951033
+      }
+    },
+    "best_iteration": 191,
+    "fit_customers": 1707,
+    "early_stop_customers": 190
   }
 }

@@ -260,7 +260,204 @@
         "wape": 0.8318811057353404,
         "aggregate_revenue_error": 0.24037144773240626
       }
-    ]
+    ],
+    "baselines": {
+      "repeat": {
+        "wape_6m": 1.2512383681820818,
+        "wape_12m": 0.9018416756651395,
+        "decile_table_12m": [
+          {
+            "decile": 1,
+            "customers": 130,
+            "predicted": 11718.38,
+            "actual": 26206.63,
+            "wape": 1.1745413279006112,
+            "aggregate_revenue_error": 0.5528467414543572
+          },
+          {
+            "decile": 2,
+            "customers": 129,
+            "predicted": 24315.67,
+            "actual": 20889.11,
+            "wape": 1.4020740950667596,
+            "aggregate_revenue_error": 0.16403571047306456
+          },
+          {
+            "decile": 3,
+            "customers": 130,
+            "predicted": 37139.02,
+            "actual": 30662.02,
+            "wape": 1.2924197427305832,
+            "aggregate_revenue_error": 0.21123852896841097
+          },
+          {
+            "decile": 4,
+            "customers": 129,
+            "predicted": 52344.56,
+            "actual": 27283.1,
+            "wape": 1.6705872866353166,
+            "aggregate_revenue_error": 0.9185708368917022
+          },
+          {
+            "decile": 5,
+            "customers": 130,
+            "predicted": 73331.8,
+            "actual": 38243.86,
+            "wape": 1.4369937506670547,
+            "aggregate_revenue_error": 0.9174790410800584
+          },
+          {
+            "decile": 6,
+            "customers": 129,
+            "predicted": 101817.54000000001,
+            "actual": 71760.31,
+            "wape": 1.0831312085923164,
+            "aggregate_revenue_error": 0.41885591073951617
+          },
+          {
+            "decile": 7,
+            "customers": 129,
+            "predicted": 147157.13,
+            "actual": 116214.17,
+            "wape": 1.084509272953029,
+            "aggregate_revenue_error": 0.26625806474374
+          },
+          {
+            "decile": 8,
+            "customers": 130,
+            "predicted": 215567.69,
+            "actual": 152861.76,
+            "wape": 0.971147198619197,
+            "aggregate_revenue_error": 0.4102133195378621
+          },
+          {
+            "decile": 9,
+            "customers": 129,
+            "predicted": 364465.51,
+            "actual": 236890.2,
+            "wape": 0.8547471359323597,
+            "aggregate_revenue_error": 0.5385419489704513
+          },
+          {
+            "decile": 10,
+            "customers": 130,
+            "predicted": 1273151.3900000001,
+            "actual": 833695.0399999999,
+            "wape": 0.7765752720126397,
+            "aggregate_revenue_error": 0.5271188251281911
+          }
+        ],
+        "spearman_12m": 0.5996448208068769,
+        "top_decile_capture_12m": 0.5362396059139661
+      },
+      "segment_mean": {
+        "wape_6m": 1.2221766762560027,
+        "wape_12m": 1.1240761409343543,
+        "decile_table_12m": [
+          {
+            "decile": 1,
+            "customers": 130,
+            "predicted": 23628.883912611724,
+            "actual": 26248.53,
+            "wape": 1.3735723556219723,
+            "aggregate_revenue_error": 0.09980163031561293
+          },
+          {
+            "decile": 2,
+            "customers": 129,
+            "predicted": 23447.123267130097,
+            "actual": 23633.489999999998,
+            "wape": 1.439118742560754,
+            "aggregate_revenue_error": 0.00788570511041328
+          },
+          {
+            "decile": 3,
+            "customers": 130,
+            "predicted": 23628.883912611724,
+            "actual": 28106.72,
+            "wape": 1.1700514468138459,
+            "aggregate_revenue_error": 0.15931549776666495
+          },
+          {
+            "decile": 4,
+            "customers": 129,
+            "predicted": 46523.45482297871,
+            "actual": 42469.33,
+            "wape": 1.0732593761029654,
+            "aggregate_revenue_error": 0.09546006077747657
+          },
+          {
+            "decile": 5,
+            "customers": 130,
+            "predicted": 66484.9282306163,
+            "actual": 61233.97,
+            "wape": 1.0878367224551195,
+            "aggregate_revenue_error": 0.08575237291680242
+          },
+          {
+            "decile": 6,
+            "customers": 129,
+            "predicted": 65973.5057057654,
+            "actual": 59993.479999999996,
+            "wape": 0.9908604852370648,
+            "aggregate_revenue_error": 0.09967792676413186
+          },
+          {
+            "decile": 7,
+            "customers": 129,
+            "predicted": 166553.41267395625,
+            "actual": 163081.19999999998,
+            "wape": 0.9618650537409361,
+            "aggregate_revenue_error": 0.02129131177570601
+          },
+          {
+            "decile": 8,
+            "customers": 130,
+            "predicted": 550758.5543737574,
+            "actual": 515023.7799999999,
+            "wape": 0.9628679949013677,
+            "aggregate_revenue_error": 0.06938470758332274
+          },
+          {
+            "decile": 9,
+            "customers": 129,
+            "predicted": 546521.950109344,
+            "actual": 275022.04000000004,
+            "wape": 1.424508448605803,
+            "aggregate_revenue_error": 0.9871932813433567
+          },
+          {
+            "decile": 10,
+            "customers": 130,
+            "predicted": 550758.5543737574,
+            "actual": 359893.66000000003,
+            "wape": 1.193082093063494,
+            "aggregate_revenue_error": 0.5303369177822066
+          }
+        ],
+        "spearman_12m": 0.5731722711823068,
+        "top_decile_capture_12m": 0.23148660499327783
+      }
+    },
+    "ranking": {
+      "spearman_12m": 0.6116333435813396,
+      "top_decile_capture_12m": 0.539480507635462
+    },
+    "spend_model_variants": {
+      "current": {
+        "wape_6m": 0.8281469689231127,
+        "wape_12m": 0.6884771494085729,
+        "top_decile_capture_12m": 0.539480507635462
+      },
+      "tweedie": {
+        "wape_6m": 0.8439401789729245,
+        "wape_12m": 0.7036819300330257,
+        "top_decile_capture_12m": 0.5497692232783273,
+        "variance_power": 1.2
+      },
+      "promoted": "current",
+      "promotion_rule": "promote tweedie only if holdout wape_12m improves by >= 0.02 and top_decile_capture_12m does not fall; otherwise keep current"
+    }
   },
   "calibration": {
     "calibration_by_month": [
@@ -350,6 +547,26 @@
       "fit_customers": 1707,
       "early_stop_customers": 190,
       "smearing_factor": 1.1541291764246462
+    },
+    "curve2_tweedie": {
+      "variance_power": 1.2,
+      "variance_power_candidates": {
+        "1.2": {
+          "best_iteration": 191,
+          "es_wape": 0.5359371484484204
+        },
+        "1.5": {
+          "best_iteration": 221,
+          "es_wape": 0.5434844137596042
+        },
+        "1.8": {
+          "best_iteration": 154,
+          "es_wape": 0.5568451171951033
+        }
+      },
+      "best_iteration": 191,
+      "fit_customers": 1707,
+      "early_stop_customers": 190
     }
   }
 }

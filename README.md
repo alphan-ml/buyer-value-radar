@@ -49,6 +49,25 @@ By segment (12-month, holdout), two numbers per segment, because they answer dif
 
 Full metrics, calibration by month, decile table, and both segment tables are in `outputs/metrics.json` and `outputs/calibration.json` -- committed, produced by `bvr eval`, never typed by hand.
 
+## Baselines and ranking metrics
+
+Two naive baselines are computed on the same 1,295 holdout customers, the same 6- and 12-month windows: **repeat** (each customer's own trailing spend -- `monetary_total`, roughly the twelve months before the cutoff -- carried forward, halved for the 6-month window) and **segment mean** (each customer's buyer-size tercile, with both the tercile edges and the segment's mean spend computed from the training set only, applied to holdout customers). Definitions: CONTEXT.md D10/D11.
+
+| Metric | Model | Repeat baseline | Segment-mean baseline |
+|---|---|---|---|
+| WAPE, 6-month | 0.828 | 1.251 | 1.222 |
+| WAPE, 12-month | 0.688 | 0.902 | 1.124 |
+| Spearman (predicted vs actual, 12m) | 0.612 | 0.600 | 0.573 |
+| Top-decile capture (12m) | 0.539 | 0.536 | 0.231 |
+
+The model beats both naive baselines on every metric here. Full baseline decile tables: `outputs/metrics.json` -> `baselines.repeat` / `baselines.segment_mean`.
+
+## Spend-model variant: Tweedie
+
+`monetary_model.py` also trains a Tweedie-objective LightGBM regressor directly on raw net revenue (no log1p/smearing -- the Tweedie log-link mean is already on the natural scale), with the variance power tuned on the validation split over `{1.2, 1.5, 1.8}` (chosen: 1.2). Both variants are evaluated on the same holdout. Promotion rule: ship the Tweedie variant only if holdout WAPE 12m improves by at least 0.02 **and** top-decile capture does not fall; otherwise keep the current (log1p + Duan smearing) model.
+
+Latest run: current WAPE 12m 0.688 vs. Tweedie 0.704 (worse, not an improvement) -- **current model stays shipped**. Full comparison: `outputs/metrics.json` -> `spend_model_variants`.
+
 ## Live Eval canary
 
 A scheduled job (`.github/workflows/canary.yml`, cron `17 */6 * * *` plus manual `workflow_dispatch`) calls the LIVE scoring endpoint (`https://guijt78nlb.execute-api.us-east-1.amazonaws.com/score`) once for each of the 300 customers in `canary/rows.json` -- a fixed sample drawn from the 30% holdout split (`outputs/split_ids.json`), with the real 6- and 12-month spend already recorded next to each request. `tests/test_canary.py` checks every one of those 300 ids is actually in the holdout split.

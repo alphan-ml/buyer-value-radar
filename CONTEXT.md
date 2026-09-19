@@ -72,6 +72,22 @@ Anaconda's existing `libomp.dylib` is used as the real library; nothing was inst
 - Kaggle "Data Access and Use" clauses for `ieee-fraud-detection` / `instacart-market-basket-analysis`: unchanged, still needs the owner's own logged-in view.
 - An owner-authored commit within 7 days of push (by Sep 20, 2026): unchanged suggestion re: `country_group` definition.
 
+## Decisions (added, baselines + ranking + Tweedie variant)
+
+| ID | Decision | Rejected alternative |
+|---|---|---|
+| D10 | "Repeat" baseline = each customer's `monetary_total` (the feature table's spend over the feature window ending at T0, which for every customer is the same fixed ~12-month calendar window Dec 1 2009 -- T0) carried forward as the 12-month prediction, halved for 6-month | A per-customer trailing-365-day recompute from raw transactions -- `monetary_total` already is a fixed calendar window ending at T0 for every customer, so it does not need a separate column; recomputing would just reproduce it, 8 days off (the feature window opens Dec 1, not Dec 9) |
+| D11 | "Segment mean" baseline: buyer-size tercile edges computed from TRAINING customers' `monetary_total` only via `qcut(3)`; each customer's prediction is the training-tercile's mean actual spend (training rows only), computed separately at 6- and 12-month horizons (not by halving) | Halving the 12-month segment mean for the 6-month prediction, the way the repeat baseline does -- rejected because the segment mean is already an aggregate statistic re-derived per horizon from real training data at no extra cost, so halving would throw away information instead of using it |
+| D12 | Tweedie spend-model variant trains on raw (untransformed) net revenue with LightGBM's `tweedie` objective and log link -- no log1p / Duan smearing, since the Tweedie mean prediction is already on the natural scale; variance power tuned over `{1.2, 1.5, 1.8}` on the validation (early-stop) split only | Applying Tweedie loss on top of the log1p-transformed target -- double-transforms the same skew the objective is meant to model, and defeats the point of comparing two different distributional assumptions for the same raw target |
+| D13 | Promotion rule for the Tweedie variant: ship it only if holdout WAPE 12m improves by >= 0.02 **and** top-decile capture (12m) does not fall versus the current model; otherwise keep the current model and record the comparison | A single-metric gate (WAPE only) -- rejected because a spend model that trades WAPE for a worse top-decile ranking would be actively harmful for the site's stated use (surfacing the highest-value customers) |
+
+## Baseline and Tweedie run (added, Sep 19, 2026)
+
+- Same seed (26), same committed `outputs/split_ids.json` (3,019 train / 1,295 holdout) -- verified byte-identical to the previously committed file before any code changed, and again after training, so the split was never touched.
+- Model vs. baselines (12m holdout): model WAPE 0.688, repeat baseline WAPE 0.902, segment-mean baseline WAPE 1.124. Model wins on WAPE, Spearman (0.612 vs 0.600 / 0.573), and top-decile capture (0.539 vs 0.536 / 0.231).
+- Tweedie variant (variance power 1.2, chosen on the validation split from `{1.2, 1.5, 1.8}`): holdout WAPE 12m 0.704, worse than the current model's 0.688 (not an improvement) -- per D13, the current (log1p + Duan smearing) model stays shipped. The Tweedie booster is still written to `outputs/checkpoints/curve2_spend_tweedie.txt` (gitignored, like all model checkpoints) for the owner to inspect; nothing in `aws-lambda/` or the deployed Lambda was touched.
+- Full numbers: README "Baselines and ranking metrics" / "Spend-model variant: Tweedie" sections; `outputs/metrics.json` -> `baselines`, `ranking`, `spend_model_variants`.
+
 ## Task reports (added)
 
 ### Task: build and deploy the AWS scoring endpoint (Lambda + API Gateway + S3)
@@ -83,3 +99,13 @@ Anaconda's existing `libomp.dylib` is used as the real library; nothing was inst
 - SPEC CHECK: no file on giggitai.com was touched — this is backend-only, per the standing rule that site changes need the owner's explicit go-ahead (see D5, updated Open items).
 - NEXT: front-end "Score a Customer" block on `customer-lifecycle.html`, gated on the owner's explicit approval before any deploy; local-preview sign-off required first per the build instruction's own STOP-before-deploy rule.
 - TIME: 2026-09-16, ~05:50–06:10 ET.
+
+### Task: baselines, ranking metrics, and a Tweedie spend-model variant
+
+- STATUS: done.
+- BUILT: `repeat_baseline`, `segment_mean_baseline`, `spearman_corr`, `top_decile_capture`, `_decile_table`, `_baseline_metrics` in `eval.py`; `evaluate()` now takes `train_rows`/`train_ids` and writes `baselines` + `ranking` into `outputs/metrics.json`. `fit_tweedie`, `predict_spend_tweedie`, `load_tweedie` in `monetary_model.py`. `cli.py` `step_train` now also fits the Tweedie variant; `step_eval` evaluates both spend-model variants on the holdout, applies the promotion rule (D13), and writes `spend_model_variants`. `tests/test_baselines.py` (2 tests).
+- TESTED: `python3 -m pytest -q` — 23 passed (21 previously + 2 new). `python3 -m ruff check .` — all checks passed. Re-ran `bvr all` end to end on the real dataset; confirmed the regenerated `outputs/split_ids.json` and the pre-change `outputs/metrics.json` were byte-identical to the previously committed versions before touching any code, then re-ran `train`/`eval`/`export` with the new code (train step ~1.3s, eval step ~0.4s, both far inside the 90-minute stop-if budget).
+- SPEC CHECK: split/seed/holdout customers unchanged (verified byte-identical); Lambda handler, `aws-lambda/`, and anything deployed untouched; no site file touched; no raw data added to git (fetched dataset stays in `data/raw/`, gitignored).
+- RESULT: Tweedie variant (best variance power 1.2) did not clear the promotion bar (holdout WAPE 12m 0.704 vs. current 0.688 — worse, not better) — current model stays shipped. See "Baseline and Tweedie run" above for full numbers.
+- OPEN: none from this task.
+- TIME: 2026-09-19, ~06:00–06:15 UTC.

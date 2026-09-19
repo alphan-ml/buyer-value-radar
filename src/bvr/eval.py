@@ -41,6 +41,87 @@ def mape_pos_actual(pred: np.ndarray, actual: np.ndarray) -> tuple[float, float,
     return float(np.mean(vals)), float(np.median(vals)), int(mask.sum())
 
 
+def spearman_corr(pred: np.ndarray, actual: np.ndarray) -> float:
+    if len(pred) < 2:
+        return float("nan")
+    corr = pd.Series(pred).corr(pd.Series(actual), method="spearman")
+    return float(corr) if pd.notna(corr) else float("nan")
+
+
+def top_decile_capture(pred: np.ndarray, actual: np.ndarray) -> float:
+    """Share of actual spend held by the top predicted decile."""
+    total = float(np.sum(actual))
+    if total == 0:
+        return float("nan")
+    df = pd.DataFrame({"pred": pred, "actual": actual})
+    df["decile"] = pd.qcut(df["pred"].rank(method="first"), 10, labels=False) + 1
+    top_actual = float(df.loc[df["decile"] == 10, "actual"].sum())
+    return top_actual / total
+
+
+def _decile_table(pred: np.ndarray, actual: np.ndarray) -> list[dict]:
+    df = pd.DataFrame({"pred_12": pred, "actual_12": actual})
+    df["decile"] = pd.qcut(df["pred_12"].rank(method="first"), 10, labels=False) + 1
+    return _seg_table(df, "decile", pred_col="pred_12", actual_col="actual_12")
+
+
+def repeat_baseline(feat: pd.DataFrame) -> pd.DataFrame:
+    """Naive baseline: each customer's own trailing spend (`monetary_total`,
+    the feature table's spend over the feature window ending at T0 -- see
+    CONTEXT.md D10) carried forward as the 12-month prediction, halved for
+    the 6-month prediction."""
+    out = feat[["Customer ID", "monetary_total"]].copy()
+    out["pred_12"] = out["monetary_total"].clip(lower=0.0)
+    out["pred_6"] = out["pred_12"] / 2.0
+    return out[["Customer ID", "pred_6", "pred_12"]]
+
+
+def segment_mean_baseline(
+    feat: pd.DataFrame, train_ids: set, actual_6: pd.Series, actual_12: pd.Series
+) -> pd.DataFrame:
+    """Naive baseline: bucket every customer into a buyer-size tercile using
+    edges computed from TRAINING customers' `monetary_total` only, then
+    predict the training-tercile's mean actual spend (training rows only,
+    at each horizon) -- see CONTEXT.md D11. Applying training-only edges and
+    training-only means to holdout customers keeps this leak-free."""
+    train_feat = feat[feat["Customer ID"].isin(train_ids)][["Customer ID", "monetary_total"]].copy()
+    _, edges = pd.qcut(train_feat["monetary_total"], 3, retbins=True, duplicates="drop")
+    edges = np.asarray(edges, dtype=float)
+    edges[0], edges[-1] = -np.inf, np.inf
+    labels = ["low", "mid", "high"][: len(edges) - 1]
+
+    train_feat["tercile"] = pd.cut(train_feat["monetary_total"], bins=edges, labels=labels)
+    train_feat = train_feat.set_index("Customer ID")
+    train_actual_6 = actual_6.reindex(train_feat.index).fillna(0.0)
+    train_actual_12 = actual_12.reindex(train_feat.index).fillna(0.0)
+    mean_6 = train_actual_6.groupby(train_feat["tercile"], observed=True).mean()
+    mean_12 = train_actual_12.groupby(train_feat["tercile"], observed=True).mean()
+
+    out = feat[["Customer ID", "monetary_total"]].copy()
+    out["tercile"] = pd.cut(out["monetary_total"], bins=edges, labels=labels)
+    out["pred_6"] = out["tercile"].map(mean_6).astype(float)
+    out["pred_12"] = out["tercile"].map(mean_12).astype(float)
+    return out[["Customer ID", "pred_6", "pred_12"]]
+
+
+def _baseline_metrics(pred_df: pd.DataFrame, actual_6: pd.Series, actual_12: pd.Series) -> dict:
+    m = (
+        pred_df.set_index("Customer ID")
+        .join(actual_6.rename("actual_6"))
+        .join(actual_12.rename("actual_12"))
+        .fillna(0.0)
+    )
+    p6, p12 = m["pred_6"].to_numpy(), m["pred_12"].to_numpy()
+    a6, a12 = m["actual_6"].to_numpy(), m["actual_12"].to_numpy()
+    return {
+        "wape_6m": wape(p6, a6),
+        "wape_12m": wape(p12, a12),
+        "decile_table_12m": _decile_table(p12, a12),
+        "spearman_12m": spearman_corr(p12, a12),
+        "top_decile_capture_12m": top_decile_capture(p12, a12),
+    }
+
+
 def _seg_table(
     df: pd.DataFrame, col: str, pred_col: str = "ltv_12", actual_col: str = "actual_12"
 ) -> list[dict]:
@@ -86,7 +167,9 @@ def evaluate(
     p_active_pred: pd.DataFrame,  # (Customer ID, t, value) predicted P(active)
     e_spend_pred: pd.DataFrame,   # (Customer ID, t, value) predicted E[spend|active]
     ltv_pred: pd.DataFrame,       # (Customer ID, ltv_6, ltv_12)
-    feat: pd.DataFrame,           # customer features (for the segment table)
+    feat: pd.DataFrame,           # customer features (for the segment table and baselines)
+    train_rows: pd.DataFrame,     # same shape as holdout_rows, but for TRAIN customers only
+    train_ids: set,               # train customer ids (for the segment-mean baseline)
 ) -> tuple[dict, dict]:
     actual_6 = holdout_rows[holdout_rows["t"] <= 6].groupby("Customer ID")["net_revenue"].sum()
     actual_12 = holdout_rows.groupby("Customer ID")["net_revenue"].sum()
@@ -151,6 +234,28 @@ def evaluate(
         seg_base["monetary_total"].rank(method="first"), 3, labels=["low", "mid", "high"]
     )
 
+    # Baselines (BUILD PACK follow-up: see CONTEXT.md D10/D11) -- same holdout
+    # customers, same actual_6/actual_12.
+    holdout_feat = feat[feat["Customer ID"].isin(merged.index)]
+    train_actual_6 = train_rows[train_rows["t"] <= 6].groupby("Customer ID")["net_revenue"].sum()
+    train_actual_12 = train_rows.groupby("Customer ID")["net_revenue"].sum()
+
+    repeat_pred = repeat_baseline(holdout_feat)
+    segment_mean_pred = segment_mean_baseline(feat, train_ids, train_actual_6, train_actual_12)
+    segment_mean_pred = segment_mean_pred[segment_mean_pred["Customer ID"].isin(merged.index)]
+
+    baselines = {
+        "repeat": _baseline_metrics(repeat_pred, actual_6, actual_12),
+        "segment_mean": _baseline_metrics(segment_mean_pred, actual_6, actual_12),
+    }
+
+    ranking = {
+        "spearman_12m": spearman_corr(merged["ltv_12"].to_numpy(), merged["actual_12"].to_numpy()),
+        "top_decile_capture_12m": top_decile_capture(
+            merged["ltv_12"].to_numpy(), merged["actual_12"].to_numpy()
+        ),
+    }
+
     metrics = {
         "holdout_customers": len(merged),
         "wape_6m": wape_6,
@@ -167,6 +272,8 @@ def evaluate(
         "segment_country_group": _seg_table(seg_base, "country_group"),
         "segment_buyer_size_tercile": _seg_table(seg_base, "buyer_size_tercile"),
         "segment_first_purchase_quarter": _seg_table(seg_base, "first_purchase_quarter"),
+        "baselines": baselines,
+        "ranking": ranking,
     }
     calibration = {"calibration_by_month": calibration_by_month}
 
