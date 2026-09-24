@@ -8,7 +8,7 @@
     "best_iteration": 156,
     "fit_customers": 1707,
     "early_stop_customers": 190,
-    "smearing_factor": 1.1541291764246462
+    "smearing_factor_in_sample": 1.1541291764246462
   },
   "curve2_tweedie": {
     "variance_power": 1.2,

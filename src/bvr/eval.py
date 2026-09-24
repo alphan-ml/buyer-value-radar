@@ -11,6 +11,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.metrics import brier_score_loss, roc_auc_score
+from sklearn.model_selection import KFold
+
+from bvr import combine as combine_mod
+from bvr import monetary_model, predictive, retransform, survival_model
+from bvr.features import CATEGORICAL_FEATURES
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "outputs"
@@ -26,13 +31,13 @@ def wape(pred: np.ndarray, actual: np.ndarray) -> float:
 def mape_pos_actual(pred: np.ndarray, actual: np.ndarray) -> tuple[float, float, int]:
     """Mean and median absolute percentage error, actual > 0 only.
 
-    Design decision: mean MAPE is reported (BUILD PACK Section 6 asks for
-    it explicitly) but is dominated by customers whose actual is a tiny
-    positive residual of cancellation netting (e.g. GBP 0.01) -- one such
-    row can send the mean into the trillions. Median APE is reported
-    alongside it so the number on the page is not misleading. Rejected
-    alternative: winsorizing or dropping near-zero actuals -- that would
-    silently change a real, verified number rather than disclose it.
+    Design decision: only the median is written to metrics.json (CONTEXT.md
+    D16). The mean is dominated by customers whose actual is a tiny positive
+    residual of cancellation netting (e.g. GBP 0.01) -- one such row can send
+    the mean into the trillions, so it is computed here (for callers that
+    want it) but not reported. Rejected alternative: winsorizing or dropping
+    near-zero actuals -- that would silently change a real, verified number
+    rather than disclose it.
     """
     mask = actual > 0
     if mask.sum() == 0:
@@ -162,14 +167,37 @@ def _seg_table(
     return g.reset_index().to_dict(orient="records")
 
 
+def _revenue_error(pred: np.ndarray, actual: np.ndarray) -> float:
+    """Signed (pred - actual) / actual on the totals -- positive means over-forecast."""
+    denom = float(np.sum(actual))
+    if denom == 0:
+        return float("nan")
+    return float((np.sum(pred) - denom) / denom)
+
+
+def bootstrap_wape_ci(
+    pred: np.ndarray, actual: np.ndarray, n_boot: int = 1000, seed: int = 26
+) -> list[float]:
+    """95% bootstrap CI (2.5/97.5 percentiles) for WAPE, resampling customers
+    with replacement."""
+    rng = np.random.default_rng(seed)
+    n = len(pred)
+    idx = rng.integers(0, n, size=(n_boot, n))
+    vals = np.array([wape(pred[i], actual[i]) for i in idx])
+    lo, hi = np.percentile(vals, [2.5, 97.5])
+    return [float(lo), float(hi)]
+
+
 def evaluate(
     holdout_rows: pd.DataFrame,   # (Customer ID, t, active, net_revenue, ...features) holdout rows
     p_active_pred: pd.DataFrame,  # (Customer ID, t, value) predicted P(active)
     e_spend_pred: pd.DataFrame,   # (Customer ID, t, value) predicted E[spend|active]
-    ltv_pred: pd.DataFrame,       # (Customer ID, ltv_6, ltv_12)
+    ltv_pred: pd.DataFrame,       # (Customer ID, ltv_6, ltv_12) -- the exact mean
+    predictive_pred: pd.DataFrame,  # (Customer ID, p10_6, p50_6, p90_6, p10_12, p50_12, p90_12)
     feat: pd.DataFrame,           # customer features (for the segment table and baselines)
     train_rows: pd.DataFrame,     # same shape as holdout_rows, but for TRAIN customers only
     train_ids: set,               # train customer ids (for the segment-mean baseline)
+    cv_results: dict,             # section D cross-validation table (bvr.eval.cross_validate)
 ) -> tuple[dict, dict]:
     actual_6 = holdout_rows[holdout_rows["t"] <= 6].groupby("Customer ID")["net_revenue"].sum()
     actual_12 = holdout_rows.groupby("Customer ID")["net_revenue"].sum()
@@ -178,15 +206,33 @@ def evaluate(
         ltv_pred.set_index("Customer ID")
         .join(actual_6.rename("actual_6"))
         .join(actual_12.rename("actual_12"))
+        .join(predictive_pred.set_index("Customer ID"))
         .fillna(0.0)
     )
 
     wape_6 = wape(merged["ltv_6"].to_numpy(), merged["actual_6"].to_numpy())
     wape_12 = wape(merged["ltv_12"].to_numpy(), merged["actual_12"].to_numpy())
-    mape_6, median_ape_6, n_pos_6 = mape_pos_actual(
+    wape_6m_p50 = wape(merged["p50_6"].to_numpy(), merged["actual_6"].to_numpy())
+    wape_12m_p50 = wape(merged["p50_12"].to_numpy(), merged["actual_12"].to_numpy())
+    revenue_error_6m_mean = _revenue_error(
         merged["ltv_6"].to_numpy(), merged["actual_6"].to_numpy()
     )
-    mape_12, median_ape_12, n_pos_12 = mape_pos_actual(
+    revenue_error_12m_mean = _revenue_error(
+        merged["ltv_12"].to_numpy(), merged["actual_12"].to_numpy()
+    )
+    interval_coverage_12m_p10_p90 = float(
+        np.mean(
+            (merged["actual_12"].to_numpy() >= merged["p10_12"].to_numpy())
+            & (merged["actual_12"].to_numpy() <= merged["p90_12"].to_numpy())
+        )
+    )
+    wape_12m_p50_ci95 = bootstrap_wape_ci(
+        merged["p50_12"].to_numpy(), merged["actual_12"].to_numpy()
+    )
+    _mape_6, median_ape_6, n_pos_6 = mape_pos_actual(
+        merged["ltv_6"].to_numpy(), merged["actual_6"].to_numpy()
+    )
+    _mape_12, median_ape_12, n_pos_12 = mape_pos_actual(
         merged["ltv_12"].to_numpy(), merged["actual_12"].to_numpy()
     )
 
@@ -258,12 +304,21 @@ def evaluate(
 
     metrics = {
         "holdout_customers": len(merged),
+        "point_forecast": "p50",
+        # Aliases of the _mean fields, kept for one release so nothing
+        # reading the old names breaks (CONTEXT.md D15).
         "wape_6m": wape_6,
         "wape_12m": wape_12,
-        "mape_6m_actual_gt0": mape_6,
+        "wape_6m_mean": wape_6,
+        "wape_12m_mean": wape_12,
+        "wape_6m_p50": wape_6m_p50,
+        "wape_12m_p50": wape_12m_p50,
+        "revenue_error_6m_mean": revenue_error_6m_mean,
+        "revenue_error_12m_mean": revenue_error_12m_mean,
+        "interval_coverage_12m_p10_p90": interval_coverage_12m_p10_p90,
+        "wape_12m_p50_ci95": wape_12m_p50_ci95,
         "median_ape_6m_actual_gt0": median_ape_6,
         "mape_6m_n": n_pos_6,
-        "mape_12m_actual_gt0": mape_12,
         "median_ape_12m_actual_gt0": median_ape_12,
         "mape_12m_n": n_pos_12,
         "curve1_by_t": curve1_by_t,
@@ -274,6 +329,7 @@ def evaluate(
         "segment_first_purchase_quarter": _seg_table(seg_base, "first_purchase_quarter"),
         "baselines": baselines,
         "ranking": ranking,
+        "cv": cv_results,
     }
     calibration = {"calibration_by_month": calibration_by_month}
 
@@ -281,3 +337,194 @@ def evaluate(
     (OUT_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2, default=str))
     (OUT_DIR / "calibration.json").write_text(json.dumps(calibration, indent=2, default=str))
     return metrics, calibration
+
+
+def _fold_predictive_table(
+    p_active_df: pd.DataFrame, pred_log_df: pd.DataFrame, rt: dict
+) -> pd.DataFrame:
+    """p_active_df / pred_log_df: (Customer ID, t, value) for one fold's test
+    customers. Returns one row per customer: p50_6, p50_12, p10_12, p90_12.
+    predictive.summarize's seed is always 26 (see its docstring), never the
+    fold/rep seed."""
+    p_active_wide = p_active_df.pivot(index="Customer ID", columns="t", values="value").sort_index(
+        axis=1
+    )
+    pred_log_wide = pred_log_df.pivot(index="Customer ID", columns="t", values="value").sort_index(
+        axis=1
+    )
+    records = []
+    for cust in p_active_wide.index:
+        summary = predictive.summarize(
+            p_active_wide.loc[cust].to_numpy(),
+            pred_log_wide.loc[cust].to_numpy(),
+            rt,
+            horizons=(6, 12),
+            seed=26,
+        )
+        records.append(
+            {
+                "Customer ID": cust,
+                "p50_6": summary[6]["p50"],
+                "p50_12": summary[12]["p50"],
+                "p10_12": summary[12]["p10"],
+                "p90_12": summary[12]["p90"],
+            }
+        )
+    return pd.DataFrame.from_records(records).set_index("Customer ID")
+
+
+def cross_validate(
+    rows: pd.DataFrame,
+    customer_ids: set,
+    seed_base: int = 26,
+    n_repeats: int = 3,
+    n_splits: int = 5,
+) -> dict:
+    """Section D: 5-fold x 3-repeat customer cross-validation over ALL
+    customers (CONTEXT.md D16) -- the headline evaluation, because the
+    single 30% holdout is noisy enough (bootstrap 95% interval 0.60-0.80 on
+    12-month WAPE) that its point estimate is not trustworthy on its own.
+
+    Each fold refits Curve 1, Curve 2 and the cross-fitted retransform
+    exactly as production (same functions, same early-stop logic), only on
+    that fold's training customers, then scores the fold's held-out
+    customers. `revenue_error_12m_mean_old_in_sample` reports what the
+    pre-fix (in-sample smearing) method would have given, for comparison.
+    """
+    customers = np.sort(np.array(sorted(customer_ids)))
+    per_fold: list[dict] = []
+
+    for rep in range(n_repeats):
+        seed = seed_base + rep
+        kf = KFold(n_splits=n_splits, shuffle=True, random_state=seed)
+        for train_idx, test_idx in kf.split(customers):
+            fold_train_ids = set(customers[train_idx].tolist())
+            fold_test_ids = set(customers[test_idx].tolist())
+
+            booster1, _info1 = survival_model.fit(rows, fold_train_ids, seed=seed, save=False)
+            booster2, smearing_in_sample, info2 = monetary_model.fit(
+                rows, fold_train_ids, seed=seed, save=False
+            )
+
+            train_rows_active = rows[
+                rows["Customer ID"].isin(fold_train_ids) & (rows["active"] == 1)
+            ]
+            rt = retransform.fit_retransform(
+                train_rows_active,
+                monetary_model.FEATURE_COLS,
+                CATEGORICAL_FEATURES,
+                monetary_model.LGB_PARAMS,
+                num_boost_round=info2["best_iteration"],
+                seed=seed,
+            )
+            # Tweedie variant, refit the same way, so the D13 promotion gate
+            # (below, in cli.step_eval) can compare cross-validated numbers
+            # instead of the noisy single holdout.
+            booster2t, _vp, _info2t = monetary_model.fit_tweedie(
+                rows, fold_train_ids, seed=seed, save=False
+            )
+
+            test_rows = rows[rows["Customer ID"].isin(fold_test_ids)]
+            pred_log_arr = booster2.predict(
+                test_rows[monetary_model.FEATURE_COLS], num_iteration=booster2.best_iteration
+            )
+            p_active_arr = survival_model.predict_proba(booster1, test_rows)
+            e_spend_new_arr = retransform.expected_spend(pred_log_arr, rt)
+            e_spend_old_arr = np.clip(
+                smearing_in_sample * np.exp(pred_log_arr) - 1.0, a_min=0.0, a_max=None
+            )
+            e_spend_tweedie_arr = monetary_model.predict_spend_tweedie(booster2t, test_rows)
+
+            p_active_df = test_rows[["Customer ID", "t"]].copy()
+            p_active_df["value"] = p_active_arr
+            e_spend_new_df = test_rows[["Customer ID", "t"]].copy()
+            e_spend_new_df["value"] = e_spend_new_arr
+            e_spend_old_df = test_rows[["Customer ID", "t"]].copy()
+            e_spend_old_df["value"] = e_spend_old_arr
+            e_spend_tweedie_df = test_rows[["Customer ID", "t"]].copy()
+            e_spend_tweedie_df["value"] = e_spend_tweedie_arr
+            pred_log_df = test_rows[["Customer ID", "t"]].copy()
+            pred_log_df["value"] = pred_log_arr
+
+            ltv_new, _ = combine_mod.combine(p_active_df, e_spend_new_df, horizons=(6, 12))
+            ltv_old, _ = combine_mod.combine(p_active_df, e_spend_old_df, horizons=(6, 12))
+            ltv_tweedie, _ = combine_mod.combine(p_active_df, e_spend_tweedie_df, horizons=(6, 12))
+
+            actual_6 = test_rows[test_rows["t"] <= 6].groupby("Customer ID")["net_revenue"].sum()
+            actual_12 = test_rows.groupby("Customer ID")["net_revenue"].sum()
+
+            pred_table = _fold_predictive_table(p_active_df, pred_log_df, rt)
+
+            merged_new = (
+                ltv_new.set_index("Customer ID")
+                .join(actual_6.rename("actual_6"))
+                .join(actual_12.rename("actual_12"))
+                .join(pred_table)
+                .fillna(0.0)
+            )
+            merged_old = (
+                ltv_old.set_index("Customer ID")
+                .join(actual_6.rename("actual_6"))
+                .join(actual_12.rename("actual_12"))
+                .fillna(0.0)
+            )
+            merged_tweedie = (
+                ltv_tweedie.set_index("Customer ID")
+                .join(actual_6.rename("actual_6"))
+                .join(actual_12.rename("actual_12"))
+                .fillna(0.0)
+            )
+
+            per_fold.append(
+                {
+                    "wape_12m_p50": wape(
+                        merged_new["p50_12"].to_numpy(), merged_new["actual_12"].to_numpy()
+                    ),
+                    "wape_12m_mean": wape(
+                        merged_new["ltv_12"].to_numpy(), merged_new["actual_12"].to_numpy()
+                    ),
+                    "wape_6m_p50": wape(
+                        merged_new["p50_6"].to_numpy(), merged_new["actual_6"].to_numpy()
+                    ),
+                    "wape_6m_mean": wape(
+                        merged_new["ltv_6"].to_numpy(), merged_new["actual_6"].to_numpy()
+                    ),
+                    "revenue_error_12m_mean": _revenue_error(
+                        merged_new["ltv_12"].to_numpy(), merged_new["actual_12"].to_numpy()
+                    ),
+                    "revenue_error_12m_mean_old_in_sample": _revenue_error(
+                        merged_old["ltv_12"].to_numpy(), merged_old["actual_12"].to_numpy()
+                    ),
+                    "spearman_12m": spearman_corr(
+                        merged_new["ltv_12"].to_numpy(), merged_new["actual_12"].to_numpy()
+                    ),
+                    "top_decile_capture_12m": top_decile_capture(
+                        merged_new["ltv_12"].to_numpy(), merged_new["actual_12"].to_numpy()
+                    ),
+                    "interval_coverage_12m_p10_p90": float(
+                        np.mean(
+                            (merged_new["actual_12"].to_numpy() >= merged_new["p10_12"].to_numpy())
+                            & (merged_new["actual_12"].to_numpy() <= merged_new["p90_12"].to_numpy())
+                        )
+                    ),
+                    "wape_12m_tweedie": wape(
+                        merged_tweedie["ltv_12"].to_numpy(), merged_tweedie["actual_12"].to_numpy()
+                    ),
+                    "top_decile_capture_12m_tweedie": top_decile_capture(
+                        merged_tweedie["ltv_12"].to_numpy(), merged_tweedie["actual_12"].to_numpy()
+                    ),
+                }
+            )
+
+    fold_df = pd.DataFrame(per_fold)
+    summary = {
+        col: {"mean": float(fold_df[col].mean()), "sd": float(fold_df[col].std(ddof=1))}
+        for col in fold_df.columns
+    }
+    return {
+        "n_repeats": n_repeats,
+        "n_splits": n_splits,
+        "n_folds": len(per_fold),
+        "seed_base": seed_base,
+        "metrics": summary,
+    }

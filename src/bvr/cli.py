@@ -19,7 +19,8 @@ from bvr import combine as combine_mod
 from bvr import eval as eval_mod
 from bvr import features as features_mod
 from bvr import fetch as fetch_mod
-from bvr import monetary_model, survival_model
+from bvr import monetary_model, predictive, retransform, survival_model
+from bvr.features import CATEGORICAL_FEATURES
 
 ROOT = Path(__file__).resolve().parents[2]
 CKPT_DIR = ROOT / "outputs" / "checkpoints"
@@ -117,10 +118,26 @@ def step_train(force: bool = False) -> None:
         f"fit_customers={info1['fit_customers']} es_customers={info1['early_stop_customers']}"
     )
 
-    _booster2, smearing, info2 = monetary_model.fit(rows, train_ids)
+    _booster2, smearing_in_sample, info2 = monetary_model.fit(rows, train_ids)
     _log(
-        f"train curve2: best_iter={info2['best_iteration']} smearing={smearing:.4f} "
+        f"train curve2: best_iter={info2['best_iteration']} "
+        f"smearing_in_sample={smearing_in_sample:.4f} "
         f"fit_customers={info2['fit_customers']} es_customers={info2['early_stop_customers']}"
+    )
+
+    train_rows_active = rows[rows["Customer ID"].isin(train_ids) & (rows["active"] == 1)]
+    rt = retransform.fit_retransform(
+        train_rows_active,
+        monetary_model.FEATURE_COLS,
+        CATEGORICAL_FEATURES,
+        monetary_model.LGB_PARAMS,
+        num_boost_round=info2["best_iteration"],
+        seed=26,
+    )
+    (OUT_DIR / "spend_retransform.json").write_text(json.dumps(rt, indent=2))
+    _log(
+        f"train retransform: global_smearing={rt['global_smearing']:.4f} "
+        f"n_rows={rt['n_rows']:,} n_customers={rt['n_customers']:,}"
     )
 
     _booster2t, variance_power, info2t = monetary_model.fit_tweedie(rows, train_ids)
@@ -152,6 +169,30 @@ def _spend_variant_summary(ltv_df: pd.DataFrame, actual_6: pd.Series, actual_12:
     }
 
 
+def _predictive_table(p_active: pd.DataFrame, pred_log: pd.DataFrame, rt: dict) -> pd.DataFrame:
+    """p_active / pred_log: (Customer ID, t, value) frames. Returns one row
+    per customer: mean_6, p10_6, p50_6, p90_6, mean_12, p10_12, p50_12, p90_12
+    (bvr.predictive.summarize, seed always 26)."""
+    p_active_wide = p_active.pivot(index="Customer ID", columns="t", values="value").sort_index(axis=1)
+    pred_log_wide = pred_log.pivot(index="Customer ID", columns="t", values="value").sort_index(axis=1)
+    records = []
+    for cust in p_active_wide.index:
+        summary = predictive.summarize(
+            p_active_wide.loc[cust].to_numpy(), pred_log_wide.loc[cust].to_numpy(), rt,
+            horizons=(6, 12), seed=26,
+        )
+        records.append(
+            {
+                "Customer ID": cust,
+                "mean_6": summary[6]["mean"], "p10_6": summary[6]["p10"],
+                "p50_6": summary[6]["p50"], "p90_6": summary[6]["p90"],
+                "mean_12": summary[12]["mean"], "p10_12": summary[12]["p10"],
+                "p50_12": summary[12]["p50"], "p90_12": summary[12]["p90"],
+            }
+        )
+    return pd.DataFrame.from_records(records)
+
+
 def step_eval(force: bool = False) -> None:
     if _done("eval") and not force:
         _log("eval: skipped (checkpoint present)")
@@ -166,14 +207,19 @@ def step_eval(force: bool = False) -> None:
     booster2 = monetary_model.load()
     booster2_tweedie = monetary_model.load_tweedie()
     train_info = json.loads((OUT_DIR / "train_info.json").read_text())
-    smearing = train_info["curve2"]["smearing_factor"]
     variance_power = train_info["curve2_tweedie"]["variance_power"]
+    rt = json.loads((OUT_DIR / "spend_retransform.json").read_text())
 
     p_active = holdout_rows[["Customer ID", "t"]].copy()
     p_active["value"] = survival_model.predict_proba(booster1, holdout_rows)
 
+    pred_log = holdout_rows[["Customer ID", "t"]].copy()
+    pred_log["value"] = booster2.predict(
+        holdout_rows[monetary_model.FEATURE_COLS], num_iteration=booster2.best_iteration
+    )
+
     e_spend_current = holdout_rows[["Customer ID", "t"]].copy()
-    e_spend_current["value"] = monetary_model.predict_spend(booster2, smearing, holdout_rows)
+    e_spend_current["value"] = monetary_model.predict_spend(booster2, rt, holdout_rows)
 
     e_spend_tweedie = holdout_rows[["Customer ID", "t"]].copy()
     e_spend_tweedie["value"] = monetary_model.predict_spend_tweedie(booster2_tweedie, holdout_rows)
@@ -188,35 +234,50 @@ def step_eval(force: bool = False) -> None:
     summary_tweedie = _spend_variant_summary(ltv_tweedie, actual_6, actual_12)
     summary_tweedie["variance_power"] = variance_power
 
-    wape_improvement = summary_current["wape_12m"] - summary_tweedie["wape_12m"]
+    # Section D cross-validation over ALL customers -- the headline
+    # evaluation (CONTEXT.md D16). The Tweedie promotion decision (D13)
+    # is gated on this, not the single 30% holdout, whose bootstrap 95%
+    # interval on 12-month WAPE is wide enough to hide a real gap the
+    # other way (CONTEXT.md D14/D16).
+    all_customer_ids = train_ids | holdout_ids
+    cv_results = eval_mod.cross_validate(rows, all_customer_ids)
+    cv_metrics = cv_results["metrics"]
+
+    wape_improvement = cv_metrics["wape_12m_mean"]["mean"] - cv_metrics["wape_12m_tweedie"]["mean"]
     capture_holds = (
-        summary_tweedie["top_decile_capture_12m"] >= summary_current["top_decile_capture_12m"]
+        cv_metrics["top_decile_capture_12m_tweedie"]["mean"]
+        >= cv_metrics["top_decile_capture_12m"]["mean"]
     )
     promote_tweedie = wape_improvement >= 0.02 and capture_holds
     promoted = "tweedie" if promote_tweedie else "current"
     _log(
-        f"eval: spend model comparison current wape_12m={summary_current['wape_12m']:.4f} "
-        f"tweedie wape_12m={summary_tweedie['wape_12m']:.4f} (vp={variance_power}) "
+        f"eval: spend model comparison (cross-validated) current wape_12m_mean="
+        f"{cv_metrics['wape_12m_mean']['mean']:.4f} "
+        f"tweedie wape_12m_mean={cv_metrics['wape_12m_tweedie']['mean']:.4f} (vp={variance_power}) "
         f"improvement={wape_improvement:.4f} capture_holds={capture_holds} promoted={promoted}"
     )
 
     e_spend, ltv = (e_spend_tweedie, ltv_tweedie) if promote_tweedie else (e_spend_current, ltv_current)
+    predictive_pred = _predictive_table(p_active, pred_log, rt)
 
     metrics, _calibration = eval_mod.evaluate(
-        holdout_rows, p_active, e_spend, ltv, feat, train_rows, train_ids
+        holdout_rows, p_active, e_spend, ltv, predictive_pred, feat, train_rows, train_ids, cv_results
     )
     metrics["spend_model_variants"] = {
         "current": summary_current,
         "tweedie": summary_tweedie,
         "promoted": promoted,
         "promotion_rule": (
-            "promote tweedie only if holdout wape_12m improves by >= 0.02 "
-            "and top_decile_capture_12m does not fall; otherwise keep current"
+            "promote tweedie only if cross-validated (section D) 12m WAPE of the mean improves "
+            "by >= 0.02 and cross-validated top_decile_capture_12m does not fall; the single "
+            "holdout's numbers (spend_model_variants.current/tweedie above) are kept for "
+            "reference only and no longer gate the decision (CONTEXT.md D13/D16)"
         ),
     }
     (OUT_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2, default=str))
     _log(
-        f"eval: wape_6m={metrics['wape_6m']:.4f} wape_12m={metrics['wape_12m']:.4f} "
+        f"eval: wape_6m_mean={metrics['wape_6m_mean']:.4f} wape_12m_mean={metrics['wape_12m_mean']:.4f} "
+        f"wape_12m_p50={metrics['wape_12m_p50']:.4f} "
         f"holdout_customers={metrics['holdout_customers']:,}, done in {time.time() - t0:.1f}s"
     )
     _mark_done("eval")

@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+from bvr import retransform
 from bvr.features import ALL_FEATURES, CATEGORICAL_FEATURES
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -47,7 +48,7 @@ LGB_PARAMS = {
 TWEEDIE_VARIANCE_POWERS = (1.2, 1.5, 1.8)
 
 
-def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
+def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26, save: bool = True):
     train_rows = rows[rows["Customer ID"].isin(train_ids) & (rows["active"] == 1)]
     train_customers = sorted(train_rows["Customer ID"].unique().tolist())
     fit_cust, es_cust = train_test_split(train_customers, test_size=0.10, random_state=seed)
@@ -78,22 +79,25 @@ def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
 
     pred_log_fit = booster.predict(X_fit, num_iteration=booster.best_iteration)
     resid = y_fit.to_numpy() - pred_log_fit
-    smearing = float(np.mean(np.exp(resid)))
+    smearing_in_sample = float(np.mean(np.exp(resid)))
 
-    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    booster.save_model(str(MODEL_PATH))
+    if save:
+        MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+        booster.save_model(str(MODEL_PATH))
     info = {
         "best_iteration": int(booster.best_iteration),
         "fit_customers": len(fit_cust),
         "early_stop_customers": len(es_cust),
-        "smearing_factor": smearing,
+        "smearing_factor_in_sample": smearing_in_sample,
     }
-    return booster, smearing, info
+    return booster, smearing_in_sample, info
 
 
-def predict_spend(booster: lgb.Booster, smearing: float, rows: pd.DataFrame) -> np.ndarray:
+def predict_spend(booster: lgb.Booster, rt: dict, rows: pd.DataFrame) -> np.ndarray:
+    """rt: the cross-fitted retransform dict from retransform.fit_retransform
+    (loaded from outputs/spend_retransform.json in production)."""
     pred_log = booster.predict(rows[FEATURE_COLS], num_iteration=booster.best_iteration)
-    return np.clip(smearing * np.exp(pred_log) - 1.0, a_min=0.0, a_max=None)
+    return retransform.expected_spend(pred_log, rt)
 
 
 def load(path: Path = MODEL_PATH) -> lgb.Booster:
@@ -107,7 +111,7 @@ def _wape(pred: np.ndarray, actual: np.ndarray) -> float:
     return float(np.sum(np.abs(pred - actual)) / denom)
 
 
-def fit_tweedie(rows: pd.DataFrame, train_ids: set, seed: int = 26):
+def fit_tweedie(rows: pd.DataFrame, train_ids: set, seed: int = 26, save: bool = True):
     """Curve 2 variant: LightGBM `tweedie` objective on raw (untransformed)
     net revenue, no log1p / smearing -- the Tweedie log-link mean is already
     on the natural scale. Variance power is tuned on the same early-stop
@@ -153,8 +157,9 @@ def fit_tweedie(rows: pd.DataFrame, train_ids: set, seed: int = 26):
         if es_wape < best_wape:
             best_vp, best_booster, best_wape = vp, booster, es_wape
 
-    TWEEDIE_MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    best_booster.save_model(str(TWEEDIE_MODEL_PATH))
+    if save:
+        TWEEDIE_MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+        best_booster.save_model(str(TWEEDIE_MODEL_PATH))
     info = {
         "variance_power": best_vp,
         "variance_power_candidates": candidates,

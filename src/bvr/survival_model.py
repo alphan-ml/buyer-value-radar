@@ -34,7 +34,7 @@ LGB_PARAMS = {
 }
 
 
-def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
+def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26, save: bool = True):
     train_rows = rows[rows["Customer ID"].isin(train_ids)]
     train_customers = sorted(train_rows["Customer ID"].unique().tolist())
     fit_cust, es_cust = train_test_split(train_customers, test_size=0.10, random_state=seed)
@@ -60,8 +60,9 @@ def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
         valid_sets=[es_set],
         callbacks=[lgb.early_stopping(50, verbose=False), lgb.log_evaluation(0)],
     )
-    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    booster.save_model(str(MODEL_PATH))
+    if save:
+        MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+        booster.save_model(str(MODEL_PATH))
     info = {
         "best_iteration": int(booster.best_iteration),
         "fit_customers": len(fit_cust),

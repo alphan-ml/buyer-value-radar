@@ -20,7 +20,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.4"]
+# boto3 is only imported (never called) by tests/test_score_parity.py, which
+# loads aws-lambda/score.py to check it against bvr.predictive/retransform --
+# it is not a runtime dependency of the bvr package itself.
+dev = ["pytest>=8.0", "ruff>=0.4", "boto3>=1.28"]
 
 [project.scripts]
 bvr = "bvr.cli:main"
