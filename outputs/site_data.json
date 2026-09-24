@@ -2,13 +2,23 @@
   "model": "buyer-value-radar",
   "metrics": {
     "holdout_customers": 1295,
-    "wape_6m": 0.8281469689231127,
-    "wape_12m": 0.6884771494085729,
-    "mape_6m_actual_gt0": 14043125027505.137,
-    "median_ape_6m_actual_gt0": 0.5433911280479935,
+    "point_forecast": "p50",
+    "wape_6m": 0.8521684422078162,
+    "wape_12m": 0.7111301140713696,
+    "wape_6m_mean": 0.8521684422078162,
+    "wape_12m_mean": 0.7111301140713696,
+    "wape_6m_p50": 0.7680465683137931,
+    "wape_12m_p50": 0.671616299237792,
+    "revenue_error_6m_mean": 0.0771970887968621,
+    "revenue_error_12m_mean": 0.0846072782077675,
+    "interval_coverage_12m_p10_p90": 0.7930501930501931,
+    "wape_12m_p50_ci95": [
+      0.5761832634537486,
+      0.7947529965682842
+    ],
+    "median_ape_6m_actual_gt0": 0.509544845623012,
     "mape_6m_n": 567,
-    "mape_12m_actual_gt0": 20800980807028.402,
-    "median_ape_12m_actual_gt0": 0.5383179059204907,
+    "median_ape_12m_actual_gt0": 0.5195739432991291,
     "mape_12m_n": 797,
     "curve1_by_t": [
       {
@@ -84,181 +94,181 @@
         "n": 1295
       }
     ],
-    "curve2_wape_active_rows": 0.5142847257708445,
+    "curve2_wape_active_rows": 0.5335723757676449,
     "decile_table_12m": [
       {
         "decile": 1,
         "customers": 130,
-        "predicted": 7061.085571724761,
-        "actual": 17841.579999999998,
-        "wape": 1.172800057135207,
-        "aggregate_revenue_error": 0.6042342902520538
+        "predicted": 8688.11983449677,
+        "actual": 14998.060000000001,
+        "wape": 1.2675082308023575,
+        "aggregate_revenue_error": 0.42071709044391276
       },
       {
         "decile": 2,
         "customers": 129,
-        "predicted": 13302.284091953745,
-        "actual": 24782.370000000003,
-        "wape": 1.1288060277267706,
-        "aggregate_revenue_error": 0.4632359983345522
+        "predicted": 16185.697281350374,
+        "actual": 26322.170000000002,
+        "wape": 1.1398293620055266,
+        "aggregate_revenue_error": 0.38509259375840316
       },
       {
         "decile": 3,
         "customers": 130,
-        "predicted": 23785.737667581147,
-        "actual": 39706.34,
-        "wape": 1.1854253950940432,
-        "aggregate_revenue_error": 0.4009586965814238
+        "predicted": 27591.551426960843,
+        "actual": 39963.77,
+        "wape": 1.2397048945562332,
+        "aggregate_revenue_error": 0.3095858717292977
       },
       {
         "decile": 4,
         "customers": 129,
-        "predicted": 35283.584201450416,
-        "actual": 29881.229999999996,
-        "wape": 1.1489615494868897,
-        "aggregate_revenue_error": 0.1807942377690082
+        "predicted": 40313.96628107983,
+        "actual": 32282.89,
+        "wape": 1.1769339723012788,
+        "aggregate_revenue_error": 0.24877191233745904
       },
       {
         "decile": 5,
         "customers": 130,
-        "predicted": 47504.28403603607,
-        "actual": 38300.34,
-        "wape": 1.0480896016648718,
-        "aggregate_revenue_error": 0.24030972142900234
+        "predicted": 52412.78680447547,
+        "actual": 36465.380000000005,
+        "wape": 1.1937505291639339,
+        "aggregate_revenue_error": 0.43733005948314446
       },
       {
         "decile": 6,
         "customers": 129,
-        "predicted": 61408.834738139,
-        "actual": 60261.439999999995,
-        "wape": 0.9138267412156108,
-        "aggregate_revenue_error": 0.01904028078550733
+        "predicted": 66598.60625212544,
+        "actual": 59008.52,
+        "wape": 0.9278246912890542,
+        "aggregate_revenue_error": 0.1286269550926788
       },
       {
         "decile": 7,
         "customers": 129,
-        "predicted": 85437.0973520447,
-        "actual": 105554.1,
-        "wape": 0.8483584828895168,
-        "aggregate_revenue_error": 0.19058475841256098
+        "predicted": 92276.84098843184,
+        "actual": 108773.56000000001,
+        "wape": 0.8218526709287931,
+        "aggregate_revenue_error": 0.1516611115014363
       },
       {
         "decile": 8,
         "customers": 130,
-        "predicted": 141622.48194549687,
-        "actual": 148034.32,
-        "wape": 0.8708464743054196,
-        "aggregate_revenue_error": 0.043313186121320645
+        "predicted": 151619.2148715942,
+        "actual": 151009.32,
+        "wape": 0.8978145008594985,
+        "aggregate_revenue_error": 0.00403878960314622
       },
       {
         "decile": 9,
         "customers": 129,
-        "predicted": 250292.6425879987,
-        "actual": 251610.79000000004,
-        "wape": 0.6391002318526531,
-        "aggregate_revenue_error": 0.005238834995913052
+        "predicted": 268064.1445842105,
+        "actual": 250489.18,
+        "wape": 0.6407093877864666,
+        "aggregate_revenue_error": 0.07016256983319791
       },
       {
         "decile": 10,
         "customers": 130,
-        "predicted": 828030.1265341814,
-        "actual": 838733.6900000001,
-        "wape": 0.555134004478833,
-        "aggregate_revenue_error": 0.012761575686578949
+        "predicted": 962494.7316700158,
+        "actual": 835393.3500000001,
+        "wape": 0.5809057357196035,
+        "aggregate_revenue_error": 0.1521455511586437
       }
     ],
     "segment_country_group": [
       {
         "country_group": "Europe",
         "customers": 88,
-        "predicted": 144582.14186122248,
+        "predicted": 163412.0760301454,
         "actual": 180991.72000000003,
-        "wape": 0.6927777303132011,
-        "aggregate_revenue_error": 0.2011670928304209
+        "wape": 0.7126427376049955,
+        "aggregate_revenue_error": 0.09712954808018084
       },
       {
         "country_group": "Rest of world",
         "customers": 14,
-        "predicted": 19981.0553900837,
+        "predicted": 22835.585281783504,
         "actual": 13914.670000000002,
-        "wape": 1.3952080149073869,
-        "aggregate_revenue_error": 0.4359704822380766
+        "wape": 1.5074068592573364,
+        "aggregate_revenue_error": 0.6411158354300533
       },
       {
         "country_group": "United Kingdom",
         "customers": 1193,
-        "predicted": 1329164.9614753008,
+        "predicted": 1499997.9986828123,
         "actual": 1359799.81,
-        "wape": 0.6790529788815406,
-        "aggregate_revenue_error": 0.022528940142078135
+        "wape": 0.7009549979914481,
+        "aggregate_revenue_error": 0.1031020799177875
       }
     ],
     "segment_buyer_size_tercile": [
       {
         "buyer_size_tercile": "low",
         "customers": 432,
-        "predicted": 65289.56768616097,
+        "predicted": 76469.29753823607,
         "actual": 84540.07,
-        "wape": 1.2006686626313958,
-        "aggregate_revenue_error": 0.2277086157349886
+        "wape": 1.266841457076513,
+        "aggregate_revenue_error": 0.09546682965561694
       },
       {
         "buyer_size_tercile": "mid",
         "customers": 431,
-        "predicted": 193636.8100447776,
+        "predicted": 210919.84092614165,
         "actual": 192435.65999999997,
-        "wape": 0.979040420737966,
-        "aggregate_revenue_error": 0.006241826721604688
+        "wape": 1.0030746310581509,
+        "aggregate_revenue_error": 0.09605382352803883
       },
       {
         "buyer_size_tercile": "high",
         "customers": 432,
-        "predicted": 1234801.7809956684,
+        "predicted": 1398856.5215303632,
         "actual": 1277730.47,
-        "wape": 0.6109841317993857,
-        "aggregate_revenue_error": 0.033597609208091905
+        "wape": 0.6305609047582051,
+        "aggregate_revenue_error": 0.09479781094236821
       }
     ],
     "segment_first_purchase_quarter": [
       {
         "first_purchase_quarter": "2009Q4",
         "customers": 320,
-        "predicted": 721698.279884544,
+        "predicted": 824259.571052099,
         "actual": 746915.4199999999,
-        "wape": 0.5343024156832925,
-        "aggregate_revenue_error": 0.033761707738549515
+        "wape": 0.5461414893485752,
+        "aggregate_revenue_error": 0.10355141824773022
       },
       {
         "first_purchase_quarter": "2010Q1",
         "customers": 351,
-        "predicted": 393265.56798135943,
+        "predicted": 439685.7855661858,
         "actual": 363023.94,
-        "wape": 0.810366481468224,
-        "aggregate_revenue_error": 0.08330477593670386
+        "wape": 0.8632054922818503,
+        "aggregate_revenue_error": 0.21117573008046184
       },
       {
         "first_purchase_quarter": "2010Q2",
         "customers": 225,
-        "predicted": 137405.7551511505,
+        "predicted": 154686.7559625182,
         "actual": 156731.27999999997,
-        "wape": 0.771774271375837,
-        "aggregate_revenue_error": 0.1233035603923447
+        "wape": 0.7900441461397039,
+        "aggregate_revenue_error": 0.013044773433112911
       },
       {
         "first_purchase_quarter": "2010Q3",
         "customers": 183,
-        "predicted": 110236.88357241312,
+        "predicted": 119639.31778455919,
         "actual": 115422.68,
-        "wape": 0.9808011755520768,
-        "aggregate_revenue_error": 0.044928747344862144
+        "wape": 1.0043630366112897,
+        "aggregate_revenue_error": 0.036532142422608736
       },
       {
         "first_purchase_quarter": "2010Q4",
         "customers": 216,
-        "predicted": 131121.6721371399,
+        "predicted": 147974.22962937882,
         "actual": 172612.88,
-        "wape": 0.8318811057353404,
-        "aggregate_revenue_error": 0.24037144773240626
+        "wape": 0.8415318948969419,
+        "aggregate_revenue_error": 0.14273935045068004
       }
     ],
     "baselines": {
@@ -440,14 +450,66 @@
       }
     },
     "ranking": {
-      "spearman_12m": 0.6116333435813396,
-      "top_decile_capture_12m": 0.539480507635462
+      "spearman_12m": 0.6119576233298851,
+      "top_decile_capture_12m": 0.537331973076328
+    },
+    "cv": {
+      "n_repeats": 3,
+      "n_splits": 5,
+      "n_folds": 15,
+      "seed_base": 26,
+      "metrics": {
+        "wape_12m_p50": {
+          "mean": 0.6349431717177532,
+          "sd": 0.06694786984215197
+        },
+        "wape_12m_mean": {
+          "mean": 0.6601850327796974,
+          "sd": 0.07322374051301771
+        },
+        "wape_6m_p50": {
+          "mean": 0.6857450103368445,
+          "sd": 0.06326369191442104
+        },
+        "wape_6m_mean": {
+          "mean": 0.7522801892707516,
+          "sd": 0.07196412382745278
+        },
+        "revenue_error_12m_mean": {
+          "mean": -0.043353625106271755,
+          "sd": 0.10503194784556905
+        },
+        "revenue_error_12m_mean_old_in_sample": {
+          "mean": -0.1507342644623765,
+          "sd": 0.09513071872803287
+        },
+        "spearman_12m": {
+          "mean": 0.6304673893076477,
+          "sd": 0.018017853673970047
+        },
+        "top_decile_capture_12m": {
+          "mean": 0.6128841822654164,
+          "sd": 0.0565588172903161
+        },
+        "interval_coverage_12m_p10_p90": {
+          "mean": 0.794311019582223,
+          "sd": 0.014619636823733538
+        },
+        "wape_12m_tweedie": {
+          "mean": 0.6624872975447861,
+          "sd": 0.06007300511506057
+        },
+        "top_decile_capture_12m_tweedie": {
+          "mean": 0.6111782636467392,
+          "sd": 0.05696277331669243
+        }
+      }
     },
     "spend_model_variants": {
       "current": {
-        "wape_6m": 0.8281469689231127,
-        "wape_12m": 0.6884771494085729,
-        "top_decile_capture_12m": 0.539480507635462
+        "wape_6m": 0.8521684422078162,
+        "wape_12m": 0.7111301140713696,
+        "top_decile_capture_12m": 0.537331973076328
       },
       "tweedie": {
         "wape_6m": 0.8439401789729245,
@@ -456,69 +518,69 @@
         "variance_power": 1.2
       },
       "promoted": "current",
-      "promotion_rule": "promote tweedie only if holdout wape_12m improves by >= 0.02 and top_decile_capture_12m does not fall; otherwise keep current"
+      "promotion_rule": "promote tweedie only if cross-validated (section D) 12m WAPE of the mean improves by >= 0.02 and cross-validated top_decile_capture_12m does not fall; the single holdout's numbers (spend_model_variants.current/tweedie above) are kept for reference only and no longer gate the decision (CONTEXT.md D13/D16)"
     }
   },
   "calibration": {
     "calibration_by_month": [
       {
         "t": 1,
-        "predicted": 88429.39737949867,
+        "predicted": 99937.71593131628,
         "actual": 74368.26
       },
       {
         "t": 2,
-        "predicted": 97101.60933898303,
+        "predicted": 108722.50799529011,
         "actual": 103193.39
       },
       {
         "t": 3,
-        "predicted": 98039.69494594245,
+        "predicted": 110163.6769982194,
         "actual": 87613.81
       },
       {
         "t": 4,
-        "predicted": 103044.58956204777,
+        "predicted": 116168.35914531011,
         "actual": 122385.88
       },
       {
         "t": 5,
-        "predicted": 102137.78039542591,
+        "predicted": 114933.00382645124,
         "actual": 108231.43000000001
       },
       {
         "t": 6,
-        "predicted": 122157.40891050462,
+        "predicted": 138257.694095134,
         "actual": 143071.71
       },
       {
         "t": 7,
-        "predicted": 111794.72037903723,
+        "predicted": 126558.73041553918,
         "actual": 100762.9
       },
       {
         "t": 8,
-        "predicted": 116280.81244917937,
+        "predicted": 132013.51172917974,
         "actual": 147254.83
       },
       {
         "t": 9,
-        "predicted": 124138.49341040557,
+        "predicted": 140840.35601723765,
         "actual": 121460.69
       },
       {
         "t": 10,
-        "predicted": 155084.61465706612,
+        "predicted": 174535.36274814935,
         "actual": 169541.78
       },
       {
         "t": 11,
-        "predicted": 178915.77879134644,
+        "predicted": 201396.07941220416,
         "actual": 187131.13
       },
       {
         "t": 12,
-        "predicted": 196603.25850716975,
+        "predicted": 222718.66168070983,
         "actual": 189690.39
       }
     ]
@@ -546,7 +608,7 @@
       "best_iteration": 156,
       "fit_customers": 1707,
       "early_stop_customers": 190,
-      "smearing_factor": 1.1541291764246462
+      "smearing_factor_in_sample": 1.1541291764246462
     },
     "curve2_tweedie": {
       "variance_power": 1.2,

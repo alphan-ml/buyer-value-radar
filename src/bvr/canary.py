@@ -25,7 +25,9 @@ METRICS_PATH = ROOT / "outputs" / "metrics.json"
 
 SYSTEM = "buyer-value-radar"
 ENDPOINT = "https://guijt78nlb.execute-api.us-east-1.amazonaws.com/score"
-METRIC = "wape_12m"
+# P50 is the per-customer point forecast (CONTEXT.md D15); the canary gates
+# on it, using the endpoint's p50_12, not the (mean-based) ltv_12.
+METRIC = "wape_12m_p50"
 TOLERANCE = 0.060
 REQUEST_TIMEOUT_S = 20
 
@@ -58,6 +60,15 @@ def _wape(pairs: list[tuple[float, float]]) -> float | None:
     return sum(abs(pred - actual) for pred, actual in pairs) / den
 
 
+def _revenue_error(pairs: list[tuple[float, float]]) -> float | None:
+    """Signed (pred - actual) / actual on the totals. None if there is
+    nothing to divide by."""
+    den = sum(actual for _pred, actual in pairs)
+    if den == 0:
+        return None
+    return (sum(pred for pred, _actual in pairs) - den) / den
+
+
 def _percentile(sorted_values: list[float], p: float) -> int:
     if not sorted_values:
         return 0
@@ -68,11 +79,12 @@ def _percentile(sorted_values: list[float], p: float) -> int:
 def run() -> dict:
     rows = json.loads(CANARY_ROWS_PATH.read_text())["rows"]
     recorded_metrics = json.loads(METRICS_PATH.read_text())
-    recorded_12m = recorded_metrics["wape_12m"]
-    recorded_6m = recorded_metrics["wape_6m"]
+    recorded_12m = recorded_metrics["wape_12m_p50"]
+    recorded_6m = recorded_metrics["wape_6m_p50"]
 
     pairs_12: list[tuple[float, float]] = []
     pairs_6: list[tuple[float, float]] = []
+    ltv_pairs_12: list[tuple[float, float]] = []
     latencies_ms: list[float] = []
     errors = 0
 
@@ -82,8 +94,9 @@ def run() -> dict:
         try:
             result = _score(row["request"])
             latencies_ms.append((time.time() - t0) * 1000.0)
-            pairs_6.append((result["ltv_6"], row["actual_6m"]))
-            pairs_12.append((result["ltv_12"], row["actual_12m"]))
+            pairs_6.append((result["p50_6"], row["actual_6m"]))
+            pairs_12.append((result["p50_12"], row["actual_12m"]))
+            ltv_pairs_12.append((result["ltv_12"], row["actual_12m"]))
         except (urllib.error.URLError, TimeoutError, KeyError, ValueError, OSError) as e:
             errors += 1
             print(f"error scoring customer {row['customer_id']}: {e}", file=sys.stderr)
@@ -91,6 +104,7 @@ def run() -> dict:
 
     observed_12m = _wape(pairs_12)
     observed_6m = _wape(pairs_6)
+    revenue_error_12m = _revenue_error(ltv_pairs_12)
 
     match = (
         errors == 0
@@ -109,13 +123,15 @@ def run() -> dict:
     ]
     if observed_12m is not None:
         lines.append(
-            f"wape_12m {observed_12m:.4f} · recorded {recorded_12m:.4f} · "
+            f"wape_12m_p50 {observed_12m:.4f} · recorded {recorded_12m:.4f} · "
             f"tolerance {TOLERANCE:.3f} · {'MATCH' if match else 'NO MATCH'}"
         )
     else:
-        lines.append("wape_12m: no rows scored successfully · NO MATCH")
+        lines.append("wape_12m_p50: no rows scored successfully · NO MATCH")
     if observed_6m is not None:
-        lines.append(f"wape_6m {observed_6m:.4f} · recorded {recorded_6m:.4f}")
+        lines.append(f"wape_6m_p50 {observed_6m:.4f} · recorded {recorded_6m:.4f}")
+    if revenue_error_12m is not None:
+        lines.append(f"revenue_error_12m (ltv_12, mean) {revenue_error_12m:+.4f}")
     lines.append(f"p50 {p50_ms} ms · p95 {p95_ms} ms · {duration_s:.1f}s total")
 
     return {
@@ -135,7 +151,11 @@ def run() -> dict:
         "errors": errors,
         "duration_s": round(duration_s, 1),
         "lines": lines,
-        "extra": {"wape_6m": observed_6m, "recorded_wape_6m": recorded_6m},
+        "extra": {
+            "wape_6m_p50": observed_6m,
+            "recorded_wape_6m_p50": recorded_6m,
+            "revenue_error_12m_mean": revenue_error_12m,
+        },
     }
 
 

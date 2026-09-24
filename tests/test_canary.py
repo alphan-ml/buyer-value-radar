@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from bvr import canary
 
 
@@ -36,7 +38,7 @@ def test_run_forces_match_false_on_any_error(tmp_path, monkeypatch):
         ]
     }))
     metrics_path = tmp_path / "metrics.json"
-    metrics_path.write_text(json.dumps({"wape_12m": 0.0, "wape_6m": 0.0}))
+    metrics_path.write_text(json.dumps({"wape_12m_p50": 0.0, "wape_6m_p50": 0.0}))
 
     monkeypatch.setattr(canary, "CANARY_ROWS_PATH", rows_path)
     monkeypatch.setattr(canary, "METRICS_PATH", metrics_path)
@@ -46,7 +48,8 @@ def test_run_forces_match_false_on_any_error(tmp_path, monkeypatch):
     def fake_score(request):
         calls["n"] += 1
         if calls["n"] == 1:
-            return {"ltv_6": 100.0, "ltv_12": 200.0}  # perfect match, would pass alone
+            # perfect match on p50, would pass alone
+            return {"p50_6": 100.0, "p50_12": 200.0, "ltv_6": 100.0, "ltv_12": 200.0}
         raise OSError("endpoint unreachable")
 
     monkeypatch.setattr(canary, "_score", fake_score)
@@ -58,7 +61,8 @@ def test_run_forces_match_false_on_any_error(tmp_path, monkeypatch):
     assert record["n"] == 2
     # the one successful row's real numbers are used, not a fabricated fallback
     assert record["observed"] == 0.0
-    assert record["extra"]["wape_6m"] == 0.0
+    assert record["extra"]["wape_6m_p50"] == 0.0
+    assert record["extra"]["revenue_error_12m_mean"] == 0.0
 
 
 def test_run_matches_when_within_tolerance(tmp_path, monkeypatch):
@@ -69,15 +73,21 @@ def test_run_matches_when_within_tolerance(tmp_path, monkeypatch):
         ]
     }))
     metrics_path = tmp_path / "metrics.json"
-    metrics_path.write_text(json.dumps({"wape_12m": 0.5, "wape_6m": 0.5}))
+    metrics_path.write_text(json.dumps({"wape_12m_p50": 0.5, "wape_6m_p50": 0.5}))
 
     monkeypatch.setattr(canary, "CANARY_ROWS_PATH", rows_path)
     monkeypatch.setattr(canary, "METRICS_PATH", metrics_path)
-    monkeypatch.setattr(canary, "_score", lambda request: {"ltv_6": 150.0, "ltv_12": 300.0})
+    monkeypatch.setattr(
+        canary,
+        "_score",
+        lambda request: {"p50_6": 150.0, "p50_12": 300.0, "ltv_6": 140.0, "ltv_12": 280.0},
+    )
 
     record = canary.run()
 
     assert record["errors"] == 0
     assert record["observed"] == 0.5
     assert record["match"] is True
-    assert len(record["lines"]) <= 8
+    # revenue error of ltv_12 (mean): (280 - 200) / 200 = 0.4
+    assert record["extra"]["revenue_error_12m_mean"] == pytest.approx(0.4)
+    assert len(record["lines"]) <= 9
