@@ -47,7 +47,7 @@ LGB_PARAMS = {
 TWEEDIE_VARIANCE_POWERS = (1.2, 1.5, 1.8)
 
 
-def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
+def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26, *, save_model: bool = True):
     train_rows = rows[rows["Customer ID"].isin(train_ids) & (rows["active"] == 1)]
     train_customers = sorted(train_rows["Customer ID"].unique().tolist())
     fit_cust, es_cust = train_test_split(train_customers, test_size=0.10, random_state=seed)
@@ -80,8 +80,9 @@ def fit(rows: pd.DataFrame, train_ids: set, seed: int = 26):
     resid = y_fit.to_numpy() - pred_log_fit
     smearing = float(np.mean(np.exp(resid)))
 
-    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    booster.save_model(str(MODEL_PATH))
+    if save_model:
+        MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+        booster.save_model(str(MODEL_PATH))
     info = {
         "best_iteration": int(booster.best_iteration),
         "fit_customers": len(fit_cust),
