@@ -1,0 +1,45 @@
+{
+  "selection_set": "20% of existing training customers only",
+  "fit_customers": 2415,
+  "validation_customers": 604,
+  "holdout_customers_accessed": 0,
+  "holdout_ids_excluded": 1295,
+  "target_definition": "signed net revenue over months 1-6 and 1-12",
+  "negative_12m_targets_in_validation": 4,
+  "comparison": {
+    "repeat_spend": {
+      "wape_6m": 1.1088907979244298,
+      "wape_12m": 0.620370629902444,
+      "portfolio_revenue_gap_12m": 0.3060406447146637,
+      "spearman_12m": 0.6279880215603657,
+      "top_decile_capture_12m": 0.6897432068657728,
+      "n_customers": 604
+    },
+    "direct_mae": {
+      "wape_6m": 0.7086146583613095,
+      "wape_12m": 0.6896829389620198,
+      "portfolio_revenue_gap_12m": 0.4477631656711408,
+      "spearman_12m": 0.6225585640329745,
+      "top_decile_capture_12m": 0.698115664838395,
+      "n_customers": 604
+    },
+    "direct_tweedie": {
+      "wape_6m": 0.5781438451722762,
+      "wape_12m": 0.5772962584872711,
+      "portfolio_revenue_gap_12m": 0.2482562492455486,
+      "spearman_12m": 0.6170368000108286,
+      "top_decile_capture_12m": 0.6839779612533877,
+      "n_customers": 604
+    }
+  },
+  "best_validation_wape_12m": "direct_tweedie",
+  "release_status": "experiment_only; no automatic promotion or claims of improved holdout performance",
+  "provenance": {
+    "run_id": 38737650379,
+    "run_url": "https://github.com/alphan-ml/buyer-value-radar/actions/runs/38737650379",
+    "source_commit": "123e7769414bf00e324b7c221d8bad173149ff19",
+    "date_utc": "2026-10-15",
+    "status": "CI experiment (not release performance)",
+    "schema_version": 1
+  }
+}
