@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+from bvr import combine as combine_mod, features as feature_mod, monetary_model, survival_model
 from bvr.features import ALL_FEATURES, CATEGORICAL_FEATURES
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -79,6 +80,7 @@ def run_validation(
     train_ids: set,
     holdout_ids: set,
     seed: int = SEED,
+    include_two_curve: bool = False,
 ) -> dict:
     """Split train customers again. Neither training nor selection touches holdout."""
     train_ids, holdout_ids = set(train_ids), set(holdout_ids)
@@ -128,6 +130,27 @@ def run_validation(
             forecasts[horizon] = np.maximum(model.predict(x_val), 0)
         candidates[key] = score(y6, y12, forecasts[6], forecasts[12])
 
+    if include_two_curve:
+        # Like-for-like counterpart to the production architecture, retrained
+        # only on fit_ids. Do not overwrite the released checkpoint artifacts.
+        all_rows = feature_mod.assemble_rows(features, monthly)
+        val_rows = all_rows.loc[all_rows["Customer ID"].isin(val_ids)].copy()
+        active_model, _ = survival_model.fit(all_rows, fit_ids, seed=seed, save_model=False)
+        spend_model, smearing, _ = monetary_model.fit(
+            all_rows, fit_ids, seed=seed, save_model=False
+        )
+        probability = val_rows[["Customer ID", "t"]].copy()
+        probability["value"] = survival_model.predict_proba(active_model, val_rows)
+        spend = val_rows[["Customer ID", "t"]].copy()
+        spend["value"] = monetary_model.predict_spend(spend_model, smearing, val_rows)
+        forecast, _ = combine_mod.combine(probability, spend)
+        forecast = forecast.set_index("Customer ID").reindex(val.index)
+        if forecast.isna().any().any():
+            raise ValueError("two-curve challenger did not score every validation customer")
+        candidates["two_curve_retrained"] = score(
+            y6, y12, forecast["ltv_6"].to_numpy(), forecast["ltv_12"].to_numpy()
+        )
+
     winner = min(candidates, key=lambda key: candidates[key]["wape_12m"])
     return {
         "selection_set": "20% of existing training customers only",
@@ -155,6 +178,7 @@ def main() -> None:
         pd.read_parquet(target_path),
         set(split["train_ids"]),
         set(split["holdout_ids"]),
+        include_two_curve=True,
     )
     out = OUT_DIR / "challenger_validation.json"
     out.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
