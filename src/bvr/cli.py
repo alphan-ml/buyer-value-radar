@@ -188,30 +188,27 @@ def step_eval(force: bool = False) -> None:
     summary_tweedie = _spend_variant_summary(ltv_tweedie, actual_6, actual_12)
     summary_tweedie["variance_power"] = variance_power
 
-    wape_improvement = summary_current["wape_12m"] - summary_tweedie["wape_12m"]
-    capture_holds = (
-        summary_tweedie["top_decile_capture_12m"] >= summary_current["top_decile_capture_12m"]
-    )
-    promote_tweedie = wape_improvement >= 0.02 and capture_holds
-    promoted = "tweedie" if promote_tweedie else "current"
+    # Holdout performance is reported, never used to select or promote a model.
+    # Selection must use training-only validation, followed by a fresh locked
+    # final holdout for the chosen candidate.
+    promoted = "current"
     _log(
-        f"eval: spend model comparison current wape_12m={summary_current['wape_12m']:.4f} "
-        f"tweedie wape_12m={summary_tweedie['wape_12m']:.4f} (vp={variance_power}) "
-        f"improvement={wape_improvement:.4f} capture_holds={capture_holds} promoted={promoted}"
+        f"eval: diagnostic comparison current wape_12m={summary_current['wape_12m']:.4f} "
+        f"tweedie wape_12m={summary_tweedie['wape_12m']:.4f} (vp={variance_power}); "
+        "no promotion from holdout results"
     )
-
-    e_spend, ltv = (e_spend_tweedie, ltv_tweedie) if promote_tweedie else (e_spend_current, ltv_current)
 
     metrics, _calibration = eval_mod.evaluate(
-        holdout_rows, p_active, e_spend, ltv, feat, train_rows, train_ids
+        holdout_rows, p_active, e_spend_current, ltv_current, feat, train_rows, train_ids
     )
     metrics["spend_model_variants"] = {
         "current": summary_current,
         "tweedie": summary_tweedie,
         "promoted": promoted,
+        "selection_status": "locked_serving_model; diagnostics_only",
         "promotion_rule": (
-            "promote tweedie only if holdout wape_12m improves by >= 0.02 "
-            "and top_decile_capture_12m does not fall; otherwise keep current"
+            "Holdout is reserved for final evaluation. Compare challengers on a "
+            "training-derived validation subset before any separate final evaluation."
         ),
     }
     (OUT_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2, default=str))
