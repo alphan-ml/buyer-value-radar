@@ -3,7 +3,7 @@ import pandas as pd
 import pytest
 
 from bvr.activity_audit import audit_activity_labels
-from bvr.challengers import run_validation, score, target_totals
+from bvr.challengers import paired_wape_delta_ci, run_validation, score, target_totals
 from bvr.features import ALL_FEATURES, T0
 
 
@@ -57,3 +57,13 @@ def test_challenger_validation_never_scores_heldout_customers():
     assert set(result["comparison"]) == {"repeat_spend", "direct_mae", "direct_tweedie"}
     assert np.isfinite(result["comparison"]["direct_mae"]["wape_12m"])
     assert result["release_status"].startswith("experiment_only")
+
+def test_paired_bootstrap_keeps_same_customers_and_sign():
+    actual = np.array([10., 20., 30., 40.])
+    model = np.array([10., 20., 30., 40.])
+    baseline = np.array([0., 0., 0., 0.])
+    out = paired_wape_delta_ci(actual, model, baseline, n_resamples=200)
+    assert out["delta_wape_12m"] == -1.0
+    assert out["delta_wape_95pct_ci"] == pytest.approx([-1., -1.])
+    assert out["p_bootstrap_challenger_better"] == 1.0
+
