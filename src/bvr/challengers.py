@@ -14,9 +14,9 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from bvr import monetary_model, survival_model
 from bvr import combine as combine_mod
 from bvr import features as feature_mod
+from bvr import monetary_model, survival_model
 from bvr.features import ALL_FEATURES, CATEGORICAL_FEATURES
 
 ROOT = Path(__file__).resolve().parents[2]
