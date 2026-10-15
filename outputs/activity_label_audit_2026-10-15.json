@@ -1,0 +1,17 @@
+{
+  "customer_months": 51768,
+  "purchase_active_months": 9163,
+  "net_revenue_active_months": 9114,
+  "purchase_but_net_inactive_months": 49,
+  "net_active_without_positive_purchase_months": 0,
+  "pct_activity_label_disagreement": 0.0009465306753206614,
+  "interpretation": "A purchase-based activity definition differs from positive-net-revenue activity when returns/cancellations offset purchases. This is an audit, not a change to the previously reported model or holdout metrics.",
+  "provenance": {
+    "run_id": 38737650379,
+    "run_url": "https://github.com/alphan-ml/buyer-value-radar/actions/runs/38737650379",
+    "source_commit": "123e7769414bf00e324b7c221d8bad173149ff19",
+    "date_utc": "2026-10-15",
+    "status": "CI experiment (not release performance)",
+    "schema_version": 1
+  }
+}
