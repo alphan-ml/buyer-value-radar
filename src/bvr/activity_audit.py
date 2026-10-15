@@ -44,7 +44,7 @@ def audit_activity_labels(cleaned: pd.DataFrame, monthly_targets: pd.DataFrame) 
 
     cancelled = purchase_active & ~net_active
     return {
-        "customer_months": int(len(indexed)),
+        "customer_months": len(indexed),
         "purchase_active_months": int(purchase_active.sum()),
         "net_revenue_active_months": int(net_active.sum()),
         "purchase_but_net_inactive_months": int(cancelled.sum()),
