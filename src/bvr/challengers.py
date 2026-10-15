@@ -67,6 +67,35 @@ def score(actual6: np.ndarray, actual12: np.ndarray, pred6: np.ndarray, pred12: 
     }
 
 
+def paired_wape_delta_ci(
+    actual: np.ndarray,
+    challenger: np.ndarray,
+    incumbent: np.ndarray,
+    n_resamples: int = 1000,
+    seed: int = SEED,
+) -> dict:
+    """Paired customer-bootstrap interval; negative means challenger is better."""
+    actual = np.asarray(actual, dtype=float)
+    challenger = np.asarray(challenger, dtype=float)
+    incumbent = np.asarray(incumbent, dtype=float)
+    if not (len(actual) == len(challenger) == len(incumbent)) or not len(actual):
+        raise ValueError("paired customer arrays must be nonempty and equal length")
+    draws = np.random.default_rng(seed).integers(0, len(actual), size=(n_resamples, len(actual)))
+    denominators = np.abs(actual)[draws].sum(axis=1)
+    valid = denominators > 0
+    if not valid.any():
+        raise ValueError("bootstrap samples have zero actual spend")
+    errors = np.abs(challenger - actual) - np.abs(incumbent - actual)
+    differences = errors[draws].sum(axis=1)[valid] / denominators[valid]
+    return {
+        "delta_wape_12m": _wape(actual, challenger) - _wape(actual, incumbent),
+        "delta_wape_95pct_ci": np.percentile(differences, [2.5, 97.5]).tolist(),
+        "p_bootstrap_challenger_better": float((differences < 0).mean()),
+        "n_bootstrap_resamples": int(n_resamples),
+        "interpretation": "negative delta is better; uncertainty resampled by customer",
+    }
+
+
 def _matrix(df: pd.DataFrame, known_categories: dict[str, list]) -> pd.DataFrame:
     data = df[ALL_FEATURES].copy()
     for col, categories in known_categories.items():
@@ -109,6 +138,7 @@ def run_validation(
     # Holdout-access-free baseline: carry trailing spend forward unchanged.
     history = val["monetary_total"].clip(lower=0).to_numpy()
     candidates = {"repeat_spend": score(y6, y12, history / 2, history)}
+    predictions_12m = {"repeat_spend": history}
     for key, objective in [("direct_mae", "regression_l1"), ("direct_tweedie", "tweedie")]:
         forecasts = {}
         for horizon in (6, 12):
@@ -129,6 +159,7 @@ def run_validation(
             model.fit(x_fit, train_target, categorical_feature=CATEGORICAL_FEATURES)
             forecasts[horizon] = np.maximum(model.predict(x_val), 0)
         candidates[key] = score(y6, y12, forecasts[6], forecasts[12])
+        predictions_12m[key] = forecasts[12]
 
     if include_two_curve:
         # Like-for-like counterpart to the production architecture, retrained
@@ -150,6 +181,16 @@ def run_validation(
         candidates["two_curve_retrained"] = score(
             y6, y12, forecast["ltv_6"].to_numpy(), forecast["ltv_12"].to_numpy()
         )
+        predictions_12m["two_curve_retrained"] = forecast["ltv_12"].to_numpy()
+
+    comparisons_to_incumbent = {}
+    if "two_curve_retrained" in predictions_12m:
+        reference = predictions_12m["two_curve_retrained"]
+        for key, challenger_prediction in predictions_12m.items():
+            if key != "two_curve_retrained":
+                comparisons_to_incumbent[key] = paired_wape_delta_ci(
+                    y12, challenger_prediction, reference, seed=seed
+                )
 
     winner = min(candidates, key=lambda key: candidates[key]["wape_12m"])
     return {
@@ -161,6 +202,7 @@ def run_validation(
         "target_definition": "signed net revenue over months 1-6 and 1-12",
         "negative_12m_targets_in_validation": int((y12 < 0).sum()),
         "comparison": candidates,
+        "paired_bootstrap_vs_two_curve": comparisons_to_incumbent,
         "best_validation_wape_12m": winner,
         "release_status": "experiment_only; no automatic promotion or claims of improved holdout performance",
     }
