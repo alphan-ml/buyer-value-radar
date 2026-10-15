@@ -64,9 +64,9 @@ The model beats both naive baselines on every metric here. Full baseline decile 
 
 ## Spend-model variant: Tweedie
 
-`monetary_model.py` also trains a Tweedie-objective LightGBM regressor directly on raw net revenue (no log1p/smearing -- the Tweedie log-link mean is already on the natural scale), with the variance power tuned on the validation split over `{1.2, 1.5, 1.8}` (chosen: 1.2). Both variants are evaluated on the same holdout. Promotion rule: ship the Tweedie variant only if holdout WAPE 12m improves by at least 0.02 **and** top-decile capture does not fall; otherwise keep the current (log1p + Duan smearing) model.
+`monetary_model.py` also trains a Tweedie-objective LightGBM regressor directly on raw net revenue (no log1p/smearing -- the Tweedie log-link mean is already on the natural scale), with the variance power tuned on the validation split over `{1.2, 1.5, 1.8}` (chosen: 1.2). Both variants are evaluated on the same holdout. Historical promotion rule (now disabled): earlier evaluations compared Tweedie and the current model on holdout WAPE and top-decile capture. **Holdout-based model selection is no longer permitted.** The current released model is locked while validation-only challengers are evaluated.
 
-Latest run: current WAPE 12m 0.688 vs. Tweedie 0.704 (worse, not an improvement) -- **current model stays shipped**. Full comparison: `outputs/metrics.json` -> `spend_model_variants`.
+Saved historical holdout run: current WAPE 12m 0.688 vs. Tweedie 0.704. These are diagnostic results, **not** a basis for future model promotion. The current model remains shipped. Full comparison: `outputs/metrics.json` -> `spend_model_variants`.
 
 ## Live Eval canary
 
@@ -75,3 +75,20 @@ A scheduled job (`.github/workflows/canary.yml`, cron `17 */6 * * *` plus manual
 `src/bvr/canary.py` computes WAPE at 12 months over the endpoint's live responses and compares it to the recorded value in `outputs/metrics.json` (`wape_12m`) within a tolerance of 0.060. `wape_6m` is computed and recorded too, alongside the recorded value, but does not gate the match. There are no fallback numbers: if a request to the endpoint errors, that counts as an error and forces `match=false` -- it never falls back to a guessed or cached score.
 
 Each run appends one JSON record to `ledger/runs.jsonl` on the `ledger` branch of this repo and overwrites `ledger/latest.json` with the same record. giggitai.com's Live Eval tab reads both files straight from `raw.githubusercontent.com` and replays them as a terminal. `match: true` means the live endpoint's predictions are still within tolerance of the offline holdout metric; `match: false` means either the endpoint errored or its predictions have drifted from what was recorded at training time -- worth checking the Lambda deployment (`aws-lambda/score.py`, `.github/workflows/deploy-lambda.yml`) before trusting the endpoint for anything else.
+
+## Model-quality improvement experiments (October 2026)
+
+The existing model and published holdout statistics are frozen. No challenger is silently promoted by the evaluation job. Use the original full source data and feature artifacts to run:
+
+```bash
+python -m bvr.cli features
+python -m bvr.challengers
+python -m bvr.activity_audit
+pytest -q tests/test_challengers.py
+```
+
+- `outputs/challenger_validation.json`: compares repeat-spend, direct 6/12-month LightGBM MAE, and direct 6/12-month Tweedie. The test users are excluded **before** an additional customer-level split of training users. Metrics include signed-target WAPE, value ranking, top-decile capture, and portfolio aggregation gaps.
+- `outputs/activity_label_audit.json`: measures where purchases occurred but cancellations or returns caused zero/negative net revenue and the existing positive-net-activity label marked the month inactive. The released target is not quietly changed.
+- Selection is **validation-only**. A new locked, untouched test split (or a completely new cohort) is required before publishing any selected challenger as a final generalization claim. If its serving artifacts change, deploy the corresponding model and prove serving parity first.
+- High WAPE remains disclosed prominently. Aggregate forecast gaps cannot be relabeled as customer-level accuracy.
+
