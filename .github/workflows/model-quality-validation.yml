@@ -5,6 +5,7 @@ on:
     branches: [improve-model-evidence-20261015]
     paths:
       - '.github/workflows/model-quality-validation.yml'
+      - 'src/bvr/challengers.py'
   workflow_dispatch:
 
 permissions:
@@ -25,7 +26,7 @@ jobs:
         run: python -m bvr.cli fetch
       - name: Build point-in-time customer features
         run: python -m bvr.cli features
-      - name: Train and compare on training-only validation
+      - name: Refit incumbent and challenge it on the same training-derived validation
         run: python -m bvr.challengers
       - name: Audit cancelled-purchase activity labels
         run: python -m bvr.activity_audit
