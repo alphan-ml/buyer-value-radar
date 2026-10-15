@@ -1,0 +1,51 @@
+name: LTV Validation Experiments
+
+on:
+  push:
+    branches: [improve-model-evidence-20261015]
+    paths:
+      - '.github/workflows/model-quality-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install data and model dependencies
+        run: python -m pip install -e '.[dev]'
+      - name: Fetch public UCI retail dataset
+        run: python -m bvr.cli fetch
+      - name: Build point-in-time customer features
+        run: python -m bvr.cli features
+      - name: Train and compare on training-only validation
+        run: python -m bvr.challengers
+      - name: Audit cancelled-purchase activity labels
+        run: python -m bvr.activity_audit
+      - name: Show reproducible findings
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for fname in ('challenger_validation.json', 'activity_label_audit.json'):
+              print(fname)
+              print(json.dumps(json.loads((Path('outputs') / fname).read_text()), indent=2))
+          PY
+      - name: Archive experiment outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: buyer-quality-experiments
+          path: |
+            outputs/challenger_validation.json
+            outputs/activity_label_audit.json
+            outputs/clean_stats.json
+            outputs/split_ids.json
+          if-no-files-found: warn
