@@ -87,7 +87,7 @@ python -m bvr.activity_audit
 pytest -q tests/test_challengers.py
 ```
 
-- `outputs/challenger_validation.json`: compares repeat-spend, direct 6/12-month LightGBM MAE, and direct 6/12-month Tweedie. The test users are excluded **before** an additional customer-level split of training users. Metrics include signed-target WAPE, value ranking, top-decile capture, and portfolio aggregation gaps.
+- `outputs/challenger_validation.json`: compares repeat-spend, direct 6/12-month LightGBM MAE, direct 6/12-month Tweedie, and a newly retrained two-curve LightGBM incumbent on the identical validation cohort, including paired customer-bootstrap uncertainty. Incumbent benchmark training never writes to the released checkpoint paths. The test users are excluded **before** an additional customer-level split of training users. Metrics include signed-target WAPE, value ranking, top-decile capture, and portfolio aggregation gaps.
 - `outputs/activity_label_audit.json`: measures where purchases occurred but cancellations or returns caused zero/negative net revenue and the existing positive-net-activity label marked the month inactive. The released target is not quietly changed.
 - Selection is **validation-only**. A new locked, untouched test split (or a completely new cohort) is required before publishing any selected challenger as a final generalization claim. If its serving artifacts change, deploy the corresponding model and prove serving parity first.
 - High WAPE remains disclosed prominently. Aggregate forecast gaps cannot be relabeled as customer-level accuracy.
